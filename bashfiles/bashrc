@@ -1,0 +1,18 @@
+if [ -e ~/.rc ]; then
+	. ~/.rc
+fi
+
+case "$TERM" in
+	screen)
+		# Send a trap to Screen in order to change name of current
+		# Screen-tab to the executing BASH_COMMAND
+		#
+		set -o functrace
+		trap 'echo -en "\033k!${BASH_COMMAND:0:20}\033\\"' DEBUG
+		;;
+	*)
+		;;
+esac
+
+export PS1='\[\033]0;\u@\h: \w\007\]\u@\h:\w$ '
+export PATH=/usr/local/sbin:$PATH

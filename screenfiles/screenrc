@@ -1,0 +1,18 @@
+
+hardstatus alwayslastline
+#hardstatus string "%{.gk} Load: %l %{.rw} %c:%s %{.bw} %n %t %{.wk} %W %{.wk}"
+# --- Detailed hardstatus by JDB
+hardstatus string "%{gk}[ %{G}%H %{g}][%= %{wk}%?%-Lw%?%{r}(%{W}%n*%f %t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m/%d %{W}%c %{g}]"
+
+defutf8 on
+#hardstatus off
+backtick 1 1200 1200 whoami
+#caption always "%-Lw%{= BW}%50>%n* %t%{-}%+Lw%<"
+#
+defscrollback 10000
+
+# Proper linewrap for Terminal.app
+termcapinfo xterm* ti@:te@
+
+# Key for clearing scrollback
+bind _ eval "clear" "scrollback 0" "scrollback 15000"

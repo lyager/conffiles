@@ -1,0 +1,14 @@
+# $Id$
+
+escape Super_L
+bind C exec xterm
+bind c exec gnome-terminal
+bind Escape abort 
+bind r exec gmrun
+bind Return other
+set framesels "123456789"
+exec xbindkeys
+exec gnome-settings-daemon
+exec xsetbg ~/gfx/bkgs/Landscape.jpg
+
+

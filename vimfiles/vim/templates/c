@@ -1,0 +1,13 @@
+/*
+ * 
+ * Copyright (C) Jesper Lyager Nielsen <jln@napatech.com>, Napatech A/S
+ *
+ */
+
+int main(int argc, char *argv[])
+{
+
+	#cursor: 10 del
+	return 0;
+}
+

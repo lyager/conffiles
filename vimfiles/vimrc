@@ -1,0 +1,132 @@
+syntax on                     " Highligt syntax please
+
+set exrc                      " Per directory .vimrc
+set secure                    " Don't source insecure .vimrc commands.
+
+set cb=exclude:*              " Don't connect to X-server, ever
+set is                        " Incremental search
+set background=dark           " Set brighter colors
+set bs=2                      " Delete works as backspace
+let mapleader = ';'           " Leader is the key to press before any usemade functions
+set autowriteall              " Autowrite all files upon bufferchange
+set autoindent                " Autoindentation
+set notitle                   " Refrain from setting XTerm title
+set laststatus=2              " Always show that status bar at bottom of window.
+set smartindent               " A hazzle programming without Smart Indent.
+set showmatch                 " Show matching brackets and parantheses
+set noet                      " NO Expand tabs to spaces
+set listchars=tab:>.,trail:.  " Set listchars to something sane.
+set nolist                    " Initially, always display lists.
+set wildmenu                  " Use better suggestions when tabbing to autocomplete files.
+set nowrap                    " As default, don't wrap lines.
+"set linebreak showbreak=+\    " A plus and a space
+"set wrap linebreak            " Wrap lines, but break them in words.
+set textwidth=0               " Don't modify long lines by default
+set is                        " Incremental search
+set hls                       " Highlight search
+set visualbell                " Kills *ding* *ding* *ding*
+set encoding=utf-8            " I like UTF-8
+set modeline                  " I use modelines all the time
+set modelines=5               " Help says default is five, but often 
+                              " I encounter zero as default
+set grepprg=grep\ --exclude=\\*cscope.out\\*\ --exclude=\\*tags\\*\ --exclude=\\*.svn\\*\ -n\ $*\ /dev/null
+                              " Grep excludes the hidden svn directories.,
+
+set nofoldenable              " Dont do folding by default, easily enabled with 'zi'
+colorscheme oceandeep         " Default colorscheme for non-gui.
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" GUI setup
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if has("gui_running")
+  " Set PATH for gui systems
+  "echo "PATH: ".$PATH
+  let $PATH = system("echo $PATH")
+  "let $PATH = matchstr(s:path, 'VIMPATH\zs.\{-}\ze\n')
+  "echo "PATH: ".$PATH
+
+  colorscheme twilight
+  set background=dark
+  if has("mac")
+    "set gfn=SGIScreen_Bold:h12
+    set gfn=Monaco:h12
+  else
+    set guifont=Terminus\ Bold\ 13
+  endif
+endif
+
+if has("gui_macvim")
+  set fuopt+=maxhorz
+endif
+
+set guioptions=cegiL  " Menu style is keep it simple
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ComX specific
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set ts=8        " Tabsize
+set sw=8        " Shiftwidth
+set smarttab    " When using BS remove 'Shiftwidth' characters
+
+" Filetype
+filetype plugin on
+au BufNewFile,BufRead *.apt set filetype=apt
+au BufNewFile,BufRead *.md,*.markdown,*.mdown,*mdwn set filetype=markdown
+
+" Load mappings
+function! LoadSpelling()
+    unmap <Leader>ss
+    ru optional/vimspell.vim
+endfunction
+"nmap <Leader>ss :call LoadSpelling()
+
+" Too used to Emacs, I need these to go to the
+" beginning og a line to the End.
+map <C-e> $
+map <C-a> 0
+
+" --------- other scripts -------------
+"ru optional/svn.vim
+
+" ------- Titlestring --------
+set titlestring=%([%M%R]\ %)%F%40([%{&ff},%{&fileencoding}%Y]%)%=0x%B\ c:%c%V\ \ \ L:%l/%L\ %P
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" SVN Module variables (svncommand.vim)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let SVNCommandEdit='split'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Cope
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"For Cope
+map <silent> <leader><cr> :noh<cr>
+
+"Orginal for all
+map <leader>n :cn<cr>
+map <leader>p :cp<cr>
+map <leader>c :botright cw 10<cr>
+map <c-u> <c-l><c-j>:q<cr>:botright cw 10<cr>
+
+""""""""""""""""""""""""""""""
+" Minibuffer
+""""""""""""""""""""""""""""""
+let g:miniBufExplModSelTarget = 1
+let g:miniBufExplorerMoreThanOne = 0
+let g:miniBufExplModSelTarget = 0
+let g:miniBufExplUseSingleClick = 1
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplVSplit = 25
+let g:miniBufExplSplitBelow=1
+let g:bufExplorerSortBy = "name"
+
+autocmd FileType objc set ft=cocoa
+
+"""""" Vimgrep keys
+map <leader>g :vimgrep <cword> **/*
+map <leader>G :vimgrep // **/*<left><left><left><left><left><left>
+
+" Since we allow sourcing of local .exrc files, and hereby executing
+" arbitrary commands on a per-project basis, we 'set secure'.
+set secure

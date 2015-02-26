@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+find . -name '*.py' > cscope.files
+cscope -b
+

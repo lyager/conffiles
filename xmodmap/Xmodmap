@@ -1,0 +1,7 @@
+! keycode 116 == Super_R
+keycode 116 = Mode_switch
+add Mod3 = Mode_switch
+keycode 32 = o O oslash Ooblique
+keycode 38 = a A aring Aring
+keycode 48 = apostrophe quotedbl ae AE
+

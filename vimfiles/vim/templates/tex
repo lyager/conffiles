@@ -1,0 +1,24 @@
+\documentclass{letter}
+\usepackage[utf-8]{inputenc}
+\usepackage[danish]{babel}
+\address{Jesper L. Nielsen \\
+    Nystedvej 28, 2.th.\\
+    2500 Valby}
+
+\signature{Jesper L. Nielsen}
+\date{\today}
+
+\begin{document}
+\begin{letter} {
+    <Recipient Name>\\
+    <Street>
+}
+
+\opening{<Dear XXX>}
+
+<Text>
+
+\closing{Mvh.}
+
+\end{letter}
+\end{document}

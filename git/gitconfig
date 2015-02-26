@@ -1,0 +1,20 @@
+[alias]
+	ci = commit
+	co = checkout
+	br = branch
+	ps = push
+	pl = pull
+	cp = cherry-pick
+	st = status
+	stat = status
+	f  = fetch
+
+[diff]
+	tool = vimdiff
+	prompt = false
+	noprefix = true
+[difftool]
+	prompt = false
+
+[user]
+	name = Jesper Lyager Nielsen

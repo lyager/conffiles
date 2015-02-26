@@ -1,0 +1,43 @@
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+
+(add-to-list 'exec-path "/sw/bin")
+(add-to-list 'load-path "~/.emacs.d/")
+
+;;; Disable toolbar
+(tool-bar-mode -1)
+
+;;;
+;;; Syntax highlighting
+(global-font-lock-mode t)
+(setq font-lock-maximum-decoration t)
+(show-paren-mode t)
+(transient-mark-mode t)
+
+(when window-system
+	(require 'color-theme)
+	(color-theme-classic)
+)
+
+(setq inhibit-startup-message t)
+(line-number-mode t)
+(column-number-mode t)
+
+;;; No more beep beep
+(setq visible-bell t)
+
+;;; Make backspace work correct (sometimes :/ )
+(normal-erase-is-backspace-mode t)
+
+;;; load psvn mode
+(autoload 'svn-status "~/.emacs.d/psvn.el"
+  "Mode for doing interaction with SVN" t)
+
+;;; Show real colors in shell
+(setq ansi-color-for-comint-mode-on t)
+
+;;; load the Wikipedia mode
+(autoload 'wikipedia-mode "~/.emacs.d/wikipedia-mode.el"
+  "Major mode for editing documents in Wikipedia markup." t)
+;;; And activate mode for .wiki files
+(add-to-list 'auto-mode-alist 
+   '("\\.wiki\\'" . wikipedia-mode))

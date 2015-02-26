@@ -1,0 +1,49 @@
+# Lines configured by zsh-newuser-install
+#
+# $Id$
+
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+bindkey -e
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/jln/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
+# Common settings
+if [ -e ~/.rc ] ; then
+	. ~/.rc
+fi
+
+export PS1="%n@%m:%~\$ "
+
+# Terminal specifics
+case $TERM in
+	xterm*)
+		# Set XTerm Title
+		precmd () {print -Pn "\e]0;%n@%m: %~\a"}
+		;;
+	screen*)
+		# Set XTerm Title
+		precmd () {print -Pn "\e]0;%n@%m/screen: %~\a"}
+		# Set hard status to program running
+		#preexec() {
+			#local y
+			#y=(${(s: :)1})
+			#local cmd=$y[1];
+			#if [ "$cmd" = "sudo" -o "$cmd" = "su" ]; then
+				## If root mode, then put ! in front of window name
+				#cmd=$y[2];
+				#echo -e -n "\033k!$cmd\033\\";
+			#else
+				#echo -e -n "\033k$cmd\033\\";
+			#fi
+		#}
+		;;
+esac
+
+

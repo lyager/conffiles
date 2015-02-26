@@ -1,0 +1,16 @@
+~ This file is in APT format: http://www.xmlmind.com/aptconvert.html
+
+            --------------------------------------------
+            Title
+            --------------------------------------------
+            --------------------------------------------
+            $HeadURL$
+            $Date$
+            $Revision$
+            --------------------------------------------
+
+First Chapter
+~~~~~~~~~~~~~
+# cursor: 2 del
+
+~ vim:filetype=apt
