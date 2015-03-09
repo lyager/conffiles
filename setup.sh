@@ -18,6 +18,7 @@ ln ${LNOPT} $PWD/zshfiles/zshrc ~/.zshrc
 
 # Bash
 ln ${LNOPT} $PWD/bashfiles/bashrc ~/.bashrc
+ln ${LNOPT} $PWD/bashfiles/git-prompt.sh ~/.git-prompt.sh
 ln ${LNOPT} $PWD/bashfiles/git-completion.sh ~/.git-completion.sh
 cd ~/
 ln ${LNOPT} .bashrc .bash_profile

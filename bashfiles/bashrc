@@ -14,5 +14,38 @@ case "$TERM" in
 		;;
 esac
 
-export PS1='\[\033]0;\u@\h: \w\007\]\u@\h:\w$ '
+function __prompt_command() {
+	local EXIT_STATUS="$?"
+	local GIT_STATUS=$(__git_ps1 " (%s)")
+	
+	local WHITE='\[\e[0m\]'
+	local RED='\[\e[0;31m\]'
+	local WDIR_COLOR='\[\e[38;5;172m\]'
+	local HOSTNAME_COLOR='\[\e[38;5;87m\]'
+	local GIT_STATUS_COLOR='\[\e[38;5;113m\]'
+	local RIGHT_ARROW=$'\u21D2'
+	local SAD_FACE=$'\xE2\x98\xB9'
+	
+	PS1="${HOSTNAME_COLOR}\u@\h: ${WDIR_COLOR}\w"
+	if [ GIT_STATUS ]; then
+		PS1+="${GIT_STATUS_COLOR}${GIT_STATUS}"
+	fi
+	PS1+="${WHITE}\n"
+	if [ $EXIT_STATUS != 0 ]; then
+		PS1+="${RED}${SAD_FACE} ${WHITE}"
+	fi
+	PS1+="${RIGHT_ARROW} "
+}
+
+if [ -e ~/.git-prompt.sh ]; then
+	source ~/.git-prompt.sh
+	export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
+	if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+		export PROMPT_COMMAND=__prompt_command
+	fi
+else
+	export PS1='\[\033]0;\u@\h: \w\007\]\u@\h:\w$ '
+fi
+
 export PATH=/usr/local/sbin:$PATH
+
