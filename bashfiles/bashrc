@@ -37,6 +37,9 @@ function __prompt_command() {
 	PS1+="${RIGHT_ARROW} "
 }
 
+# Set Vi navigation mode http://www.thegeekstuff.com/2009/10/do-you-like-to-perform-vi-style-editing-in-bash-command-line/
+set -o vi
+
 if [ -e ~/.git-prompt.sh ]; then
 	source ~/.git-prompt.sh
 	export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
