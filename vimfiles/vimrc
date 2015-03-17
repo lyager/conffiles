@@ -1,6 +1,16 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 let mapleader = ";"
+set ignorecase                " When searching without case, use smartcase which matches both capitalized
+set smartcase                 " and not capitalized letters
+set listchars=tab:>.,trail:.
+
+
+
+
+"""""""""""""""""""""""""""""""
+" Vundle - below this point
+"""""""""""""""""""""""""""""""
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
