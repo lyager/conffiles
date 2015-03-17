@@ -4,7 +4,8 @@ set smartcase                 " and not capitalized letters
 set listchars=tab:>.,trail:.  " Prefer to have identation pointed out too.
 
 """ Gnu GLOBAL Tags
-map <C-\><C-]> :GtagsCursor<CR>
+nmap <C-\>] :GtagsCursor<CR>
+nmap <C-\>s :Gtags -r <C-R>=expand("<cword>")<CR><CR>
 
 " When working with other peoples files and indent styles
 " it's nice to be able to put .exrc files or use modelines in 
@@ -12,6 +13,11 @@ map <C-\><C-]> :GtagsCursor<CR>
 set modelines=5
 set exrc
 set secure
+
+""" Vimgrep keys
+map <leader>g :vimgrep <cword> **/*
+map <leader>G :vimgrep // **/*<left><left><left><left><left><left>
+
 
 
 """""""""""""""""""""""""""""""
