@@ -6,7 +6,12 @@ set listchars=tab:>.,trail:.  " Prefer to have identation pointed out too.
 """ Gnu GLOBAL Tags
 map <C-\><C-]> :GtagsCursor<CR>
 
-
+" When working with other peoples files and indent styles
+" it's nice to be able to put .exrc files or use modelines in 
+" a specific file
+set modelines=5
+set exrc
+set secure
 
 
 """""""""""""""""""""""""""""""
@@ -30,6 +35,13 @@ Plugin 'Valloric/YouCompleteMe'
 " CtrlP - nice navigation
 Plugin 'https://github.com/kien/ctrlp.vim'
 map <leader>j :CtrlP<cr>
+
+" Switch between Header and source https://github.com/derekwyatt/vim-fswitch
+Plugin 'https://github.com/derekwyatt/vim-fswitch'
+nmap <silent> <Leader>h :FSHere<cr>
+
+" Python PEP-8 Indentation
+Plugin 'https://github.com/hynek/vim-python-pep8-indent'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
