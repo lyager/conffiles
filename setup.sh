@@ -8,7 +8,7 @@ LNOPT="-s -n $@"    # -n for no-deref (don't jump into the directories)
 		 # -f force
 # Vim
 #ln ${LNOPT} $PWD/vimfiles/vim ~/.vim
-git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+[ ! -e ~/.vim/bundle/Vundle.vim ] && git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ln ${LNOPT} $PWD/vimfiles/vimrc ~/.vimrc
 
 # tmux
