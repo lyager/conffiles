@@ -6,6 +6,8 @@ set listchars=tab:>.,trail:.  " Prefer to have identation pointed out too.
 """ Gnu GLOBAL Tags
 nmap <C-\>] :GtagsCursor<CR>
 nmap <C-\>s :Gtags -r <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>S :Gtags -s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>f :Gtags -f <C-R>=expand("%")<CR><CR>
 
 " When working with other peoples files and indent styles
 " it's nice to be able to put .exrc files or use modelines in 
@@ -15,8 +17,29 @@ set exrc
 set secure
 
 """ Vimgrep keys
-map <leader>g :vimgrep <cword> **/*
-map <leader>G :vimgrep // **/*<left><left><left><left><left><left>
+set grepprg=grep\ --binary-files=without-match\ --exclude=GTAGS\ --exclude=GRTAGS\ --exclude=\\*cscope.out\\*\ --exclude=\\*tags\\*\ --exclude=\\*.svn\\*\ -n\ $*\ /dev/null
+map <leader>g :grep -r <cword> **/*
+map <leader>G :grep -r  **/*<left><left><left><left><left>
+
+""" Tab navigation
+nnoremap <leader>tr :tabnew <bar>r !
+nnoremap <leader>tR :tabnew <bar>r !#<CR>
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove
+map <leader>t<leader> :tabnext
+
+
+" Let 'tl' toggle between this and the last accessed tab
+let g:lasttab = 1
+nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
+au TabLeave * let g:lasttab = tabpagenr()
+
+map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+
+""" Filetypes
+autocmd BufNew,BufRead SConstruct setf python
 
 
 
@@ -41,6 +64,7 @@ Plugin 'Valloric/YouCompleteMe'
 " CtrlP - nice navigation
 Plugin 'https://github.com/kien/ctrlp.vim'
 map <leader>j :CtrlP<cr>
+map <leader>J :CtrlP<cr>
 
 " Switch between Header and source https://github.com/derekwyatt/vim-fswitch
 Plugin 'https://github.com/derekwyatt/vim-fswitch'
