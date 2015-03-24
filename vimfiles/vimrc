@@ -2,6 +2,7 @@ let mapleader = ";"
 set ignorecase                " When searching without case, use smartcase which matches both capitalized
 set smartcase                 " and not capitalized letters
 set listchars=tab:>.,trail:.  " Prefer to have identation pointed out too.
+set hls                       " Hilight Search ( not a big fan of inrementals search though ) 
 
 """ Gnu GLOBAL Tags
 nmap <C-\>] :GtagsCursor<CR>
@@ -72,6 +73,9 @@ nmap <silent> <Leader>h :FSHere<cr>
 
 " Python PEP-8 Indentation
 Plugin 'https://github.com/hynek/vim-python-pep8-indent'
+
+" Doxygen Toolkit
+Plugin 'vim-scripts/DoxygenToolkit.vim'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
