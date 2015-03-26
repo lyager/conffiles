@@ -21,8 +21,8 @@ set secure
 
 """ Vimgrep keys
 set grepprg=grep\ --binary-files=without-match\ --exclude=GTAGS\ --exclude=GRTAGS\ --exclude=\\*cscope.out\\*\ --exclude=\\*tags\\*\ --exclude=\\*.svn\\*\ -n\ $*\ /dev/null
-map <leader>g :grep -r <cword> **/*
-map <leader>G :grep -r  **/*<left><left><left><left><left>
+map <leader>g :grep -r <cword> *
+map <leader>G :grep -r  *<left><left>
 
 """ Tab navigation
 nnoremap <leader>tr :tabnew <bar>r !
