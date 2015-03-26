@@ -47,6 +47,16 @@ autocmd BufNew,BufRead SConstruct setf python
 """ Markdown
 autocmd Filetype mkd set tw=78
 
+""" C++/C
+function! s:insert_gates()
+  let gatename = "__" . substitute(toupper(expand("%:t")), "\\.", "_", "g") . "__"
+  execute "normal! i#ifndef " . gatename
+  execute "normal! o#define " . gatename . " "
+  execute "normal! Go#endif /* " . gatename . " */"
+  normal! kk
+endfunction
+autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
+
 
 
 """""""""""""""""""""""""""""""
