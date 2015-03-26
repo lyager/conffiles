@@ -3,6 +3,8 @@ set ignorecase                " When searching without case, use smartcase which
 set smartcase                 " and not capitalized letters
 set listchars=tab:>.,trail:.  " Prefer to have identation pointed out too.
 set hls                       " Hilight Search ( not a big fan of inrementals search though ) 
+set cscopetag                 " Use cscope instead of ctags
+set cscopeverbose
 
 """ Gnu GLOBAL Tags
 nmap <C-\>] :GtagsCursor<CR>
@@ -59,6 +61,9 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+" Most Recent Used
+Plugin 'yegappan/mru'
+
 " YouCompleteMe: https://github.com/Valloric/YouCompleteMe
 Plugin 'Valloric/YouCompleteMe'
 
@@ -71,6 +76,10 @@ map <leader>J :CtrlP<cr>
 Plugin 'https://github.com/derekwyatt/vim-fswitch'
 nmap <silent> <Leader>h :FSHere<cr>
 
+" BufExplorer
+Plugin 'corntrace/bufexplorer'
+nmap <leader>o :BufExplorer<cr>
+
 " Python PEP-8 Indentation
 Plugin 'https://github.com/hynek/vim-python-pep8-indent'
 
@@ -81,15 +90,19 @@ Plugin 'vim-scripts/DoxygenToolkit.vim'
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
+
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
+
 " Git plugin not hosted on GitHub
 Plugin 'git://git.wincent.com/command-t.git'
+
 " git repos on your local machine (i.e. when working on your own plugin)
 "Plugin 'file:///home/gmarik/path/to/plugin'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+
 " Avoid a name conflict with L9
 "Plugin 'user/L9', {'name': 'newL9'}
 
