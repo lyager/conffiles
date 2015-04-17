@@ -44,6 +44,9 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 """ Filetypes
 autocmd BufNew,BufRead SConstruct setf python
 
+""" Markdown
+autocmd Filetype mkd set tw=78
+
 
 
 """""""""""""""""""""""""""""""
