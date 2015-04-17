@@ -11,6 +11,7 @@ nmap <C-\>] :GtagsCursor<CR>
 nmap <C-\>s :Gtags -r <C-R>=expand("<cword>")<CR><CR>
 nmap <C-\>S :Gtags -s <C-R>=expand("<cword>")<CR><CR>
 nmap <C-\>f :Gtags -f <C-R>=expand("%")<CR><CR>
+nmap <C-\>u :!gtags -R
 
 " When working with other peoples files and indent styles
 " it's nice to be able to put .exrc files or use modelines in 
@@ -32,6 +33,10 @@ map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
 map <leader>t<leader> :tabnext
+
+""" Disable increment/decrement, I keep hitting CTRL-a for some reason :-/
+nmap <CTRL-A> <Nop>
+nmap <CTRL-X> <Nop>
 
 
 " Let 'tl' toggle between this and the last accessed tab
