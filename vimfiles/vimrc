@@ -103,6 +103,10 @@ Plugin 'git://git.wincent.com/command-t.git'
 " Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 
+" vim-markdown (needs tabular first)
+Plugin 'godlygeek/tabular'
+Plugin 'lyager/vim-markdown'
+
 " Avoid a name conflict with L9
 "Plugin 'user/L9', {'name': 'newL9'}
 
