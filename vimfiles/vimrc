@@ -12,7 +12,7 @@ nmap <C-\>] :GtagsCursor<CR>
 nmap <C-\>s :Gtags -r <C-R>=expand("<cword>")<CR><CR>
 nmap <C-\>S :Gtags -s <C-R>=expand("<cword>")<CR><CR>
 nmap <C-\>f :Gtags -f <C-R>=expand("%")<CR><CR>
-nmap <C-\>u :!gtags -R
+nmap <C-\>u :!gtags<CR><CR>
 
 " When working with other peoples files and indent styles
 " it's nice to be able to put .exrc files or use modelines in 
@@ -100,7 +100,12 @@ Plugin 'corntrace/bufexplorer'
 nmap <leader>o :BufExplorer<cr>
 
 " Python PEP-8 Indentation
-Plugin 'https://github.com/hynek/vim-python-pep8-indent'
+" -- reworked because python-mode comes with it's own version of
+"    vim-python-pep8-indent bundlede
+" Plugin 'https://github.com/hynek/vim-python-pep8-indent'
+
+" Python Mode
+Plugin 'https://github.com/klen/python-mode'
 
 " Doxygen Toolkit
 Plugin 'vim-scripts/DoxygenToolkit.vim'
