@@ -8,6 +8,7 @@
 	st = status
 	stat = status
 	f  = fetch
+	fp = format-patch
 
 [diff]
 	tool = vimdiff
