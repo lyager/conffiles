@@ -131,6 +131,9 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'godlygeek/tabular'
 Plugin 'lyager/vim-markdown'
 
+" Gtags
+Plugin 'gtags.vim'
+
 " Avoid a name conflict with L9
 "Plugin 'user/L9', {'name': 'newL9'}
 
