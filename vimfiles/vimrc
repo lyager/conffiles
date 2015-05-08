@@ -23,8 +23,8 @@ set secure
 
 """ Vimgrep keys
 set grepprg=grep\ --binary-files=without-match\ --exclude=GTAGS\ --exclude=GRTAGS\ --exclude=\\*cscope.out\\*\ --exclude=\\*tags\\*\ --exclude=\\*.svn\\*\ -n\ $*\ /dev/null
-map <leader>g :grep -r <cword> *
-map <leader>G :grep -r  *<left><left>
+map <leader>G :grep -r <cword> *
+map <leader>g :grep -r  *<left><left>
 
 """ Tab navigation
 nnoremap <leader>tr :tabnew <bar>r !
@@ -64,6 +64,19 @@ endfunction
 autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
 
 
+
+""" Ultisnips
+" Trigger configuration. Do not use <tab> if you use
+" https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+
+""" YouCompleMe
+" Disable completion previews with function prototypes, etc.
+set completeopt=menu
+let g:ycm_add_preview_to_completeopt = 0
 
 """""""""""""""""""""""""""""""
 " Vundle - below this point
@@ -105,7 +118,7 @@ nmap <leader>o :BufExplorer<cr>
 " Plugin 'https://github.com/hynek/vim-python-pep8-indent'
 
 " Python Mode
-Plugin 'https://github.com/klen/python-mode'
+Plugin 'https://github.com/lyager/python-mode'
 
 " Doxygen Toolkit
 Plugin 'vim-scripts/DoxygenToolkit.vim'
@@ -134,6 +147,10 @@ Plugin 'lyager/vim-markdown'
 " Gtags
 Plugin 'gtags.vim'
 
+" Ultisnips
+Plugin 'sirver/ultisnips'
+" Snippets are separated from the engine. Add this if you want them:
+Plugin 'honza/vim-snippets'
 " Avoid a name conflict with L9
 "Plugin 'user/L9', {'name': 'newL9'}
 
