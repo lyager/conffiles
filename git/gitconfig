@@ -19,3 +19,5 @@
 
 [user]
 	name = Jesper Lyager Nielsen
+[push]
+	default = simple
