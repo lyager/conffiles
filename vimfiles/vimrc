@@ -71,12 +71,20 @@ autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:ultisnips_python_style="google"
 
 
-""" YouCompleMe
+""" YouCompleteMe
 " Disable completion previews with function prototypes, etc.
 set completeopt=menu
 let g:ycm_add_preview_to_completeopt = 0
+let g:ycm_auto_trigger = 0
+let g:ycm_filetype_blacklist = { 'python': 1 }
+let g:ycm_complete_in_strings = 0
+
+""" Python Mode - can take up quite alot of CPU, and I don't use 
+""" code completion from Rope anyway
+let g:pymode_rope = 0
 
 """""""""""""""""""""""""""""""
 " Vundle - below this point
