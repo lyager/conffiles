@@ -5,6 +5,7 @@ set listchars=tab:>.,trail:.  " Prefer to have identation pointed out too.
 set hls                       " Hilight Search ( not a big fan of inrementals search though ) 
 set cscopetag                 " Use cscope instead of ctags
 set cscopeverbose
+set backspace=2
 syntax on
 
 """ Gnu GLOBAL Tags
