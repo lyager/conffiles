@@ -15,6 +15,10 @@ nmap <C-\>S :Gtags -s <C-R>=expand("<cword>")<CR><CR>
 nmap <C-\>f :Gtags -f <C-R>=expand("%")<CR><CR>
 nmap <C-\>u :!gtags<CR><CR>
 
+""" Ctags
+command! -nargs=0 Ctags :!ctags -R --extra=+f
+
+
 " When working with other peoples files and indent styles
 " it's nice to be able to put .exrc files or use modelines in 
 " a specific file
