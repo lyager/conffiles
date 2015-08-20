@@ -2,6 +2,8 @@
 #
 # $Id$
 
+# sudo apt-get install global cmake stow ctags vim-nox
+
 LNOPT="-s -n $@"    # -n for no-deref (don't jump into the directories)
                  # -s for softlink
                  # -i for interactive, prompt before removing.
