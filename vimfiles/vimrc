@@ -70,6 +70,10 @@ endfunction
 autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
 
 
+""" Java
+au FileType java set foldmethod=indent
+
+
 
 """ Ultisnips
 " Trigger configuration. Do not use <tab> if you use
