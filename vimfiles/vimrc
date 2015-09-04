@@ -31,7 +31,7 @@ set secure
 set grepprg=grep\ --binary-files=without-match\ --exclude=GTAGS\ --exclude=GRTAGS\ --exclude=\\*cscope.out\\*\ --exclude=\\*tags\\*\ --exclude=\\*.svn\\*\ -n\ $*\ /dev/null
 map <leader>G :grep -r <cword> *
 map <leader>g :grep -r  *<left><left>
-map <leader>Ga :bufdo vimgrepadd <cword> % | copen
+map <leader>Ga :bufdo vimgrepadd <cword> % \| copen
 map <leader>ga :bufdo vimgrepadd  % \| copen <left><left><left><left><left><left><left><left><left><left><left>
 
 """ Tab navigation
