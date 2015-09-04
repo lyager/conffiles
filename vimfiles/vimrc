@@ -18,7 +18,7 @@ nmap <C-\>u :!gtags<CR><CR>
 """ Ctags
 command! -nargs=0 Ctags :!ctags -R --extra=+f
 
-command Ww w !sudo tee % > /dev/null
+command! Ww w !sudo tee % > /dev/null
 
 " When working with other peoples files and indent styles
 " it's nice to be able to put .exrc files or use modelines in 
@@ -31,6 +31,8 @@ set secure
 set grepprg=grep\ --binary-files=without-match\ --exclude=GTAGS\ --exclude=GRTAGS\ --exclude=\\*cscope.out\\*\ --exclude=\\*tags\\*\ --exclude=\\*.svn\\*\ -n\ $*\ /dev/null
 map <leader>G :grep -r <cword> *
 map <leader>g :grep -r  *<left><left>
+map <leader>Ga :bufdo vimgrepadd <cword> % | copen
+map <leader>ga :bufdo vimgrepadd  % \| copen <left><left><left><left><left><left><left><left><left><left><left>
 
 """ Tab navigation
 nnoremap <leader>tr :tabnew <bar>r !
@@ -41,10 +43,6 @@ map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
 map <leader>t<leader> :tabnext
 
-""" Disable increment/decrement, I keep hitting CTRL-a for some reason :-/
-nmap <CTRL-A> <Nop>
-nmap <CTRL-X> <Nop>
-
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
@@ -52,6 +50,10 @@ nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+
+""" Disable increment/decrement of integer below cursor , I keep hitting CTRL-a for some reason :-/
+nmap <CTRL-A> <Nop>
+nmap <CTRL-X> <Nop>
 
 """ Filetypes
 autocmd BufNew,BufRead SConstruct setf python
