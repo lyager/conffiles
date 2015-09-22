@@ -27,6 +27,8 @@ set modelines=5
 set exrc
 set secure
 
+set nofoldenable " Do not fold to begin with
+
 """ Vimgrep keys
 set grepprg=grep\ --binary-files=without-match\ --exclude=GTAGS\ --exclude=GRTAGS\ --exclude=\\*cscope.out\\*\ --exclude=\\*tags\\*\ --exclude=\\*.svn\\*\ -n\ $*\ /dev/null
 map <leader>G :grep -r <cword> *
