@@ -2,7 +2,10 @@
 #
 # $Id$
 
-# sudo apt-get install global cmake stow ctags vim-nox
+if [ "$(uname -v | awk '{print $3}')" == "Debian" ]; then
+	sudo apt-get update
+	sudo apt-get install global cmake stow ctags vim-nox
+fi
 
 LNOPT="-s -n $@"    # -n for no-deref (don't jump into the directories)
                  # -s for softlink
@@ -71,3 +74,7 @@ if [ ! -e ~/bin ]; then
 fi
 ln ${LNOPT} $PWD/bin/* ~/bin/
 ln ${LNOPT} $PWD/bin/cscope-py ~/bin/pytags
+
+# Post setup
+## Update Vundle
+vim -c VundleUpdate -c quitall
