@@ -2,9 +2,13 @@
 #
 # $Id$
 
-if [ "$(uname -v | awk '{print $3}')" == "Debian" ]; then
+if [ "$(uname -v | awk '{print $3}')" == "Debian" ]; then # Debian
 	sudo apt-get update
 	sudo apt-get install global cmake stow ctags vim-nox stow
+elif [ "$(uname -v | awk '{print $1}')" == "Darwin" ]; then # OSX
+	brew install vim
+	brew install cmake # For YouCompleMe (Vim)
+
 fi
 
 LNOPT="-s -n $@"    # -n for no-deref (don't jump into the directories)
@@ -75,7 +79,7 @@ fi
 ln ${LNOPT} $PWD/bin/* ~/bin/
 ln ${LNOPT} $PWD/bin/cscope-py ~/bin/pytags
 
-# Post setup
+# Post setup (VIM)
 ## Update Vundle
 vim -c VundleUpdate -c quitall
 
@@ -84,4 +88,8 @@ cd ~/.vim/bundle/command-t/ruby/command-t
 ruby extconf.rb 
 make
 cd -
+
+## You Complete Me
+cd ~/.vim/bundle/YouCompleteMe
+./install.py --clang-completer
 
