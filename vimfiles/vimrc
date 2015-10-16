@@ -175,7 +175,7 @@ Plugin 'git://git.wincent.com/command-t.git'
 " Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 
-" vim-markdown (needs tabular first)
+" vim-markdown (Tabular dependency)
 Plugin 'godlygeek/tabular'
 Plugin 'lyager/vim-markdown'
 
@@ -191,6 +191,13 @@ Plugin 'honza/vim-snippets'
 
 " Git Gutter
 Plugin 'airblade/vim-gitgutter'
+
+" Airline (experimental)
+Plugin 'bling/vim-airline'
+
+
+" Syntastic (experimental)
+Plugin 'scrooloose/syntastic'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
