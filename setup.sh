@@ -2,10 +2,10 @@
 #
 # $Id$
 
-if [ "$(uname -v | awk '{print $3}')" == "Debian" ]; then # Debian
+if [ "$(uname -v | awk '{print $3}')" = "Debian" ]; then # Debian
 	sudo apt-get update
 	sudo apt-get install global cmake stow ctags vim-nox stow
-elif [ "$(uname -v | awk '{print $1}')" == "Darwin" ]; then # OSX
+elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
 	brew install vim
 	brew install cmake # For YouCompleMe (Vim)
 
