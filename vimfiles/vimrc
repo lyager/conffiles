@@ -7,6 +7,9 @@ set cscopetag                 " Use cscope instead of ctags
 set cscopeverbose
 set backspace=2
 syntax on
+set switchbuf+=usetab,newtab " When switching buffers, use tabs for buffers search
+                             " if not found, open window in new tab - ie, be
+                             " as little intrusive as possible
 
 """ Gnu GLOBAL Tags
 nmap <C-\>] :GtagsCursor<CR>
@@ -189,7 +192,10 @@ Plugin 'honza/vim-snippets'
 " Avoid a name conflict with L9
 "Plugin 'user/L9', {'name': 'newL9'}
 
-" Git Gutter
+" TagBar
+Plugin 'majutsushi/tagbar'
+
+" Git Gutter - makes the gutter show diff's compared to Git
 Plugin 'airblade/vim-gitgutter'
 
 " Airline (experimental)
