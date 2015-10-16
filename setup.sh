@@ -78,3 +78,10 @@ ln ${LNOPT} $PWD/bin/cscope-py ~/bin/pytags
 # Post setup
 ## Update Vundle
 vim -c VundleUpdate -c quitall
+
+## Compile command-t
+cd ~/.vim/bundle/command-t/ruby/command-t
+ruby extconf.rb 
+make
+cd -
+
