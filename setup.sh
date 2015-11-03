@@ -8,6 +8,7 @@ if [ "$(uname -v | awk '{print $3}')" = "Debian" ]; then # Debian
 	sudo apt-get install -y xz-utils # Added for YCM to uncompess internals.
 elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
 	brew install vim
+	brew install tmux
 	brew install cmake # For YouCompleMe (Vim)
 
 fi
