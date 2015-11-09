@@ -4,8 +4,9 @@
 
 if [ "$(uname -v | awk '{print $3}')" = "Debian" ]; then # Debian
 	sudo apt-get update
-	sudo apt-get install global cmake stow ctags vim-nox stow
+	sudo apt-get install -y global cmake stow ctags vim-nox stow
 	sudo apt-get install -y xz-utils # Added for YCM to uncompess internals.
+	sudo apt-get install -y g++ python-dev # For YCM
 elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
 	brew install vim
 	brew install tmux
