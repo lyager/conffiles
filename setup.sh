@@ -12,6 +12,7 @@ elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
 	brew install vim
 	brew install tmux
 	brew install cmake # For YouCompleMe (Vim)
+	brew install global
 
 fi
 
