@@ -7,7 +7,9 @@ set cscopetag                 " Use cscope instead of ctags
 set cscopeverbose
 set backspace=2
 syntax on
-set showtabline=2            " Always show tabline
+" set showtabline=2            " Always show tabline
+set laststatus=2             " Always show status bar 
+
 set switchbuf+=usetab,newtab " When switching buffers, use tabs for buffers search
                              " if not found, open window in new tab - ie, be
                              " as little intrusive as possible
@@ -201,6 +203,7 @@ Plugin 'airblade/vim-gitgutter'
 
 " Airline (experimental)
 Plugin 'bling/vim-airline'
+let g:airline#extensions#tabline#enabled = 1
 
 
 " Syntastic (experimental)
