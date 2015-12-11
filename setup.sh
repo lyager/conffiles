@@ -9,6 +9,8 @@ if [ "$(uname -v | awk '{print $3}')" = "Debian" ]; then # Debian
 	sudo apt-get install -y g++ python-dev # For YCM
 	sudo apt-get install -y ruby-dev # For Command-t
 elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
+	brew update
+	brew upgrade
 	brew install vim
 	brew install tmux
 	brew install cmake # For YouCompleMe (Vim)
