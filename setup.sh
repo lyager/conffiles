@@ -78,6 +78,10 @@ ln ${LNOPT} $PWD/git/gitconfig ~/.gitconfig
 # RTorrent
 ln ${LNOPT} $PWD/rtorrent/rtorrentrc ~/.rtorrentrc
 
+# Gdb
+mkdir -p ~/.gdb/
+git clone git://github.com/ruediger/Boost-Pretty-Printer.git ~/.gdb/Boost-Pretty-Printer
+ln ${LNOPT} $PWD/gdb/gdbinit ~/.gdbinit
 
 # Bin
 if [ ! -e ~/bin ]; then

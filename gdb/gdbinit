@@ -1,0 +1,7 @@
+python
+import sys
+import os
+sys.path.insert(0, "%s/.gdb/Boost-Pretty-Printer" % os.environ["HOME"])
+from boost.printers import register_printer_gen
+register_printer_gen(None)
+end
