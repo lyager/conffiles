@@ -204,11 +204,14 @@ Plugin 'majutsushi/tagbar'
 Plugin 'airblade/vim-gitgutter'
 
 " A-Complete
-Plugin 'Townk/vim-autoclose'
+" Plugin 'Townk/vim-autoclose'
 
 " Airline (experimental)
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 let g:airline#extensions#tabline#enabled = 1
+" let g:airline_theme='molokai'
+let g:airline_theme='base16_ashes'
 
 
 " Syntastic (experimental)
@@ -216,6 +219,10 @@ Plugin 'scrooloose/syntastic'
 "
 " Bclose
 Plugin 'rbgrouleff/bclose.vim'
+
+" Solarized Colorscheme
+let g:solarized_termcolors=256
+Plugin 'altercation/vim-colors-solarized'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
