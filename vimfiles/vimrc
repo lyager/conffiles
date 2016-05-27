@@ -5,6 +5,7 @@ set listchars=tab:>.,trail:.  " Prefer to have identation pointed out too.
 set hls                       " Hilight Search ( not a big fan of inrementals search though ) 
 set cscopetag                 " Use cscope instead of ctags
 set cscopeverbose
+set bg=dark                   " Apparently I work most on dark background.
 set backspace=2
 syntax on
 " set showtabline=2            " Always show tabline
