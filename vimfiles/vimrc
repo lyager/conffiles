@@ -68,6 +68,9 @@ nmap <CTRL-X> <Nop>
 """ Filetypes
 autocmd BufNew,BufRead SConstruct setf python
 
+""" Yaml
+autocmd Filetype yaml set sw=2 ts=2 et
+
 """ Markdown
 autocmd Filetype mkd set tw=78
 
