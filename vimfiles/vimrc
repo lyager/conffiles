@@ -102,6 +102,9 @@ au FileType diff set foldmethod=expr foldexpr=DiffFold(v:lnum)
 """ Java
 au FileType java set foldmethod=indent
 
+""" Javescript
+au FileType javascript set ts=4 sw=4 et
+
 
 
 """ Ultisnips
@@ -124,6 +127,7 @@ let g:ycm_complete_in_strings = 0
 """ Python Mode - can take up quite alot of CPU, and I don't use 
 """ code completion from Rope anyway
 let g:pymode_rope = 0
+let g:pymode_options_max_line_length=79
 
 """""""""""""""""""""""""""""""
 " Vundle - below this point
