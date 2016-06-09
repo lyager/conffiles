@@ -151,7 +151,7 @@ Plugin 'yegappan/mru'
 Plugin 'Valloric/YouCompleteMe'
 
 " CtrlP - nice navigation
-Plugin 'https://github.com/kien/ctrlp.vim'
+Plugin 'https://github.com/ctrlpvim/ctrlp.vim'
 map <leader>j :CtrlP<cr>
 map <leader>J :CtrlP<cr>
 
