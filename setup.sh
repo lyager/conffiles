@@ -18,6 +18,21 @@ elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
 	brew install cmake # For YouCompleMe (Vim)
 	brew install global
 
+elif [ -e "/etc/redhat-release" ]; then # Redhat
+	sudo yum update -y
+	sudo yum install -y vim-enhanced \
+		tmux \
+		global \
+		xz \
+		cmake \
+		cscope \
+		ctags \
+		stow \
+		glibc-devel \
+		ruby \
+		ruby-devel \
+		gcc-c++ \
+		python-devel
 fi
 
 LNOPT="-s -n $@"    # -n for no-deref (don't jump into the directories)
