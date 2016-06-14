@@ -1,15 +1,21 @@
 #!/bin/sh
-#
-# $Id$
 
 if [ "$(uname -v | awk '{print $3}')" = "Debian" ]; then # Debian
 	sudo apt-get update
-	sudo apt-get install -y global cmake stow ctags vim-nox stow cscope
-	sudo apt-get install -y xz-utils # Added for YCM to uncompess internals.
-	sudo apt-get install -y g++ python-dev # For YCM
-	sudo apt-get install -y ruby-dev # For Command-t
-	sudo apt-get install -y ruby # For Command-t
-	sudo apt-get install -y tmux
+	sudo apt-get install -y global \
+		cmake \
+		stow \
+		ctags \
+		vim-nox \
+		stow \
+		cscope \
+		tig \
+		xz-utils \ # Added for YCM to uncompess internals.
+		g++ \
+		python-dev \ # For YCM
+		ruby-dev \ # For Command-t
+		ruby \ # For Command-t
+		tmux
 elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
 	brew update
 	brew upgrade
@@ -32,7 +38,8 @@ elif [ -e "/etc/redhat-release" ]; then # Redhat
 		ruby \
 		ruby-devel \
 		gcc-c++ \
-		python-devel
+		python-devel \
+		tig
 fi
 
 LNOPT="-s -n $@"    # -n for no-deref (don't jump into the directories)
