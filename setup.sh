@@ -1,5 +1,6 @@
 #!/bin/sh
 
+GIT_PROMPT=""
 if [ "$(uname -v | awk '{print $3}')" = "Debian" ]; then # Debian
 	sudo apt-get update
 	sudo apt-get install -y global \
@@ -16,6 +17,7 @@ if [ "$(uname -v | awk '{print $3}')" = "Debian" ]; then # Debian
 		ruby-dev \ # For Command-t
 		ruby \ # For Command-t
 		tmux
+	GIT_PROMPT=/usr/lib/git-core/git-sh-prompt
 elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
 	brew update
 	brew upgrade
@@ -23,7 +25,6 @@ elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
 	brew install tmux
 	brew install cmake # For YouCompleMe (Vim)
 	brew install global
-
 elif [ -e "/etc/redhat-release" ]; then # Redhat
 	sudo yum update -y
 	sudo yum install -y vim-enhanced \
@@ -41,6 +42,7 @@ elif [ -e "/etc/redhat-release" ]; then # Redhat
 		python-devel \
 		tig \
 		bash-completion
+	GIT_PROMPT=/usr/share/git-core/contrib/completion/git-prompt.sh
 fi
 
 LNOPT="-s -n $@"    # -n for no-deref (don't jump into the directories)
@@ -60,9 +62,7 @@ ln ${LNOPT} $PWD/zshfiles/zshrc ~/.zshrc
 
 # Bash
 ln ${LNOPT} $PWD/bashfiles/bashrc ~/.bashrc
-ln ${LNOPT} /usr/lib/git-core/git-sh-prompt ~/.git-prompt.sh
-#ln ${LNOPT} $PWD/bashfiles/git-prompt.sh ~/.git-prompt.sh
-#ln ${LNOPT} $PWD/bashfiles/git-completion.sh ~/.git-completion.sh
+[ ! -z "${GIT_PROMPT}" ] && ln ${LNOPT} ${GIT_PROMPT} ~/.git-prompt.sh
 cd ~/
 ln ${LNOPT} .bashrc .bash_profile
 cd - > /dev/null
