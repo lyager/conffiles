@@ -16,15 +16,17 @@ if [ "$(uname -v | awk '{print $3}')" = "Debian" ]; then # Debian
 		python-dev \ # For YCM
 		ruby-dev \ # For Command-t
 		ruby \ # For Command-t
-		tmux
+		tmux \
+		jq
 	GIT_PROMPT=/usr/lib/git-core/git-sh-prompt
 elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
 	brew update
 	brew upgrade
-	brew install vim
-	brew install tmux
-	brew install cmake # For YouCompleMe (Vim)
-	brew install global
+	brew install vim \
+		tmux \
+		cmake \ # For YouCompleMe
+		global \
+		jq
 elif [ -e "/etc/redhat-release" ]; then # Redhat
 	sudo yum update -y
 	sudo yum install -y vim-enhanced \
@@ -41,7 +43,8 @@ elif [ -e "/etc/redhat-release" ]; then # Redhat
 		gcc-c++ \
 		python-devel \
 		tig \
-		bash-completion
+		bash-completion \
+		jq
 	GIT_PROMPT=/usr/share/git-core/contrib/completion/git-prompt.sh
 fi
 
