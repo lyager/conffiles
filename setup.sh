@@ -39,7 +39,8 @@ elif [ -e "/etc/redhat-release" ]; then # Redhat
 		ruby-devel \
 		gcc-c++ \
 		python-devel \
-		tig
+		tig \
+		bash-completion
 fi
 
 LNOPT="-s -n $@"    # -n for no-deref (don't jump into the directories)
