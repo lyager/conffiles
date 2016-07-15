@@ -72,6 +72,9 @@ autocmd BufNew,BufRead SConstruct setf python
 """ Yaml
 autocmd Filetype yaml set sw=2 ts=2 et
 
+""" HTML
+autocmd Filetype html set sw=2 ts=2 nowrap
+
 """ Markdown
 autocmd Filetype mkd set tw=78
 
