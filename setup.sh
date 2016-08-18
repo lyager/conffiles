@@ -31,11 +31,11 @@ elif [ -e "/etc/redhat-release" ]; then # Redhat
 	sudo yum update -y
 	sudo yum install -y vim-enhanced \
 		tmux \
-		global \
 		xz \
 		cmake \
 		cscope \
 		ctags \
+		ncurses-devel \
 		stow \
 		glibc-devel \
 		ruby \
