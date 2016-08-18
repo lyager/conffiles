@@ -69,6 +69,9 @@ nmap <CTRL-X> <Nop>
 """ Filetypes
 autocmd BufNew,BufRead SConstruct setf python
 
+""" Python
+autocmd Filetype python set foldmethod=indent
+
 """ Yaml
 autocmd Filetype yaml set sw=2 ts=2 et
 
