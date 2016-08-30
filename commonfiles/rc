@@ -8,6 +8,7 @@ alias lastscrobble='curl http://ws.audioscrobbler.com/1.0/user/lyager/recenttrac
 alias screen='screen -U'
 alias logs='multitail /var/log/daemon.log /var/log/auth.log /var/log/exim4/mainlog'
 alias scfix='. ~/.screen/session-variables' # For recovering with scratch
+alias brewski='brew update && brew upgrade --all && brew cleanup; brew doctor'
 if [ ! -e "/etc/redhat-release" ]; then
 	# Haven't found this TERM for Redhat yet
 	alias tmux="TERM=screen-256color-bce tmux"
@@ -22,8 +23,8 @@ export PYTHONPATH=/opt/lib/python/
 export GEM_PATH=~/gems/
 export GEM_HOME=~/gems/
 export PATH=~/.local/bin:$PATH  # Python
-export PATH=~/gems/bin/:$PATH   # Ruby
-export PATH=~/bin:/opt/java/bin:/opt/local/bin:/opt/local/sbin/:/usr/local/bin:/usr/sbin:/sbin:$PATH
+export PATH=~/gems/bin:$PATH   # Ruby
+export PATH=~/bin:/opt/java/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/sbin:/sbin:$PATH
 
 #export LC_ALL="C.UTF-8"
 #export LANG="en_US.UTF-8"
