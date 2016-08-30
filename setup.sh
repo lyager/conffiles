@@ -22,8 +22,8 @@ if [ "$(uname -v | awk '{print $3}')" = "Debian" ]; then # Debian
 elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
 	brew update
 	brew upgrade
-	brew install vim \
-		tmux \
+	brew cask install macvim
+	brew install tmux \
 		cmake \ # For YouCompleMe
 		global \
 		jq
