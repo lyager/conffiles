@@ -255,3 +255,11 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+" ------ post Vundle plugin load configuration
+" Enable Solarized when GUI is running (Macvim)
+" This doesn't take effect if execute straight after loading plugin
+" 'vim-colors-solarized' - complains about 'unknown colorscheme solarized'
+if has('gui_running')
+    set background=dark
+    colorscheme solarized
+endif
