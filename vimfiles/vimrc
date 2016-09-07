@@ -104,6 +104,7 @@ function! DiffFold(lnum)
   endif
 endfunction
 au FileType diff set foldmethod=expr foldexpr=DiffFold(v:lnum)
+set diffopt+=vertical	" I prefer vertical to horizontal splits when diff'ing
 
 """ Java
 au FileType java set foldmethod=indent
