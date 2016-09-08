@@ -44,7 +44,8 @@ elif [ -e "/etc/redhat-release" ]; then # Redhat
 		python-devel \
 		tig \
 		bash-completion \
-		jq
+		jq \
+		the_silver_searcher
 	GIT_PROMPT=/usr/share/git-core/contrib/completion/git-prompt.sh
 fi
 
