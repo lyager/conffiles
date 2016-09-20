@@ -11,11 +11,11 @@ if [ "$(uname -v | awk '{print $3}')" = "Debian" ]; then # Debian
 		stow \
 		cscope \
 		tig \
-		xz-utils \ # Added for YCM to uncompess internals.
+		xz-utils \
 		g++ \
-		python-dev \ # For YCM
-		ruby-dev \ # For Command-t
-		ruby \ # For Command-t
+		python-dev \
+		ruby-dev \
+		ruby \
 		tmux \
 		jq
 	GIT_PROMPT=/usr/lib/git-core/git-sh-prompt
