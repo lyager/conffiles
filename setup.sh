@@ -22,9 +22,18 @@ if [ "$(uname -v | awk '{print $3}')" = "Debian" ]; then # Debian
 elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
 	brew update
 	brew upgrade
-	brew cask install macvim
+	brew cask install macvim \
+		1password \
+		dropbox \
+		virtualbox \
+		shiftit \
+		spotify \
+		telegram \
+		nvalt \
+		evernote \
+		firefox
 	brew install tmux \
-		cmake \ # For YouCompleMe
+		cmake \
 		global \
 		jq
 elif [ -e "/etc/redhat-release" ]; then # Redhat
