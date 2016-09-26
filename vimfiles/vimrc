@@ -223,10 +223,13 @@ Plugin 'airblade/vim-gitgutter'
 " A-Complete
 " Plugin 'Townk/vim-autoclose'
 
-" Airline (experimental)
+""" Airline (experimental)
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+" Enable showing buffers in the top tabline
 let g:airline#extensions#tabline#enabled = 1
+" Tabline, show only the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
 " let g:airline_theme='molokai'
 let g:airline_theme='base16_ashes'
 
