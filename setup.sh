@@ -23,6 +23,7 @@ elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
 	brew update
 	brew upgrade
 	brew cask install macvim \
+		osxfuse \
 		1password \
 		dropbox \
 		virtualbox \
@@ -35,7 +36,8 @@ elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
 	brew install tmux \
 		cmake \
 		global \
-		jq
+		jq \
+		homebrew/fuse/encfs
 elif [ -e "/etc/redhat-release" ]; then # Redhat
 	sudo yum update -y
 	sudo yum install -y vim-enhanced \
