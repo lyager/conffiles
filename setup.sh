@@ -32,7 +32,8 @@ elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
 		telegram \
 		nvalt \
 		evernote \
-		firefox
+		firefox \
+		wireshark
 	brew install tmux \
 		cmake \
 		global \
