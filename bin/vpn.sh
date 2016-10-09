@@ -1,7 +1,11 @@
 #/bin/sh
 
+if [ ! -z "$1" ]; then
+	VPNHOST=$1
+fi
+
 if [ -z "${VPNHOST}" ]; then
-	echo "Pleast set VPNHOST as a env-variable in the form: https://my.vpn.com/"
+	echo "Please set VPNHOST as a env-variable in the form: https://my.vpn.com/, or parse URI as argument"
 	exit 1
 fi
 
@@ -16,5 +20,5 @@ EOF
 
 openconnect --juniper ${VPNHOST}
 
-rm /etc/resolver/labnet
+rm -f /etc/resolver/labnet
 
