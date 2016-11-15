@@ -58,7 +58,8 @@ elif [ -e "/etc/redhat-release" ]; then # Redhat
 		tig \
 		bash-completion \
 		jq \
-		the_silver_searcher
+		the_silver_searcher \
+		telnet
 	GIT_PROMPT=/usr/share/git-core/contrib/completion/git-prompt.sh
 fi
 
