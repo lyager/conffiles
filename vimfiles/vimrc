@@ -76,6 +76,9 @@ autocmd Filetype python set foldmethod=indent
 """ Yaml
 autocmd Filetype yaml set sw=2 ts=2 et
 
+""" Vim file
+autocmd Filetype vim set sw=2 ts=2 nowrap
+
 """ HTML
 autocmd Filetype html set sw=2 ts=2 nowrap
 
@@ -244,6 +247,7 @@ Plugin 'rbgrouleff/bclose.vim'
 
 " Solarized Colorscheme
 let g:solarized_termcolors=256
+let g:solarized_termtrans=1   " Transparent bg
 Plugin 'altercation/vim-colors-solarized'
 
 " All of your Plugins must be added before the following line
@@ -267,6 +271,6 @@ filetype plugin indent on    " required
 " The below doesn't take effect if execute straight after loading plugin
 " 'vim-colors-solarized' - complains about 'unknown colorscheme solarized'
 if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
-    set background=dark
-    colorscheme solarized
+  set background=dark
+  colorscheme solarized
 endif
