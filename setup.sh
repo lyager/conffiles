@@ -40,7 +40,9 @@ elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
 		global \
 		jq \
 		homebrew/fuse/encfs \
-		openconnect
+		openconnect \
+		git
+	GIT_PROMPT=/usr/local/etc/bash_completion.d/git-prompt.sh
 elif [ -e "/etc/redhat-release" ]; then # Redhat
 	sudo yum update -y
 	sudo yum install -y vim-enhanced \
