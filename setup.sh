@@ -41,6 +41,7 @@ elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
 		jq \
 		homebrew/fuse/encfs \
 		openconnect \
+		tig \
 		git
 	GIT_PROMPT=/usr/local/etc/bash_completion.d/git-prompt.sh
 elif [ -e "/etc/redhat-release" ]; then # Redhat
