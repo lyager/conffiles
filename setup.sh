@@ -37,7 +37,7 @@ elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
 		flux
 	brew install tmux \
 		cmake \
-		global \
+		stow \
 		jq \
 		homebrew/fuse/encfs \
 		openconnect \

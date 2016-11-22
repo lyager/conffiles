@@ -2,12 +2,12 @@
 
 set -e
 
-for need in stow make tar wget; do
+for need in stow make tar curl; do
 	which $need > /dev/null 2>&1  || (echo "Need $need"; exit 1)
 done
 
 if [ ! -d "global-6.5" ]; then
-	wget 'http://tamacom.com/global/global-6.5.tar.gz'
+	curl -O 'http://tamacom.com/global/global-6.5.tar.gz'
 	tar xzvf global-6.5.tar.gz
 fi
 cd global-6.5/
