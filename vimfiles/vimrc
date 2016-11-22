@@ -8,7 +8,6 @@ set cscopeverbose
 set bg=dark                   " Apparently I work most on dark background.
 set backspace=2
 syntax on
-set ts=2 sw=2 et nowrap	      " Napatech Style
 " set showtabline=2            " Always show tabline
 set laststatus=2             " Always show status bar 
 
@@ -84,7 +83,7 @@ autocmd Filetype vim set sw=2 ts=2 nowrap
 autocmd Filetype html set sw=2 ts=2 nowrap
 
 """ Markdown
-autocmd Filetype mkd set tw=78 ts=4 sw=4 et
+autocmd Filetype mkd set tw=78
 
 """ C++/C
 function! s:insert_gates()
@@ -95,8 +94,7 @@ function! s:insert_gates()
   normal! kk
 endfunction
 autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
-autocmd Filetype cpp set et sw=2 ts=2 nowrap
-autocmd Filetype c set et sw=2 ts=2 nowrap
+autocmd Filetype cpp set sw=2 ts=2 et
 
 """ Diff
 
@@ -144,7 +142,7 @@ let g:pymode_rope = 0
 let g:pymode_options_colorcolumn = 0
 let g:pymode_lint_ignore="E501"  " Lint seems to be the default checker
 let g:pep8_ignore="E501"
-let g:pymode_options = 0
+let g:pymode_options = 0 
 
 """""""""""""""""""""""""""""""
 " Vundle - below this point
