@@ -42,7 +42,8 @@ elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
 		homebrew/fuse/encfs \
 		openconnect \
 		tig \
-		git
+		git \
+		pandoc
 	GIT_PROMPT=/usr/local/etc/bash_completion.d/git-prompt.sh
 elif [ -e "/etc/redhat-release" ]; then # Redhat
 	sudo yum update -y
