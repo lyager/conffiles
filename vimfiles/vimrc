@@ -8,6 +8,7 @@ set cscopeverbose
 set bg=dark                   " Apparently I work most on dark background.
 set backspace=2
 syntax on
+set ts=2 sw=2 et nowrap	      " Napatech Style
 " set showtabline=2            " Always show tabline
 set laststatus=2             " Always show status bar 
 
@@ -94,7 +95,8 @@ function! s:insert_gates()
   normal! kk
 endfunction
 autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
-autocmd Filetype cpp set sw=2 ts=2 et
+autocmd Filetype cpp set et sw=2 ts=2 nowrap
+autocmd Filetype c set et sw=2 ts=2 nowrap
 
 """ Diff
 
