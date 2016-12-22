@@ -4,7 +4,7 @@ fi
 
 # On OSX there is a whole bunch of bash-completion
 # helpers if you installed 'bash-completion'
-which -s brew
+which brew > /dev/null 2>&1
 if [ $? -eq 0 ]; then
   if [ -e $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
