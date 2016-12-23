@@ -44,7 +44,8 @@ elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
 		tig \
 		git \
 		pandoc \
-		vim
+		vim \
+		iproute2mac
 elif [ -e "/etc/redhat-release" ]; then # Redhat
 	sudo yum update -y
 	sudo yum install -y vim-enhanced \
