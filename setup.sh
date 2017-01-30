@@ -78,6 +78,13 @@ LNOPT="-s -n $@"    # -n for no-deref (don't jump into the directories)
 [ ! -e ~/.vim/bundle/Vundle.vim ] && git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ln ${LNOPT} $PWD/vimfiles/vimrc ~/.vimrc
 
+# Global
+#
+# Global is usually outdated, so script install_global.sh will download,
+# compile and install Global
+#
+ln ${LNOPT} $PWD/global/globalrc ~/.globalrc
+
 # tmux
 ln ${LNOPT} $PWD/tmux/tmux.conf ~/.tmux.conf
 

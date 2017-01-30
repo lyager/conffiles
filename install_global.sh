@@ -1,4 +1,10 @@
 #!/bin/sh
+#
+# Global does support Python, you might need this
+# plugin https://github.com/yoshizow/global-pygments-plugin
+# if pygments is not already included in Global (which I think it is for
+# the currently used version)
+#
 
 set -e
 
