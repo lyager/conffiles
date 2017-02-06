@@ -226,8 +226,9 @@ Plugin 'majutsushi/tagbar'
 " Git Gutter - makes the gutter show diff's compared to Git
 Plugin 'airblade/vim-gitgutter'
 
-" A-Complete
-" Plugin 'Townk/vim-autoclose'
+" Ack (Grep vi AG, we use AG, it's faster than ACK)
+Plugin 'mileszs/ack.vim'
+let g:ackprg = 'ag --vimgrep'
 
 """ Airline (experimental)
 Plugin 'vim-airline/vim-airline'

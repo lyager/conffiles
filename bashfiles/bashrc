@@ -30,3 +30,4 @@ export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
 
 export PATH=/usr/local/sbin:$PATH
 
+source scl_source enable devtoolset-6
