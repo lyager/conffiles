@@ -260,7 +260,7 @@ pygments-parser|Pygments plug-in parser:\
 	:langmap=Redcode\:.cw:\
 	:langmap=RobotFramework\:.robot:\
 	:langmap=Ruby\:.rb.rbw.rake.gemspec.rbx.duby:\
-	:langmap=Rust\:.rs.rc:\
+	:langmap=Rust\:.rs:\
 	:langmap=S\:.S.R:\
 	:langmap=Scala\:.scala:\
 	:langmap=Scaml\:.scaml:\
