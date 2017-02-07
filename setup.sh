@@ -65,7 +65,8 @@ elif [ -e "/etc/redhat-release" ]; then # Redhat
 		bash-completion \
 		jq \
 		the_silver_searcher \
-		telnet
+		telnet \
+    python-pygments
 	GIT_PROMPT=/usr/share/git-core/contrib/completion/git-prompt.sh
 fi
 
