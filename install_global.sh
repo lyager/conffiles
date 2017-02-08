@@ -8,19 +8,21 @@
 
 set -e
 
+VERSION=6.5.6
+
 for need in stow make tar curl; do
 	which $need > /dev/null 2>&1  || (echo "Need $need"; exit 1)
 done
 
-if [ ! -d "global-6.5" ]; then
-	curl -O 'http://tamacom.com/global/global-6.5.tar.gz'
-	tar xzvf global-6.5.tar.gz
+if [ ! -d "global-${VERSION}" ]; then
+	curl -O "ftp://ftp.gnu.org/pub/gnu/global/global-${VERSION}.tar.gz"
+	tar xzvf global-${VERSION}.tar.gz
 fi
-cd global-6.5/
+cd global-${VERSION}/
 
-./configure --prefix=/usr/local/stow/global-6.5
+./configure --prefix=/usr/local/stow/global-${VERSION}
 make -j
 sudo make install
 [ ! -d "/usr/local/stow" ] && mkdir -p /usr/local/stow
 cd /usr/local/stow/
-sudo stow global-6.5/
+sudo stow global-${VERSION}
