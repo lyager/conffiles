@@ -7,3 +7,4 @@ register_printer_gen(None)
 end
 
 set pagination off
+set startup-with-shell off
