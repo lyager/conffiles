@@ -15,7 +15,7 @@ fi
 
 cat > /etc/resolver/labnet <<EOF
 nameserver 10.10.10.10
-timeout10
+timeout 10
 EOF
 
 openconnect --juniper ${VPNHOST}
