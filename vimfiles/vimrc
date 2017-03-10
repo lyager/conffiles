@@ -95,8 +95,8 @@ function! s:insert_gates()
   normal! kk
 endfunction
 autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
-autocmd Filetype cpp set et sw=2 ts=2 nowrap
-autocmd Filetype c set et sw=2 ts=2 nowrap
+autocmd Filetype cpp set et sw=2 ts=2 nowrap cino+=(0
+autocmd Filetype c set et sw=2 ts=2 nowrap cino+=(0
 
 """ Diff
 
