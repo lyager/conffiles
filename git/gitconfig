@@ -11,6 +11,9 @@
 	r  = rebase
 	fp = format-patch
 
+[color]
+  diff = auto
+
 [diff]
 	tool = vimdiff
 	prompt = false
