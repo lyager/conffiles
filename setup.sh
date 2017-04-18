@@ -74,6 +74,8 @@ elif [ -e "/etc/redhat-release" ]; then # Redhat
 	GIT_PROMPT=/usr/share/git-core/contrib/completion/git-prompt.sh
 fi
 
+pip install --user jarg httpie
+
 LNOPT="-s -n $@"    # -n for no-deref (don't jump into the directories)
                  # -s for softlink
                  # -i for interactive, prompt before removing.
