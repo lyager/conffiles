@@ -164,6 +164,9 @@ Plugin 'gmarik/Vundle.vim'
 " YouCompleteMe: https://github.com/Valloric/YouCompleteMe
 Plugin 'Valloric/YouCompleteMe'
 
+" Go plugin
+Plugin 'fatih/vim-go'
+
 " CtrlP - nice navigation
 Plugin 'https://github.com/ctrlpvim/ctrlp.vim'
 map <leader>j :CtrlP<cr>
