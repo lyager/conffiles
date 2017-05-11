@@ -137,6 +137,7 @@ let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_auto_trigger = 0
 let g:ycm_filetype_blacklist = { 'python': 1 }
 let g:ycm_complete_in_strings = 0
+let g:ycm_key_invoke_completion = '<C-d>'
 
 """ Python Mode - can take up quite alot of CPU, and I don't use 
 """ code completion from Rope anyway
