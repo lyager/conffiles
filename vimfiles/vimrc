@@ -98,8 +98,10 @@ autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
 autocmd Filetype cpp set et sw=2 ts=2 nowrap cino+=(0
 autocmd Filetype c set et sw=2 ts=2 nowrap cino+=(0
 
-""" Diff
+""" JSON
+autocmd Filetype json set fdm=syntax
 
+""" Diff
 function! DiffFold(lnum)
   let line = getline(a:lnum)
   if line =~ '^\(diff\|---\|+++\|@@\) '
