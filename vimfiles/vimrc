@@ -164,10 +164,13 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+" Mediawiki markup
+Plugin 'git://github.com/chikamichi/mediawiki.vim.git'
+
 " YouCompleteMe: https://github.com/Valloric/YouCompleteMe
 Plugin 'Valloric/YouCompleteMe'
 
-" Go plugin
+" Golan plugin
 Plugin 'fatih/vim-go'
 
 " CtrlP - nice navigation
