@@ -84,7 +84,7 @@ autocmd Filetype vim set sw=2 ts=2 nowrap
 autocmd Filetype html set sw=2 ts=2 nowrap
 
 """ Markdown
-autocmd Filetype mkd set tw=78 ts=4 sw=4 et
+autocmd Filetype mkd set ts=4 sw=4 et
 
 """ C++/C
 function! s:insert_gates()
