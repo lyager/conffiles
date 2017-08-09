@@ -40,6 +40,7 @@ elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
 		flux \
 		appcleaner
 	brew install tmux \
+		htop \
 		cmake \
 		stow \
 		jq \
