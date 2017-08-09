@@ -1,4 +1,6 @@
 #!/bin/sh
+#
+# vim:noexpandtab:ts=2:sw=2
 
 GIT_PROMPT=""
 if [ "$(uname -v | awk '{print $3}')" = "Debian" ]; then # Debian
@@ -20,6 +22,7 @@ if [ "$(uname -v | awk '{print $3}')" = "Debian" ]; then # Debian
 		jq
 	GIT_PROMPT=/usr/lib/git-core/git-sh-prompt
 elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
+	PIP=pip2 # Pip is gone on OSX
 	brew update
 	brew upgrade
 	brew cask install macvim \
@@ -35,7 +38,7 @@ elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
 		firefox \
 		wireshark \
 		flux \
-    appcleaner
+		appcleaner
 	brew install tmux \
 		cmake \
 		stow \
@@ -46,8 +49,10 @@ elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
 		git \
 		pandoc \
 		vim \
-		iproute2mac
-  pip install --user pygments gdata
+		iproute2mac \
+		neovim
+	${PIP} install --user pygments gdata
+	${PIP} install --user neovim
 elif [ -e "/etc/redhat-release" ]; then # Redhat
 	sudo yum update -y
 	sudo yum install -y vim-enhanced \
@@ -70,18 +75,18 @@ elif [ -e "/etc/redhat-release" ]; then # Redhat
 		telnet
   # Pygments are used by Gtags to parse, however python-pygments
   # provided in Redhat is rather old and doesn't support Awk
-  pip install --user pygments
+	pip install --user pygments
 	GIT_PROMPT=/usr/share/git-core/contrib/completion/git-prompt.sh
 fi
 
-pip install --user jarg httpie
-
 LNOPT="-s -n $@"    # -n for no-deref (don't jump into the directories)
-                 # -s for softlink
-                 # -i for interactive, prompt before removing.
-		 # -f force
+                    # -s for softlink
+                    # -i for interactive, prompt before removing
+                    # -f force
+
+${PIP} install --user jarg httpie
+
 # Vim
-#ln ${LNOPT} $PWD/vimfiles/vim ~/.vim
 [ ! -e ~/.vim/bundle/Vundle.vim ] && git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ln ${LNOPT} $PWD/vimfiles/vimrc ~/.vimrc
 
@@ -118,6 +123,10 @@ ln ${LNOPT} $PWD/screenfiles/screenrc ~/.screenrc
 mkdir -p ~/.config/openbox
 ln ${LNOPT} $PWD/openbox/rc.xml ~/.config/openbox/rc.xml
 
+# Nvim
+curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+ln ${LNOPT} $PWD/nvim/init.vim ~/.config/nvim
+
 # Pypanel
 ln ${LNOPT} $PWD/pypanel/pypanelrc ~/.pypanelrc
 
@@ -143,27 +152,11 @@ ln ${LNOPT} $PWD/rtorrent/rtorrentrc ~/.rtorrentrc
 
 # Gdb
 mkdir -p ~/.gdb/
-git clone git://github.com/ruediger/Boost-Pretty-Printer.git ~/.gdb/Boost-Pretty-Printer
+[ ! -e ~/.gdb/Boost-Pretty-Printer ] && git clone git://github.com/ruediger/Boost-Pretty-Printer.git ~/.gdb/Boost-Pretty-Printer
 ln ${LNOPT} $PWD/gdb/gdbinit ~/.gdbinit
 
 # Bin
-if [ ! -e ~/bin ]; then
-	mkdir ~/bin
-fi
+[ ! -e ~/bin ] && mkdir ~/bin
 ln ${LNOPT} $PWD/bin/* ~/bin/
 ln ${LNOPT} $PWD/bin/cscope-py ~/bin/pytags
-
-# Post setup (VIM)
-## Update Vundle
-vim -c VundleUpdate -c quitall
-
-## Compile command-t
-cd ~/.vim/bundle/command-t/ruby/command-t
-ruby extconf.rb 
-make
-cd -
-
-## You Complete Me
-cd ~/.vim/bundle/YouCompleteMe
-./install.py --clang-completer --gocode-completer
 

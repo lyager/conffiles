@@ -170,7 +170,7 @@ Plugin 'git://github.com/chikamichi/mediawiki.vim.git'
 " YouCompleteMe: https://github.com/Valloric/YouCompleteMe
 Plugin 'Valloric/YouCompleteMe'
 
-" Golan plugin
+" Golang plugin
 Plugin 'fatih/vim-go'
 
 " CtrlP - nice navigation
