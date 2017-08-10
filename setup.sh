@@ -3,6 +3,7 @@
 # vim:noexpandtab:ts=2:sw=2
 
 GIT_PROMPT=""
+PIP=pip
 if [ "$(uname -v | awk '{print $3}')" = "Debian" ]; then # Debian
 	sudo apt-get update
 	sudo apt-get install -y global \
@@ -77,7 +78,8 @@ elif [ -e "/etc/redhat-release" ]; then # Redhat
 		neovim
   # Pygments are used by Gtags to parse, however python-pygments
   # provided in Redhat is rather old and doesn't support Awk
-	pip install --user pygments
+	${PIP} install --user pygments
+	${PIP} install --user neovim
 	GIT_PROMPT=/usr/share/git-core/contrib/completion/git-prompt.sh
 fi
 
