@@ -73,7 +73,8 @@ elif [ -e "/etc/redhat-release" ]; then # Redhat
 		bash-completion \
 		jq \
 		the_silver_searcher \
-		telnet
+		telnet \
+		neovim
   # Pygments are used by Gtags to parse, however python-pygments
   # provided in Redhat is rather old and doesn't support Awk
 	pip install --user pygments
