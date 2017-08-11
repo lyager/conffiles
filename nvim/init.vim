@@ -11,7 +11,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " YouCompleteMe: https://github.com/Valloric/YouCompleteMe
 Plug 'Valloric/YouCompleteMe'
-
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " Golang plugin
 Plug 'fatih/vim-go', { 'for': 'go' }
