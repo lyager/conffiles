@@ -1,4 +1,7 @@
 let mapleader = ";"
+set ignorecase                " When searching without case, use smartcase which matches both capitalized
+set smartcase                 " and not capitalized letters
+set listchars=tab:>.,trail:.  " Prefer to have identation pointed out too.
 
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
