@@ -19,6 +19,11 @@ nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 Plug 'fatih/vim-go', { 'for': 'go' }
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <leader>b  <Plug>(go-build)
+
+" Ack (Grep vi AG, we use AG, it's faster than ACK)
+Plug 'mileszs/ack.vim'
+let g:ackprg = 'ag --vimgrep'
 
 " CtrlP - nice navigation
 Plug 'https://github.com/ctrlpvim/ctrlp.vim'
