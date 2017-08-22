@@ -2,6 +2,7 @@ let mapleader = ";"
 set ignorecase                " When searching without case, use smartcase which matches both capitalized
 set smartcase                 " and not capitalized letters
 set listchars=tab:>.,trail:.  " Prefer to have identation pointed out too.
+set nowrap                    " As a default, we want the lines not to wrap
 
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
@@ -14,6 +15,12 @@ Plug 'Valloric/YouCompleteMe'
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+
+" Switch between Header and source https://github.com/derekwyatt/vim-fswitch
+" (works only on C and C++?)
+Plug 'https://github.com/derekwyatt/vim-fswitch'
+nmap <silent> <Leader>h :FSHere<cr>
 
 " Golang plugin
 Plug 'fatih/vim-go', { 'for': 'go' }
