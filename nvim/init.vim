@@ -14,7 +14,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'Valloric/YouCompleteMe'
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>gt :YcmCompleter GetType<CR>
+nnoremap <leader>gd :YcmCompleter GetDoc<CR>
 
 
 " Switch between Header and source https://github.com/derekwyatt/vim-fswitch
