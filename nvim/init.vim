@@ -18,12 +18,14 @@ nnoremap <leader>gt :YcmCompleter GetType<CR>
 nnoremap <leader>gd :YcmCompleter GetDoc<CR>
 
 
+" --- C++
 " Switch between Header and source https://github.com/derekwyatt/vim-fswitch
 " (works only on C and C++?)
 Plug 'https://github.com/derekwyatt/vim-fswitch'
 nmap <silent> <Leader>h :FSHere<cr>
+autocmd Filetype cpp set et sw=2 ts=2 nowrap cino+=(0  " Napatech style
 
-" Golang plugin
+" --- Golang plugin
 Plug 'fatih/vim-go', { 'for': 'go' }
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
