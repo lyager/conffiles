@@ -31,6 +31,11 @@ autocmd FileType go nmap <leader>t  <Plug>(go-test)
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
 
+" --- Python mode
+Plug 'https://github.com/lyager/python-mode', { 'for': 'python' }
+let g:pymode_lint_ignore="E501"  " Lint seems to be the default checker
+let g:pep8_ignore="E501"
+
 " Ack (Grep vi AG, we use AG, it's faster than ACK)
 Plug 'mileszs/ack.vim'
 let g:ackprg = 'ag --vimgrep'
