@@ -33,8 +33,8 @@ autocmd FileType go nmap <leader>b  <Plug>(go-build)
 
 " --- Python mode
 Plug 'https://github.com/lyager/python-mode', { 'for': 'python' }
-let g:pymode_lint_ignore="E501"  " Lint seems to be the default checker
-let g:pep8_ignore="E501"
+let g:pymode_lint_ignore="E501,w"  " Lint seems to be the default checker
+let g:pep8_ignore="E501,w"
 
 " Ack (Grep vi AG, we use AG, it's faster than ACK)
 Plug 'mileszs/ack.vim'
