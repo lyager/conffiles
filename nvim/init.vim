@@ -31,6 +31,11 @@ autocmd FileType go nmap <leader>t  <Plug>(go-test)
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
 
+" --- Python
+Plug 'https://github.com/lyager/python-mode', { 'for': 'python' }
+let g:pymode_lint = 0
+
+" === General
 " --- Syntastic
 Plug 'vim-syntastic/syntastic'
 let g:syntastic_python_flake8_args='--ignore=E501'
