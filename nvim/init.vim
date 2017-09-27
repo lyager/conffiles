@@ -54,6 +54,8 @@ nnoremap <leader>gd :YcmCompleter GetDoc<CR>
 
 " - Ack (Grep vi AG, we use AG, it's faster than ACK)
 let g:ackprg = 'ag --vimgrep'
+cnoreabbrev Ack Ack!
+nnoremap <Leader>a :Ack!<Space>
 
 " - CtrlP - nice navigation
 map <leader>j :CtrlP<cr>
