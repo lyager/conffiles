@@ -7,6 +7,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py -all' }
 Plug 'https://github.com/derekwyatt/vim-fswitch', { 'for': ['c', 'cpp'] }
 Plug 'fatih/vim-go', { 'for': 'go' }  " Go
+Plug 'lyager/vim-markdown', { 'for': 'mkd' }
 Plug 'https://github.com/lyager/python-mode', { 'for': 'python' }  " Python
 Plug 'vim-syntastic/syntastic'
 Plug 'mileszs/ack.vim'
