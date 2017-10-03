@@ -23,6 +23,7 @@ set ignorecase                " When searching without case, use smartcase which
 set smartcase                 " and not capitalized letters
 set listchars=tab:>.,trail:.  " Prefer to have identation pointed out too.
 set nowrap                    " As a default, we want the lines not to wrap
+set nofoldenable              " Do not fold to begin with
 
 " - Colorscheme
 let g:solarized_termcolors=256
@@ -51,6 +52,7 @@ nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gt :YcmCompleter GetType<CR>
 nnoremap <leader>gd :YcmCompleter GetDoc<CR>
+let g:ycm_filetype_blacklist = { 'mkd': 1 }
 
 " - Ack (Grep vi AG, we use AG, it's faster than ACK)
 let g:ackprg = 'ag --vimgrep'
