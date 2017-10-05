@@ -30,8 +30,10 @@ let g:solarized_termcolors=256
 let g:solarized_termtrans=1   " Transparent bg
 colorscheme solarized
 
-" - Python
-let g:pymode_lint = 0
+" - Python - use pymode for lint's as it opens a new window (sadly not in
+"   cope)
+let g:pymode_lint = 1
+let g:pymode_lint_ignore = "E501"
 autocmd FileType python setlocal nonumber
 
 " - Golang plugin
