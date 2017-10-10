@@ -14,6 +14,9 @@ Plug 'mileszs/ack.vim'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'altercation/vim-colors-solarized'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
 
 " Initialize plugin system
 call plug#end()
