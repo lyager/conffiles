@@ -50,15 +50,15 @@ nmap <silent> <Leader>h :FSHere<cr>
 autocmd Filetype cpp set et sw=2 ts=2 nowrap cino+=(0  " Napatech style
 
 " - YouCompleteMe: https://github.com/Valloric/YouCompleteMe
-nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
 nnoremap <leader>gt :YcmCompleter GetType<CR>
-nnoremap <leader>gd :YcmCompleter GetDoc<CR>
+nnoremap <leader>gD :YcmCompleter GetDoc<CR>
 let g:ycm_filetype_blacklist = { 'mkd': 1 }
 
 " - Ack (Grep vi AG, we use AG, it's faster than ACK)
 let g:ackprg = 'ag --vimgrep'
-cnoreabbrev Ack Ack!
 nnoremap <Leader>a :Ack!<Space>
 
 " - CtrlP - nice navigation
