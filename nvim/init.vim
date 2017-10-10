@@ -16,6 +16,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'altercation/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'majutsushi/tagbar'
 
 
 " Initialize plugin system
@@ -72,3 +73,5 @@ map <leader>J :CtrlP
 " - Syntastic
 let g:syntastic_python_flake8_args='--ignore=E501'
 
+" - Airline
+let g:airline#extensions#tagbar#enabled = 1
