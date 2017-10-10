@@ -39,7 +39,8 @@ elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
 		firefox \
 		wireshark \
 		flux \
-		appcleaner
+		appcleaner \
+		ctags-exuberant
 	brew install tmux \
 		htop \
 		cmake \
