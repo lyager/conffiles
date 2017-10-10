@@ -29,6 +29,9 @@ set listchars=tab:>.,trail:.  " Prefer to have identation pointed out too.
 set nowrap                    " As a default, we want the lines not to wrap
 set nofoldenable              " Do not fold to begin with
 
+" - Markdown
+autocmd Filetype mkd setl et sw=4 ts=4
+
 " - Colorscheme
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1   " Transparent bg
