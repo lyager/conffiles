@@ -11,6 +11,8 @@ Plug 'lyager/vim-markdown', { 'for': 'mkd' }
 Plug 'https://github.com/lyager/python-mode', { 'for': 'python' }  " Python
 Plug 'vim-syntastic/syntastic'
 Plug 'mileszs/ack.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'altercation/vim-colors-solarized'
@@ -72,6 +74,10 @@ nnoremap <Leader>a :Ack!<Space>
 map <leader>j :CtrlP<cr>
 " Wait for path input
 map <leader>J :CtrlP 
+
+" - FZF Possible alternative to CtrlP
+map <leader>f :FZF<cr>
+map <leader>F :History<cr>
 
 " - Syntastic
 let g:syntastic_python_flake8_args='--ignore=E501'
