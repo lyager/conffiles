@@ -58,6 +58,9 @@ autocmd Filetype cpp set et sw=2 ts=2 nowrap cino+=(0  " Napatech style
 nmap <silent> <Leader>h :FSHere<cr>
 autocmd Filetype cpp set et sw=2 ts=2 nowrap cino+=(0  " Napatech style
 
+" - JSON
+autocmd Filetype json set et sw=4 ts=4 nowrap
+
 " - YouCompleteMe: https://github.com/Valloric/YouCompleteMe
 nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
