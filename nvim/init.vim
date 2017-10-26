@@ -7,7 +7,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
 Plug 'https://github.com/derekwyatt/vim-fswitch', { 'for': ['c', 'cpp'] }
 Plug 'fatih/vim-go', { 'for': 'go' }  " Go
-Plug 'lyager/vim-markdown', { 'for': 'mkd' }
+" Plug 'lyager/vim-markdown', { 'for': 'mkd' }
+Plug 'plasticboy/vim-markdown', { 'for': 'mkd' }
 Plug 'https://github.com/lyager/python-mode', { 'for': 'python' }  " Python
 Plug 'vim-syntastic/syntastic'
 Plug 'mileszs/ack.vim'
@@ -32,12 +33,21 @@ set nowrap                    " As a default, we want the lines not to wrap
 set nofoldenable              " Do not fold to begin with
 
 " - Markdown
-autocmd Filetype mkd setl et sw=4 ts=4
+autocmd Filetype mkd setl et sw=4 ts=4 tw=79
 
+"
 " - Colorscheme
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1   " Transparent bg
-colorscheme solarized
+if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
+  set background=dark
+  colorscheme solarized
+endif
+" set tgc
+" set bg=dark
+" let g:solarized_termcolors=256
+" let g:solarized_termtrans=1   " Transparent bg
+" colorscheme solarized
 
 " - Python - use pymode for lint's as it opens a new window (sadly not in
 "   cope)
