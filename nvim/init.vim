@@ -15,11 +15,10 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'altercation/vim-colors-solarized'
+Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'majutsushi/tagbar'
-
 
 " Initialize plugin system
 call plug#end()
@@ -30,23 +29,15 @@ set smartcase                 " and not capitalized letters
 set listchars=tab:>.,trail:.  " Prefer to have identation pointed out too.
 set nowrap                    " As a default, we want the lines not to wrap
 set nofoldenable              " Do not fold to begin with
+if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
+	let g:solarized_termcolors=256
+	set bg=dark
+	colors solarized
+endif
+
 
 " - Markdown
 autocmd Filetype markdown setl et sw=4 ts=4 tw=79
-
-"
-" - Colorscheme
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1   " Transparent bg
-if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
-  set background=dark
-  colorscheme solarized
-endif
-" set tgc
-" set bg=dark
-" let g:solarized_termcolors=256
-" let g:solarized_termtrans=1   " Transparent bg
-" colorscheme solarized
 
 " - Python - use pymode for lint's as it opens a new window (sadly not in
 "   cope)
