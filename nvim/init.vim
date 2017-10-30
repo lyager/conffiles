@@ -15,7 +15,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'frankier/neovim-colors-solarized-truecolor-only'
+Plug 'lifepillar/vim-solarized8'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'majutsushi/tagbar'
@@ -30,9 +30,11 @@ set listchars=tab:>.,trail:.  " Prefer to have identation pointed out too.
 set nowrap                    " As a default, we want the lines not to wrap
 set nofoldenable              " Do not fold to begin with
 if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
+	let g:solarized_use16 = 0
 	let g:solarized_termcolors=256
+	let g:solarized_termtrans = 1
 	set bg=dark
-	colors solarized
+	colors solarized8_dark_high
 endif
 
 
