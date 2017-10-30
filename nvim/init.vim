@@ -7,8 +7,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
 Plug 'https://github.com/derekwyatt/vim-fswitch', { 'for': ['c', 'cpp'] }
 Plug 'fatih/vim-go', { 'for': 'go' }  " Go
-" Plug 'lyager/vim-markdown', { 'for': 'mkd' }
-Plug 'plasticboy/vim-markdown', { 'for': 'mkd' }
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'https://github.com/lyager/python-mode', { 'for': 'python' }  " Python
 Plug 'vim-syntastic/syntastic'
 Plug 'mileszs/ack.vim'
@@ -33,7 +32,7 @@ set nowrap                    " As a default, we want the lines not to wrap
 set nofoldenable              " Do not fold to begin with
 
 " - Markdown
-autocmd Filetype mkd setl et sw=4 ts=4 tw=79
+autocmd Filetype markdown setl et sw=4 ts=4 tw=79
 
 "
 " - Colorscheme
@@ -77,7 +76,7 @@ nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
 nnoremap <leader>gt :YcmCompleter GetType<CR>
 nnoremap <leader>gD :YcmCompleter GetDoc<CR>
-let g:ycm_filetype_blacklist = { 'mkd': 1 }
+let g:ycm_filetype_blacklist = { 'markdown': 1 }
 
 " - Ack (Grep vi AG, we use AG, it's faster than ACK)
 let g:ackprg = 'ag --vimgrep'
