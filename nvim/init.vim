@@ -8,7 +8,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
 Plug 'https://github.com/derekwyatt/vim-fswitch', { 'for': ['c', 'cpp'] }
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'https://github.com/lyager/python-mode', { 'for': 'python' }  " Python
+" Plug 'https://github.com/lyager/python-mode', { 'for': 'python' }  " Python
 Plug 'fisadev/vim-isort', { 'for': 'python' }
 Plug 'vim-syntastic/syntastic'
 Plug 'mileszs/ack.vim'
@@ -67,6 +67,11 @@ autocmd Filetype cpp set et sw=2 ts=2 nowrap cino+=(0  " Napatech style
 autocmd Filetype json set et sw=4 ts=4 nowrap
 
 " - YouCompleteMe: https://github.com/Valloric/YouCompleteMe
+let g:ycm_server_keep_logfiles = 1
+let g:ycm_server_log_level = 'debug'
+let g:ycm_warning_symbol = '.'
+let g:ycm_error_symbol = '..'
+let g:ycm_server_use_vim_stdout = 1
 nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
@@ -93,6 +98,7 @@ map <leader>F :History<cr>
 
 " - Syntastic
 let g:syntastic_python_flake8_args='--ignore=E501'
+let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
 
 " - Airline
 let g:airline#extensions#tagbar#enabled = 1
