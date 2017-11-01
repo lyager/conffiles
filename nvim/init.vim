@@ -14,7 +14,6 @@ Plug 'vim-syntastic/syntastic'
 Plug 'mileszs/ack.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'https://github.com/ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'lifepillar/vim-solarized8'
 Plug 'vim-airline/vim-airline'
@@ -76,12 +75,7 @@ let g:ycm_filetype_blacklist = { 'markdown': 1 }
 let g:ackprg = 'ag --vimgrep'
 nnoremap <Leader>a :Ack!<Space>
 
-" - CtrlP - nice navigation
-map <leader>j :CtrlP<cr>
-" Wait for path input
-map <leader>J :CtrlP 
-
-" - FZF Possible alternative to CtrlP
+" - FZF
 map <leader>f :FZF<cr>
 map <leader>F :History<cr>
 
