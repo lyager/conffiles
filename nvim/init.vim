@@ -75,7 +75,11 @@ nnoremap <leader>gD :YcmCompleter GetDoc<CR>
 let g:ycm_filetype_blacklist = { 'markdown': 1 }
 
 " better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<c-e>"
+let g:UltiSnipsSnippetsDir = "~/.config/nvim/UltiSnips"
+let g:ultisnips_python_style = "google"
+let g:UltiSnipsEditSplit='vertical'
+let g:UltiSnipsSnippetDirectories = ['UltiSnips']
+let g:UltiSnipsExpandTrigger = "<c-j>"
 let g:UltiSnipsJumpForwardTrigger = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 
