@@ -20,6 +20,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'majutsushi/tagbar'
 
+Plug 'sirver/UltiSnips'
+Plug 'honza/vim-snippets'
+
 " Initialize plugin system
 call plug#end()
 
@@ -70,6 +73,11 @@ nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
 nnoremap <leader>gt :YcmCompleter GetType<CR>
 nnoremap <leader>gD :YcmCompleter GetDoc<CR>
 let g:ycm_filetype_blacklist = { 'markdown': 1 }
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<c-e>"
+let g:UltiSnipsJumpForwardTrigger = "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 
 " - Ack (Grep vi AG, we use AG, it's faster than ACK)
 let g:ackprg = 'ag --vimgrep'
