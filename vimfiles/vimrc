@@ -1,288 +1,100 @@
+" Specify a directory for plugins
+" - For Neovim: ~/.local/share/nvim/plugged
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
+
+
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
+Plug 'https://github.com/derekwyatt/vim-fswitch', { 'for': ['c', 'cpp'] }
+Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+Plug 'https://github.com/lyager/python-mode', { 'for': 'python' }  " Python
+Plug 'fisadev/vim-isort', { 'for': 'python' }
+Plug 'vim-syntastic/syntastic'
+Plug 'mileszs/ack.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'lifepillar/vim-solarized8'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'majutsushi/tagbar'
+
+Plug 'sirver/UltiSnips'
+Plug 'honza/vim-snippets'
+
+" Initialize plugin system
+call plug#end()
+
 let mapleader = ";"
+set encoding=utf-8
 set ignorecase                " When searching without case, use smartcase which matches both capitalized
 set smartcase                 " and not capitalized letters
 set listchars=tab:>.,trail:.  " Prefer to have identation pointed out too.
-set hls                       " Hilight Search ( not a big fan of inrementals search though ) 
-set cscopetag                 " Use cscope instead of ctags
-set cscopeverbose
-set bg=dark                   " Apparently I work most on dark background.
-set backspace=2
-syntax on
-set ts=2 sw=2 et nowrap	      " Napatech Style
-" set showtabline=2            " Always show tabline
-set laststatus=2             " Always show status bar 
-set encoding=utf-8
-
-" set switchbuf+=usetab,newtab " When switching buffers, use tabs for buffers search
-"                              " if not found, open window in new tab - ie, be
-"                              " as little intrusive as possible
-set switchbuf+=useopen
-
-
-""" Gnu GLOBAL Tags
-nmap <C-\>] :GtagsCursor<CR>
-nmap <C-\>s :Gtags -r <C-R>=expand("<cword>")<CR><CR>
-nmap <C-\>S :Gtags -s <C-R>=expand("<cword>")<CR><CR>
-nmap <C-\>f :Gtags -f <C-R>=expand("%")<CR><CR>
-nmap <C-\>u :!gtags<CR><CR>
-
-""" Ctags
-command! -nargs=0 Ctags :!ctags -R --extra=+f
-
-command! Ww w !sudo tee % > /dev/null
-
-" When working with other peoples files and indent styles
-" it's nice to be able to put .exrc files or use modelines in 
-" a specific file
-set modelines=5
-set exrc
-set secure
-
-set nofoldenable " Do not fold to begin with
-
-""" Vimgrep keys
-set grepprg=grep\ --binary-files=without-match\ --exclude=GTAGS\ --exclude=GRTAGS\ --exclude=\\*cscope.out\\*\ --exclude=\\*tags\\*\ --exclude=\\*.svn\\*\ -n\ $*\ /dev/null
-map <leader>G :grep -r <cword> *
-map <leader>g :grep -r  *<left><left>
-" map <leader>Ga :bufdo vimgrepadd <cword> % \| copen
-" map <leader>ga :bufdo vimgrepadd  % \| copen <left><left><left><left><left><left><left><left><left><left><left>
-
-""" Tab navigation
-nnoremap <leader>tr :tabnew <bar>r !
-nnoremap <leader>tR :tabnew <bar>r !#<CR>
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-map <leader>t<leader> :tabnext
-
-
-" Let 'tl' toggle between this and the last accessed tab
-let g:lasttab = 1
-nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
-au TabLeave * let g:lasttab = tabpagenr()
-
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
-
-""" Disable increment/decrement of integer below cursor , I keep hitting CTRL-a for some reason :-/
-nmap <CTRL-A> <Nop>
-nmap <CTRL-X> <Nop>
-
-""" Filetypes
-autocmd BufNew,BufRead SConstruct setf python
-autocmd BufNew,BufRead SConscript setf python
-
-""" Python
-autocmd Filetype python set foldmethod=indent
-
-""" Yaml
-autocmd Filetype yaml set sw=2 ts=2 et
-
-""" Vim file
-autocmd Filetype vim set sw=2 ts=2 nowrap
-
-""" HTML
-autocmd Filetype html set sw=2 ts=2 nowrap
-
-""" Markdown
-autocmd Filetype mkd set ts=4 sw=4 et
-
-""" C++/C
-function! s:insert_gates()
-  let gatename = "__" . substitute(toupper(expand("%:t")), "\\.", "_", "g") . "__"
-  execute "normal! i#ifndef " . gatename
-  execute "normal! o#define " . gatename . " "
-  execute "normal! Go#endif /* " . gatename . " */"
-  normal! kk
-endfunction
-autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
-autocmd Filetype cpp set et sw=2 ts=2 nowrap cino+=(0
-autocmd Filetype c set et sw=2 ts=2 nowrap cino+=(0
-
-""" JSON
-autocmd Filetype json set fdm=syntax
-
-""" Diff
-function! DiffFold(lnum)
-  let line = getline(a:lnum)
-  if line =~ '^\(diff\|---\|+++\|@@\) '
-    return 1
-  elseif line[0] =~ '[-+ ]'
-    return 2
-  else
-    return 0
-  endif
-endfunction
-au FileType diff set foldmethod=expr foldexpr=DiffFold(v:lnum)
-set diffopt+=vertical	" I prefer vertical to horizontal splits when diff'ing
-
-""" Java
-au FileType java set foldmethod=indent
-
-""" Javescript
-au FileType javascript set ts=4 sw=4 et
-
-
-
-""" Ultisnips
-" Trigger configuration. Do not use <tab> if you use
-" https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-let g:ultisnips_python_style="google"
-
-
-""" YouCompleteMe
-" Disable completion previews with function prototypes, etc.
-set completeopt=menu
-let g:ycm_add_preview_to_completeopt = 0
-let g:ycm_auto_trigger = 0
-let g:ycm_filetype_blacklist = { 'python': 1 }
-let g:ycm_complete_in_strings = 0
-let g:ycm_key_invoke_completion = '<C-d>'
-
-""" Python Mode - can take up quite alot of CPU, and I don't use 
-""" code completion from Rope anyway
-let g:pymode_rope = 0
-let g:pymode_options_colorcolumn = 0
-let g:pymode_lint_ignore="E501"  " Lint seems to be the default checker
-let g:pep8_ignore="E501"
-let g:pymode_options = 0 
-
-"""""""""""""""""""""""""""""""
-" Vundle - below this point
-"""""""""""""""""""""""""""""""
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-" Mediawiki markup
-Plugin 'git://github.com/chikamichi/mediawiki.vim.git'
-
-" YouCompleteMe: https://github.com/Valloric/YouCompleteMe
-Plugin 'Valloric/YouCompleteMe'
-
-" Golang plugin
-Plugin 'fatih/vim-go'
-
-" CtrlP - nice navigation
-Plugin 'https://github.com/ctrlpvim/ctrlp.vim'
-map <leader>j :CtrlP<cr>
-" Wait for path input
-map <leader>J :CtrlP 
-
-" Switch between Header and source https://github.com/derekwyatt/vim-fswitch
-Plugin 'https://github.com/derekwyatt/vim-fswitch'
-nmap <silent> <Leader>h :FSHere<cr>
-
-" BufExplorer
-Plugin 'corntrace/bufexplorer'
-nmap <leader>o :BufExplorer<cr>
-
-" Python PEP-8 Indentation
-" -- reworked because python-mode comes with it's own version of
-"    vim-python-pep8-indent bundlede
-" Plugin 'https://github.com/hynek/vim-python-pep8-indent'
-
-" Python Mode
-Plugin 'https://github.com/lyager/python-mode'
-
-" Doxygen Toolkit
-Plugin 'vim-scripts/DoxygenToolkit.vim'
-
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
-
-" plugin from http://vim-scripts.org/vim/scripts.html
-Plugin 'L9'
-
-" Git plugin not hosted on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
-
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-
-" vim-markdown (Tabular dependency)
-Plugin 'godlygeek/tabular'
-Plugin 'lyager/vim-markdown'
-
-" Gtags
-Plugin 'gtags.vim'
-
-" Ultisnips
-Plugin 'sirver/ultisnips'
-" Snippets are separated from the engine. Add this if you want them:
-Plugin 'honza/vim-snippets'
-" Avoid a name conflict with L9
-"Plugin 'user/L9', {'name': 'newL9'}
-
-" TagBar
-Plugin 'majutsushi/tagbar'
-
-" Git Gutter - makes the gutter show diff's compared to Git
-Plugin 'airblade/vim-gitgutter'
-
-" Ack (Grep vi AG, we use AG, it's faster than ACK)
-Plugin 'mileszs/ack.vim'
-let g:ackprg = 'ag --vimgrep'
-
-""" Airline (experimental)
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-" Enable showing buffers in the top tabline
-let g:airline#extensions#tabline#enabled = 1
-" Tabline, show only the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
-" let g:airline_theme='molokai'
-let g:airline_theme='base16_ashes'
-
-
-" Syntastic (experimental)
-Plugin 'scrooloose/syntastic'
-"
-" Bclose
-Plugin 'rbgrouleff/bclose.vim'
-
-" Solarized Colorscheme
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1   " Transparent bg
-Plugin 'altercation/vim-colors-solarized'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
-" ------ post Vundle plugin load configuration
-" Enable Solarized when GUI _or_ a TERMINAL with 256 is used (Macvim or in
-" Terminal.app)
-" The below doesn't take effect if execute straight after loading plugin
-" 'vim-colors-solarized' - complains about 'unknown colorscheme solarized'
+set nowrap                    " As a default, we want the lines not to wrap
+set nofoldenable              " Do not fold to begin with
 if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
-  set background=dark
-  colorscheme solarized
+	let g:solarized_use16 = 0
+	let g:solarized_termcolors=256
+	let g:solarized_termtrans = 1
+	set bg=dark
+	colors solarized8_dark_high
 endif
+
+
+" - Markdown
+autocmd Filetype markdown setl et sw=4 ts=4 tw=79
+
+" - Python - use pymode for lint's as it opens a new window (sadly not in
+"   cope)
+let g:pymode_lint = 1
+let g:pymode_lint_ignore = "E501"
+let g:pymode_rope_lookup_project = 0  " When using numpy Rope will freeze totally: https://github.com/python-mode/python-mode/issues/209
+autocmd FileType python setlocal nonumber
+
+" - Golang plugin
+autocmd FileType go nmap <leader>t  <Plug>(go-test)
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <leader>b  <Plug>(go-build)
+
+" - C++
+" Switch between Header and source https://github.com/derekwyatt/vim-fswitch
+" (works only on C and C++?)
+nmap <silent> <Leader>h :FSHere<cr>
+autocmd Filetype cpp set et sw=2 ts=2 nowrap cino+=(0  " Napatech style
+nmap <silent> <Leader>h :FSHere<cr>
+autocmd Filetype cpp set et sw=2 ts=2 nowrap cino+=(0  " Napatech style
+
+" - JSON
+autocmd Filetype json set et sw=4 ts=4 nowrap
+
+" - YouCompleteMe: https://github.com/Valloric/YouCompleteMe
+nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
+nnoremap <leader>gt :YcmCompleter GetType<CR>
+nnoremap <leader>gD :YcmCompleter GetDoc<CR>
+let g:ycm_filetype_blacklist = { 'markdown': 1 }
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsSnippetsDir = "~/.config/nvim/UltiSnips"
+let g:ultisnips_python_style = "google"
+let g:UltiSnipsEditSplit='vertical'
+let g:UltiSnipsSnippetDirectories = ['UltiSnips']
+let g:UltiSnipsExpandTrigger = "<c-j>"
+let g:UltiSnipsJumpForwardTrigger = "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
+
+" - Ack (Grep vi AG, we use AG, it's faster than ACK)
+let g:ackprg = 'ag --vimgrep'
+nnoremap <Leader>a :Ack!<Space>
+
+" - FZF
+map <leader>f :FZF<cr>
+map <leader>F :History<cr>
+
+" - Syntastic
+let g:syntastic_python_flake8_args='--ignore=E501'
+
+" - Airline
+let g:airline#extensions#tagbar#enabled = 1
