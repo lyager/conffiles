@@ -54,8 +54,6 @@ elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
 		vim \
 		iproute2mac \
 		neovim
-	${PIP} install --user pygments gdata
-	${PIP} install --user neovim
 elif [ -e "/etc/redhat-release" ]; then # Redhat
 	sudo yum update -y
 	sudo yum install -y vim-enhanced \
@@ -79,8 +77,6 @@ elif [ -e "/etc/redhat-release" ]; then # Redhat
 		neovim
   # Pygments are used by Gtags to parse, however python-pygments
   # provided in Redhat is rather old and doesn't support Awk
-	${PIP} install --user pygments
-	${PIP} install --user neovim
 	GIT_PROMPT=/usr/share/git-core/contrib/completion/git-prompt.sh
 fi
 
@@ -90,6 +86,9 @@ LNOPT="-s -n $@"    # -n for no-deref (don't jump into the directories)
                     # -f force
 
 ${PIP} install --user jarg httpie
+${PIP} install --user pygments gdata
+${PIP} install --user isort
+${PIP} install --user neovim
 
 # Vim
 [ ! -e ~/.vim/bundle/Vundle.vim ] && git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
