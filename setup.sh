@@ -87,7 +87,7 @@ LNOPT="-s -n $@"    # -n for no-deref (don't jump into the directories)
 
 ${PIP} install --user jarg httpie
 ${PIP} install --user pygments gdata
-${PIP} install --user isort
+${PIP} install --user isort yapf
 ${PIP} install --user neovim
 
 # Vim
