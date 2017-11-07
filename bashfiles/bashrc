@@ -26,8 +26,9 @@ esac
 if [ -e ~/.git-prompt.sh ]; then
 	source ~/.git-prompt.sh
 fi
+export HISTFILESIZE=-1
+export HISTCONTROL=erasedups
 export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
-
 export PATH=/usr/local/sbin:$PATH
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
