@@ -22,9 +22,9 @@ export EDITOR="$(if [[ $(which nvim) ]]; then echo nvim; else echo vi; fi)"
 export PYTHONPATH=/opt/lib/python/
 export GEM_PATH=~/gems/
 export GEM_HOME=~/gems/
-export PATH=~/.local/bin:$PATH  # Python
+export PATH=~/.local/bin:~/Library/Python/3.6/bin:~/Library/Python/2.7/bin:$PATH  # Python
 export PATH=~/gems/bin:$PATH   # Ruby
-export PATH=~/bin:/opt/java/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/sbin:/sbin:$PATH
+export PATH=~/bin:/usr/local/bin:/usr/sbin:/sbin:$PATH
 
 #export LC_ALL="C.UTF-8"
 #export LANG="en_US.UTF-8"
