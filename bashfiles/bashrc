@@ -1,5 +1,5 @@
 if [ -e ~/.rc ]; then
-	.~/.rc
+	. ~/.rc
 fi
 
 # On OSX there is a whole bunch of bash-completion

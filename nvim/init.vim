@@ -8,7 +8,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
 Plug 'https://github.com/derekwyatt/vim-fswitch', { 'for': ['c', 'cpp'] }
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-" Plug 'https://github.com/lyager/python-mode', { 'for': 'python' }  " Python
+Plug 'https://github.com/lyager/python-mode', { 'for': 'python' }  " Python
 Plug 'fisadev/vim-isort', { 'for': 'python' }
 Plug 'vim-syntastic/syntastic'
 Plug 'mileszs/ack.vim'
