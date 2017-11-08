@@ -91,7 +91,6 @@ ${PIP} install --user isort yapf
 ${PIP} install --user neovim
 
 # Vim
-[ ! -e ~/.vim/bundle/Vundle.vim ] && git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ln ${LNOPT} $PWD/vimfiles/vimrc ~/.vimrc
 
 # Global
@@ -111,6 +110,7 @@ ln ${LNOPT} $PWD/zshfiles/zshrc ~/.zshrc
 ln ${LNOPT} $PWD/bashfiles/bashrc ~/.bashrc
 [ ! -z "${GIT_PROMPT}" ] && ln ${LNOPT} ${GIT_PROMPT} ~/.git-prompt.sh
 cd ~/
+git clone https://github.com/magicmonty/bash-git-prompt.git .bash-git-prompt --depth=1
 ln ${LNOPT} .bashrc .bash_profile
 cd - > /dev/null
 
