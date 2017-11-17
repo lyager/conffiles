@@ -8,7 +8,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
 Plug 'https://github.com/derekwyatt/vim-fswitch', { 'for': ['c', 'cpp'] }
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'https://github.com/lyager/python-mode', { 'for': 'python' }  " Python
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }  " Python
 Plug 'fisadev/vim-isort', { 'for': 'python' }
 Plug 'vim-syntastic/syntastic'
 Plug 'mileszs/ack.vim'
@@ -46,6 +46,7 @@ autocmd Filetype markdown setl et sw=4 ts=4 tw=79
 
 " - Python - use pymode for lint's as it opens a new window (sadly not in
 "   cope)
+let g:pymode_paths = ["~/.local/bin"]  " Prefer latest console tools installed with Pip
 let g:pymode_lint = 1
 let g:pymode_lint_ignore = "E501"
 autocmd FileType python setlocal nonumber
