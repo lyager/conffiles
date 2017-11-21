@@ -85,10 +85,10 @@ LNOPT="-s -n $@"    # -n for no-deref (don't jump into the directories)
                     # -i for interactive, prompt before removing
                     # -f force
 
-${PIP} install --user jarg httpie
-${PIP} install --user pygments gdata
-${PIP} install --user isort yapf
-${PIP} install --user neovim
+${PIP} install --upgrade --user jarg httpie
+${PIP} install --upgrade --user pygments gdata
+${PIP} install --upgrade --user isort yapf pylint flake8
+${PIP} install --upgrade --user neovim
 
 # Vim
 ln ${LNOPT} $PWD/vimfiles/vimrc ~/.vimrc
