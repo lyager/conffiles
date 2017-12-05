@@ -24,6 +24,7 @@ export GEM_PATH=~/gems/
 export GEM_HOME=~/gems/
 export PATH=~/.local/bin:~/Library/Python/3.6/bin:~/Library/Python/2.7/bin:$PATH  # Python
 export PATH=~/gems/bin:$PATH   # Ruby
+export PATH=~/node/bin:$PATH   # NodeJS
 export PATH=~/bin:/usr/local/bin:/usr/sbin:/sbin:$PATH
 
 #export LC_ALL="C.UTF-8"
