@@ -41,6 +41,9 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
 endif
 
 
+" - HTML
+autocmd Filetype html setl sw=2 ts=2
+
 " - Markdown
 autocmd Filetype markdown setl et sw=4 ts=4 tw=79
 
@@ -48,7 +51,7 @@ autocmd Filetype markdown setl et sw=4 ts=4 tw=79
 "   cope)
 let g:pymode_paths = ["~/.local/bin"]  " Prefer latest console tools installed with Pip
 let g:pymode_lint = 1
-let g:pymode_lint_ignore = "E501"
+let g:pymode_lint_ignore = ["E501"]
 autocmd FileType python setlocal nonumber
 
 " - Golang plugin
