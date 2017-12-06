@@ -4,8 +4,9 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all', 'for': ['python'] }
 Plug 'https://github.com/derekwyatt/vim-fswitch', { 'for': ['c', 'cpp'] }
+Plug 'lyuts/vim-rtags', { 'for': ['c', 'cpp'] }
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }  " Python
