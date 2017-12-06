@@ -23,12 +23,12 @@ case "$TERM" in
 		;;
 esac
 
-if [ -e ~/.git-prompt.sh ]; then
-	source ~/.git-prompt.sh
-	export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
-elif [ -e ~/.bash-git-prompt ]; then
+if [ -e ~/.bash-git-prompt ]; then
 	GIT_PROMPT_ONLY_IN_REPO=1
 	source ~/.bash-git-prompt/gitprompt.sh
+elif [ -e ~/.git-prompt.sh ]; then
+	source ~/.git-prompt.sh
+	export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
 else
 	export PS1='[\u@\h \W]\$ '
 fi
