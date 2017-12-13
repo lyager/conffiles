@@ -87,7 +87,9 @@ LNOPT="-s -n $@"    # -n for no-deref (don't jump into the directories)
 
 ${PIP} install --upgrade --user jarg httpie
 ${PIP} install --upgrade --user pygments gdata
-${PIP} install --upgrade --user isort yapf pylint flake8
+# Yaps installs configparser backports which ruins unittests at work
+# ${PIP} install --upgrade --user yapf 
+${PIP} install --upgrade --user isort pylint flake8
 ${PIP} install --upgrade --user neovim
 
 # Vim
