@@ -99,7 +99,8 @@ nnoremap <Leader>a :Ack!<Space>
 
 " - FZF
 map <leader>f :FZF<cr>
-map <leader>F :History<cr>
+map <leader>FH :History<cr>
+map <leader>FB :Buffers<cr>
 
 " - Syntastic
 let g:syntastic_python_flake8_args='--ignore=E501'
