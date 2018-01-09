@@ -25,9 +25,11 @@ export PATH=~/gems/bin:$PATH   # Ruby
 export PATH=~/node/bin:$PATH   # NodeJS
 export PATH=~/bin:/usr/local/bin:/usr/sbin:/sbin:$PATH
 
-#export LC_ALL="C.UTF-8"
-#export LANG="en_US.UTF-8"
-
+# The below encoding is important for tab completion with
+# oh-my-zsh. Trying to put in in the general RC file, if this 
+# complains under bash, move it to .zshrc
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 # Computer specific settings.
 if [ -e ~/.rc.local ] ; then
