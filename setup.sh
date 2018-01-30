@@ -20,7 +20,8 @@ if [ "$(uname -v | awk '{print $3}')" = "Debian" ]; then # Debian
 		ruby-dev \
 		ruby \
 		tmux \
-		jq
+		jq \
+		zsh
 	GIT_PROMPT=/usr/lib/git-core/git-sh-prompt
 elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
 	PIP=pip2 # Pip is gone on OSX
@@ -74,7 +75,8 @@ elif [ -e "/etc/redhat-release" ]; then # Redhat
 		jq \
 		the_silver_searcher \
 		telnet \
-		neovim
+		neovim \
+	  zsh
   # Pygments are used by Gtags to parse, however python-pygments
   # provided in Redhat is rather old and doesn't support Awk
 	GIT_PROMPT=/usr/share/git-core/contrib/completion/git-prompt.sh
