@@ -69,7 +69,7 @@ nmap <silent> <Leader>h :FSHere<cr>
 autocmd Filetype cpp set et sw=2 ts=2 nowrap cino+=(0  " Napatech style
 
 " - JSON
-autocmd Filetype json set et sw=4 ts=4 nowrap
+autocmd Filetype json set et sw=4 ts=4 nowrap foldmethod=syntax
 
 " - YouCompleteMe: https://github.com/Valloric/YouCompleteMe
 let g:ycm_server_keep_logfiles = 1
