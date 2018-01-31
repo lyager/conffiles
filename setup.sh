@@ -21,7 +21,8 @@ if [ "$(uname -v | awk '{print $3}')" = "Debian" ]; then # Debian
 		ruby \
 		tmux \
 		jq \
-		zsh
+		zsh \
+		python-demjson
 	GIT_PROMPT=/usr/lib/git-core/git-sh-prompt
 elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
 	PIP=pip2 # Pip is gone on OSX
