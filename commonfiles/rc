@@ -23,7 +23,7 @@ export GEM_HOME=~/gems/
 export PATH=~/.local/bin:~/Library/Python/3.6/bin:~/Library/Python/2.7/bin:$PATH  # Python
 export PATH=~/gems/bin:$PATH   # Ruby
 export PATH=~/node/bin:$PATH   # NodeJS
-export PATH=~/bin:/usr/local/bin:/usr/sbin:/sbin:$PATH
+export PATH=~/bin:/usr/local/bin:/usr/local/sbin/:/usr/sbin:/sbin:$PATH
 
 # The below encoding is important for tab completion with
 # oh-my-zsh. Trying to put in in the general RC file, if this 
