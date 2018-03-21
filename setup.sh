@@ -25,7 +25,7 @@ if [ "$(uname -v | awk '{print $3}')" = "Debian" ]; then # Debian
 		python-demjson
 	GIT_PROMPT=/usr/lib/git-core/git-sh-prompt
 elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
-	PIP=pip2 # Pip is gone on OSX
+	PIP=pip3 # Pip is gone on OSX
 	brew update
 	brew upgrade
 	brew cask install macvim \
