@@ -2,6 +2,8 @@
 #
 # vim:noexpandtab:ts=2:sw=2
 
+set -e
+
 GIT_PROMPT=""
 PIP=pip
 if [ "$(uname -v | awk '{print $3}')" = "Debian" ]; then # Debian
@@ -26,13 +28,21 @@ if [ "$(uname -v | awk '{print $3}')" = "Debian" ]; then # Debian
 	GIT_PROMPT=/usr/lib/git-core/git-sh-prompt
 elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
 	PIP=pip3 # Pip is gone on OSX
+	if [ ! `which brew` ]; then
+		echo "brew is missing";
+		exit 1;
+	fi
+		
 	brew update
 	brew upgrade
 	brew cask install macvim \
+		keybase \
+		arq \
+		remember-the-milk \
+		google-chrome \
 		osxfuse \
 		1password \
 		dropbox \
-		virtualbox \
 		shiftit \
 		spotify \
 		telegram \
@@ -42,14 +52,13 @@ elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
 		wireshark \
 		flux \
 		appcleaner \
+		tunnelblick \
 		vimr
 	brew install tmux \
 		htop \
 		cmake \
 		stow \
 		jq \
-		homebrew/fuse/encfs \
-		openconnect \
 		tig \
 		git \
 		pandoc \
