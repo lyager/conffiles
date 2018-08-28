@@ -20,6 +20,9 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'majutsushi/tagbar'
+Plug 'Asheq/close-buffers.vim'
+Plug 'embear/vim-localvimrc'
+
 
 Plug 'sirver/UltiSnips'
 Plug 'honza/vim-snippets'
@@ -92,6 +95,9 @@ let g:UltiSnipsSnippetDirectories = ['UltiSnips']
 let g:UltiSnipsExpandTrigger = "<c-j>"
 let g:UltiSnipsJumpForwardTrigger = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
+let g:snips_author = "Jesper L. Nielsen"
+let g:snips_email = ""
+let g:snips_github = "https://github.com/lyager"
 
 " - Ack (Grep vi AG, we use AG, it's faster than ACK)
 let g:ackprg = 'ag --vimgrep'
