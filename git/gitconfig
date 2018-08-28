@@ -27,6 +27,7 @@
 	default = simple
 [core]
 	excludesfile = /Users/jln/.gitignore_global
+	ignorecase = false
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
@@ -35,3 +36,8 @@
 	trustExitCode = true
 [rerere]
 	enabled = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
