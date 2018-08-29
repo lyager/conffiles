@@ -22,6 +22,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'majutsushi/tagbar'
 Plug 'Asheq/close-buffers.vim'
 Plug 'embear/vim-localvimrc'
+Plug 'vim-scripts/gtags.vim'
 
 
 Plug 'sirver/UltiSnips'
@@ -73,6 +74,10 @@ autocmd Filetype cpp set et sw=2 ts=2 nowrap cino+=(0  " Napatech style
 
 " - JSON
 autocmd Filetype json set et sw=4 ts=4 nowrap foldmethod=syntax
+
+" - vim-scripts/gtags.vim
+let g:Gtags_Auto_Update = 1
+let g:Gtags_Auto_Map = 1
 
 " - YouCompleteMe: https://github.com/Valloric/YouCompleteMe
 let g:ycm_server_keep_logfiles = 1
