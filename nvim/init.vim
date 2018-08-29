@@ -101,7 +101,7 @@ let g:snips_github = "https://github.com/lyager"
 
 " Localvimrc
 " - whitelist
-let g:localvimrc_whitelist=['/Volumes/workspace/gm_rdm/']
+let g:localvimrc_whitelist=['/Volumes/workspace/rdm/']
 
 " - Ack (Grep vi AG, we use AG, it's faster than ACK)
 let g:ackprg = 'ag --vimgrep'
