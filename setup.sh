@@ -27,9 +27,12 @@ if [ "$(uname -v | awk '{print $3}')" = "Debian" ]; then # Debian
 		python-demjson
 	GIT_PROMPT=/usr/lib/git-core/git-sh-prompt
 elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
-	PIP=pip3 # Pip is gone on OSX
 	if [ ! `which brew` ]; then
 		echo "brew is missing";
+		exit 1;
+	fi
+	if [ ! `which pip` ]; then
+		echo "pip is missing";
 		exit 1;
 	fi
 		
@@ -65,7 +68,8 @@ elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
 		vim \
 		iproute2mac \
 		neovim \
-		ripgrep
+		ripgrep \
+		global
 elif [ -e "/etc/redhat-release" ]; then # Redhat
 	sudo yum update -y
 	sudo yum install -y vim-enhanced \
