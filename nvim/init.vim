@@ -22,11 +22,11 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'majutsushi/tagbar'
 Plug 'Asheq/close-buffers.vim'
 Plug 'embear/vim-localvimrc'
-Plug 'vim-scripts/gtags.vim'
-
-
+Plug 'multilobyte/gtags-cscope'
 Plug 'sirver/UltiSnips'
 Plug 'honza/vim-snippets'
+Plug 'rbgrouleff/bclose.vim'
+Plug 'tpope/vim-dispatch'
 
 " Initialize plugin system
 call plug#end()
@@ -79,6 +79,22 @@ autocmd Filetype json set et sw=4 ts=4 nowrap foldmethod=syntax
 let g:Gtags_Auto_Update = 1
 let g:Gtags_Auto_Map = 1
 
+" - multilobyte/gtags-cscope
+" To use the default key/mouse mapping:
+let GtagsCscope_Auto_Map = 1
+" To ignore letter case when searching:
+let GtagsCscope_Ignore_Case = 1
+" To use absolute path name:
+let GtagsCscope_Absolute_Path = 1
+" To deterring interruption:
+let GtagsCscope_Keep_Alive = 1
+" If you hope auto loading:
+let GtagsCscope_Auto_Load = 1
+" To use 'vim -t ', ':tag' and '<C-]>'
+set cscopetag
+" To auto update tags when a file is saved
+ let GtagsCscope_Auto_Update = 1
+
 " - YouCompleteMe: https://github.com/Valloric/YouCompleteMe
 let g:ycm_server_keep_logfiles = 1
 let g:ycm_server_log_level = 'debug'
@@ -109,7 +125,7 @@ let g:snips_github = "https://github.com/lyager"
 let g:localvimrc_whitelist=['/Volumes/workspace/rdm/']
 
 " - Ack (Grep vi AG, we use AG, it's faster than ACK)
-let g:ackprg = 'ag --vimgrep'
+let g:ackprg = 'rg --vimgrep'
 nnoremap <Leader>a :Ack!<Space>
 
 " - FZF
