@@ -38,7 +38,7 @@ elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
 		
 	brew update
 	brew upgrade
-	brew cask install macvim \
+	brew cask install \
 		keybase \
 		arq \
 		remember-the-milk \
