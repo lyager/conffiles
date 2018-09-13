@@ -93,7 +93,7 @@ let GtagsCscope_Auto_Load = 1
 " To use 'vim -t ', ':tag' and '<C-]>'
 set cscopetag
 " To auto update tags when a file is saved
- let GtagsCscope_Auto_Update = 1
+" let GtagsCscope_Auto_Update = 1
 
 " - YouCompleteMe: https://github.com/Valloric/YouCompleteMe
 let g:ycm_server_keep_logfiles = 1
@@ -125,7 +125,7 @@ let g:snips_github = "https://github.com/lyager"
 let g:localvimrc_whitelist=['/Volumes/workspace/rdm/']
 
 " - Ack (Grep vi AG, we use AG, it's faster than ACK)
-let g:ackprg = 'rg --vimgrep'
+let g:ackprg = 'ag --vimgrep'
 nnoremap <Leader>a :Ack!<Space>
 
 " - FZF
