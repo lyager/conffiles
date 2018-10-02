@@ -62,7 +62,7 @@ let g:pymode_lint = 1
 let g:pymode_lint_ignore = ["E501"]
 autocmd FileType python setlocal nonumber
 
-" - Golang plugin
+" - Plug 'fatih/vim-go', { 'for': 'go' }
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
@@ -78,11 +78,7 @@ autocmd Filetype cpp set et sw=2 ts=2 nowrap cino+=(0  " Napatech style
 " - JSON
 autocmd Filetype json set et sw=4 ts=4 nowrap foldmethod=syntax
 
-" - vim-scripts/gtags.vim
-let g:Gtags_Auto_Update = 1
-let g:Gtags_Auto_Map = 1
-
-" - multilobyte/gtags-cscope
+" - Plug 'multilobyte/gtags-cscope'
 " To use the default key/mouse mapping:
 let GtagsCscope_Auto_Map = 1
 " To ignore letter case when searching:
@@ -96,7 +92,11 @@ let GtagsCscope_Auto_Load = 1
 " To use 'vim -t ', ':tag' and '<C-]>'
 set cscopetag
 " To auto update tags when a file is saved
-" let GtagsCscope_Auto_Update = 1
+let GtagsCscope_Auto_Update = 0 " This still takes too long
+let GtagsCscope_Quiet = 1 " Supress 'GTAGS not found' error
+:nmap <C-\>I :cs find i <C-R>=expand("%:t")<CR><CR>
+:nmap <C-@>I :scs find i <C-R>=expand("%:t")<CR><CR>
+:nmap <C-@><C-@>I :vert scs find i <C-R>=expand("%:t")<CR><CR>
 
 " - YouCompleteMe: https://github.com/Valloric/YouCompleteMe
 let g:ycm_server_keep_logfiles = 1
