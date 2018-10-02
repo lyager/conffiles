@@ -49,6 +49,9 @@ endif
 " - HTML
 autocmd Filetype html setl sw=2 ts=2
 
+" - Ruby
+autocmd Filetype ruby setl sw=2 ts=2 et
+
 " - Markdown
 autocmd Filetype markdown setl et sw=4 ts=4 tw=79
 
