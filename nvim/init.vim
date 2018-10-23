@@ -28,6 +28,7 @@ Plug 'honza/vim-snippets'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'tpope/vim-dispatch'
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+" Needs more customization Plug 'w0rp/ale'
 
 " Initialize plugin system
 call plug#end()
@@ -43,7 +44,7 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
 	let g:solarized_termcolors=256
 	let g:solarized_termtrans = 1
 	set bg=dark
-	colors solarized8_dark_high
+	colors solarized8
 endif
 
 
@@ -119,6 +120,14 @@ let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 let g:snips_author = "Jesper L. Nielsen"
 let g:snips_email = ""
 let g:snips_github = "https://github.com/lyager"
+
+" - Plug 'w0rp/ale'
+let g:ale_fixers = {
+      \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \ 'c': ['clang-format'],
+      \ 'javascript': ['eslint'],
+      \}
+let g:ale_c_cppcheck_executable = '/usr/local/bin/cppcheck'
 
 " Localvimrc
 " - whitelist
