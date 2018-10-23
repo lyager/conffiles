@@ -19,6 +19,7 @@ if [ "$(uname -v | awk '{print $3}')" = "Debian" ]; then # Debian
 		xz-utils \
 		g++ \
 		python-dev \
+		python-pip \
 		ruby-dev \
 		ruby \
 		tmux \
