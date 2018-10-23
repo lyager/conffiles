@@ -27,6 +27,7 @@ Plug 'sirver/UltiSnips'
 Plug 'honza/vim-snippets'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'tpope/vim-dispatch'
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 
 " Initialize plugin system
 call plug#end()
@@ -46,13 +47,9 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
 endif
 
 
-" - HTML
 autocmd Filetype html setl sw=2 ts=2
-
-" - Ruby
 autocmd Filetype ruby setl sw=2 ts=2 et
-
-" - Markdown
+autocmd Filetype yaml setl sw=2 ts=2 et
 autocmd Filetype markdown setl et sw=4 ts=4 tw=79
 
 " - Python - use pymode for lint's as it opens a new window (sadly not in
