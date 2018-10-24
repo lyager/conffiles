@@ -14,9 +14,6 @@ alias tigr='tig ..`git rev-parse --abbrev-ref --symbolic-full-name @{u}`'
 # 	alias tmux="TERM=screen-256color-bce tmux"
 # fi
 export DEBFULLNAME="Jesper L. Nielsen"
-export MANPATH=/usr/share/man:$MANPATH
-export MANAGEMENTROOT="/home/jln/workspace/management"
-export EDITOR="$(if [[ $(which nvim) ]]; then echo nvim; else echo vi; fi)"
 export PYTHONPATH=/opt/lib/python/
 export GEM_PATH=~/gems/
 export GEM_HOME=~/gems/
