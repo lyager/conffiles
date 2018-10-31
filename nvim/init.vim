@@ -4,14 +4,23 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all'}
+if has('nvim')
+	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+	Plug 'Shougo/deoplete.nvim'
+	Plug 'roxma/nvim-yarp'
+	Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all'}
 Plug 'https://github.com/derekwyatt/vim-fswitch', { 'for': ['c', 'cpp'] }
 Plug 'lyuts/vim-rtags', { 'for': ['c', 'cpp'] }
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }  " Python
 Plug 'fisadev/vim-isort', { 'for': 'python' }
-Plug 'vim-syntastic/syntastic'
+" Plug 'vim-syntastic/syntastic'
 Plug 'mileszs/ack.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -28,7 +37,7 @@ Plug 'honza/vim-snippets'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'tpope/vim-dispatch'
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
-" Needs more customization Plug 'w0rp/ale'
+Plug 'w0rp/ale'
 
 " Initialize plugin system
 call plug#end()
@@ -47,6 +56,10 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
 	colors solarized8
 endif
 
+" Might as well set default indentation here
+set ts=2
+set sw=2
+set et
 
 autocmd Filetype html setl sw=2 ts=2
 autocmd Filetype ruby setl sw=2 ts=2 et
