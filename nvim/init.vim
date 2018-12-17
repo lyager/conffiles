@@ -20,7 +20,6 @@ Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }  " Python
 Plug 'fisadev/vim-isort', { 'for': 'python' }
-" Plug 'vim-syntastic/syntastic'
 Plug 'mileszs/ack.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -37,7 +36,12 @@ Plug 'honza/vim-snippets'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'tpope/vim-dispatch'
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
-Plug 'w0rp/ale'
+Plug 'chase/vim-ansible-yaml', { 'for': 'ansible' }
+" Jedi is the introspection tool for Python
+Plug 'zchee/deoplete-jedi', { 'do': 'pip install --upgrade jedi pynvim', 'for': ['python'] }
+" -- https://github.com/davidhalter/jedi-vim (Python code navigation (think
+"  ctags))
+Plug 'davidhalter/jedi-vim', { 'for': ['python'] }
 
 " Initialize plugin system
 call plug#end()
@@ -63,7 +67,7 @@ set et
 
 autocmd Filetype html setl sw=2 ts=2
 autocmd Filetype ruby setl sw=2 ts=2 et
-autocmd Filetype yaml setl sw=2 ts=2 et
+autocmd Filetype yaml setl sw=2 sts ts=2 et
 autocmd Filetype markdown setl et sw=4 ts=4 tw=79
 
 " - Python - use pymode for lint's as it opens a new window (sadly not in
@@ -71,7 +75,8 @@ autocmd Filetype markdown setl et sw=4 ts=4 tw=79
 let g:pymode_paths = ["~/.local/bin"]  " Prefer latest console tools installed with Pip
 let g:pymode_lint = 1
 let g:pymode_lint_ignore = ["E501"]
-autocmd FileType python setlocal nonumber
+autocmd FileType python setlocal completeopt-=preview
+autocmd FileType python setlocal nonumber sw=4 ts=4 et
 
 " - Plug 'fatih/vim-go', { 'for': 'go' }
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
@@ -109,18 +114,18 @@ let GtagsCscope_Quiet = 1 " Supress 'GTAGS not found' error
 :nmap <C-@>I :scs find i <C-R>=expand("%:t")<CR><CR>
 :nmap <C-@><C-@>I :vert scs find i <C-R>=expand("%:t")<CR><CR>
 
-" - YouCompleteMe: https://github.com/Valloric/YouCompleteMe
-let g:ycm_server_keep_logfiles = 1
-let g:ycm_server_log_level = 'debug'
-let g:ycm_warning_symbol = '.'
-let g:ycm_error_symbol = '..'
-let g:ycm_server_use_vim_stdout = 1
-nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
-nnoremap <leader>gt :YcmCompleter GetType<CR>
-nnoremap <leader>gD :YcmCompleter GetDoc<CR>
-let g:ycm_filetype_blacklist = { 'markdown': 1 }
+" " - YouCompleteMe: https://github.com/Valloric/YouCompleteMe
+" let g:ycm_server_keep_logfiles = 1
+" let g:ycm_server_log_level = 'debug'
+" let g:ycm_warning_symbol = '.'
+" let g:ycm_error_symbol = '..'
+" let g:ycm_server_use_vim_stdout = 1
+" nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
+" nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+" nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
+" nnoremap <leader>gt :YcmCompleter GetType<CR>
+" nnoremap <leader>gD :YcmCompleter GetDoc<CR>
+" let g:ycm_filetype_blacklist = { 'markdown': 1 }
 
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsSnippetsDir = "~/.config/nvim/UltiSnips"
