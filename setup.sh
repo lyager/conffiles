@@ -57,7 +57,8 @@ elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
 		flux \
 		appcleaner \
 		tunnelblick \
-		vimr
+		vimr \
+		gmvault
 	brew install tmux \
 		htop \
 		cmake \
