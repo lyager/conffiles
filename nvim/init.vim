@@ -4,6 +4,7 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 
+" -- Completion {{{
 if has('nvim')
 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -12,36 +13,51 @@ else
 	Plug 'roxma/vim-hug-neovim-rpc'
 endif
 let g:deoplete#enable_at_startup = 1
-
 " Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all'}
+" -- https://github.com/davidhalter/jedi-vim (Python code navigation (think
+"  ctags))
+"
+" TODO Well, can't get ale to work with virtualenv - deoplete-jedi works, but
+" can't navigate - and ALE is really agressiv in Python
+" Plug 'w0rp/ale'
+
+" -- Navigation
 Plug 'https://github.com/derekwyatt/vim-fswitch', { 'for': ['c', 'cpp'] }
-Plug 'lyuts/vim-rtags', { 'for': ['c', 'cpp'] }
+Plug 'mileszs/ack.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'majutsushi/tagbar'
+Plug 'multilobyte/gtags-cscope' 
+
+" -- Languages and filetypes
+Plug 'lyuts/vim-rtags', { 'for': ['c', 'cpp'] } " Very good, but needs compile_commands.json (from Clang)
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }  " Python
 Plug 'fisadev/vim-isort', { 'for': 'python' }
-Plug 'mileszs/ack.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-fugitive'
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+Plug 'chase/vim-ansible-yaml', { 'for': 'ansible' }
+Plug 'martinda/Jenkinsfile-vim-syntax'
+
+
+let g:deoplete#enable_profile = 1
+Plug 'zchee/deoplete-jedi', { 'do': 'pip install --upgrade jedi pynvim', 'for': ['python'] }  " Jedi: Introspection tool fyr python
+
+" -- Colors, highlights and spelling
+Plug 'sheerun/vim-polyglot'  " Loads of syntax highlighting
 Plug 'lifepillar/vim-solarized8'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'majutsushi/tagbar'
+Plug 'ujihisa/neco-look'  " Spelling suggestions with deoplete
+
+" --- Editor helpers
+Plug 'tpope/vim-fugitive'
 Plug 'Asheq/close-buffers.vim'
 Plug 'embear/vim-localvimrc'
-Plug 'multilobyte/gtags-cscope'
 Plug 'sirver/UltiSnips'
 Plug 'honza/vim-snippets'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'tpope/vim-dispatch'
-Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
-Plug 'chase/vim-ansible-yaml', { 'for': 'ansible' }
-" Jedi is the introspection tool for Python
-Plug 'zchee/deoplete-jedi', { 'do': 'pip install --upgrade jedi pynvim', 'for': ['python'] }
-" -- https://github.com/davidhalter/jedi-vim (Python code navigation (think
-"  ctags))
-Plug 'davidhalter/jedi-vim', { 'for': ['python'] }
 
 " Initialize plugin system
 call plug#end()
@@ -65,6 +81,9 @@ set ts=2
 set sw=2
 set et
 
+set makeprg=gmake
+
+autocmd Filetype gitconfig setl sw=2 ts=2 noet
 autocmd Filetype html setl sw=2 ts=2
 autocmd Filetype ruby setl sw=2 ts=2 et
 autocmd Filetype yaml setl sw=2 sts ts=2 et
@@ -90,6 +109,11 @@ nmap <silent> <Leader>h :FSHere<cr>
 autocmd Filetype cpp set et sw=2 ts=2 nowrap cino+=(0  " Napatech style
 nmap <silent> <Leader>h :FSHere<cr>
 autocmd Filetype cpp set et sw=2 ts=2 nowrap cino+=(0  " Napatech style
+
+" Jenkinsfile
+autocmd Filetype Jenkinsfile setlocal et sw=4 ts=4 nowrap foldmethod=syntax
+autocmd Filetype Jenkinsfile setlocal foldmethod=marker foldmarker={,}
+
 
 " - JSON
 autocmd Filetype json set et sw=4 ts=4 nowrap foldmethod=syntax
