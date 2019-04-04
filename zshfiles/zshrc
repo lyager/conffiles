@@ -97,6 +97,7 @@ source $ZSH/oh-my-zsh.sh
 export HISTSIZE=1000000000
 export SAVEHIST=$HISTSIZE
 setopt EXTENDED_HISTORY HIST_IGNORE_DUPS HIST_FIND_NO_DUPS HIST_IGNORE_ALL_DUPS
+setopt nosharehistory
 #
 # Set hostname and user in tab
 print -Pn "\e]0;$USER@%M\a"
