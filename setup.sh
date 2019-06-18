@@ -72,7 +72,8 @@ elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
 		neovim \
 		ripgrep \
 		global \
-		llvm
+		llvm \
+		rustup
 elif [ -e "/etc/redhat-release" ]; then # Redhat
 	sudo yum update -y
 	sudo yum install -y vim-enhanced \
@@ -111,6 +112,10 @@ ${PIP} install --upgrade --user pygments gdata
 # ${PIP} install --upgrade --user yapf 
 ${PIP} install --upgrade --user isort pylint flake8
 ${PIP} install --upgrade --user neovim
+
+# Rust
+rustup update
+rustup component add rust-src
 
 # Vim
 ln ${LNOPT} $PWD/vimfiles/vimrc ~/.vimrc

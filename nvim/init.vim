@@ -19,7 +19,7 @@ let g:deoplete#enable_at_startup = 1
 "
 " TODO Well, can't get ale to work with virtualenv - deoplete-jedi works, but
 " can't navigate - and ALE is really agressiv in Python
-" Plug 'w0rp/ale'
+Plug 'w0rp/ale', { 'for': ['c', 'cpp'] }
 
 " -- Navigation
 Plug 'https://github.com/derekwyatt/vim-fswitch', { 'for': ['c', 'cpp'] }
@@ -37,14 +37,17 @@ Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }  " Pyth
 Plug 'fisadev/vim-isort', { 'for': 'python' }
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'chase/vim-ansible-yaml', { 'for': 'ansible' }
-Plug 'martinda/Jenkinsfile-vim-syntax'
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'racer-rust/vim-racer', { 'do': 'cargo install racer', 'for': 'rust' }
+Plug 'neomake/neomake', { 'for': ['rust'] }
+Plug 'martinda/Jenkinsfile-vim-syntax', { 'for': 'jenkins' }
 
 
 let g:deoplete#enable_profile = 1
 Plug 'zchee/deoplete-jedi', { 'do': 'pip install --upgrade jedi pynvim', 'for': ['python'] }  " Jedi: Introspection tool fyr python
 
 " -- Colors, highlights and spelling
-Plug 'sheerun/vim-polyglot'  " Loads of syntax highlighting
+Plug 'sheerun/vim-polyglot', { 'do': './build' } " Loads of syntax highlighting
 Plug 'lifepillar/vim-solarized8'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -170,6 +173,12 @@ let g:ale_fixers = {
       \ 'javascript': ['eslint'],
       \}
 let g:ale_c_cppcheck_executable = '/usr/local/bin/cppcheck'
+
+" - Plug 'racer-rust/vim-racer'
+let g:racer_experimental_completer = 1
+au FileType rust nmap <leader>rx <Plug>(rust-doc)
+au FileType rust nmap <leader>rd <Plug>(rust-def)
+au FileType rust nmap <leader>rs <Plug>(rust-def-split)
 
 " Localvimrc
 " - whitelist
