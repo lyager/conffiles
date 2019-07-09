@@ -31,7 +31,7 @@ Plug 'multilobyte/gtags-cscope'
 
 " -- Languages and filetypes
 Plug 'lyuts/vim-rtags', { 'for': ['c', 'cpp'] } " Very good, but needs compile_commands.json (from Clang)
-Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }  " Python
 Plug 'fisadev/vim-isort', { 'for': 'python' }
@@ -39,12 +39,15 @@ Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'chase/vim-ansible-yaml', { 'for': 'ansible' }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'racer-rust/vim-racer', { 'do': 'cargo install racer', 'for': 'rust' }
-Plug 'neomake/neomake', { 'for': ['rust'] }
+Plug 'neomake/neomake', { 'for': ['rust', 'go'] }
 Plug 'martinda/Jenkinsfile-vim-syntax', { 'for': 'jenkins' }
 
 
 let g:deoplete#enable_profile = 1
+let g:jedi#completions_enabled = 0
 Plug 'zchee/deoplete-jedi', { 'do': 'pip install --upgrade jedi pynvim', 'for': ['python'] }  " Jedi: Introspection tool fyr python
+Plug 'deoplete-plugins/deoplete-go', { 'for': ['go'], 'do': 'make'}
+Plug 'davidhalter/jedi-vim', { 'for': ['python'] }  " Jedi: Introspection tool fyr python, but is deoplete-jedi for completion
 
 " -- Colors, highlights and spelling
 Plug 'sheerun/vim-polyglot', { 'do': './build' } " Loads of syntax highlighting
@@ -179,6 +182,12 @@ let g:racer_experimental_completer = 1
 au FileType rust nmap <leader>rx <Plug>(rust-doc)
 au FileType rust nmap <leader>rd <Plug>(rust-def)
 au FileType rust nmap <leader>rs <Plug>(rust-def-split)
+
+" - Plug 'neomake/neomake', { 'for': ['rust'] }
+if exists("neomake")
+  call neomake#configure#automake('w')
+  let g:airline#extensions#neomake#enabled = 1
+endif
 
 " Localvimrc
 " - whitelist
