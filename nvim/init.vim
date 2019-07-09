@@ -39,7 +39,6 @@ Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'chase/vim-ansible-yaml', { 'for': 'ansible' }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'racer-rust/vim-racer', { 'do': 'cargo install racer', 'for': 'rust' }
-Plug 'neomake/neomake', { 'for': ['rust', 'go'] }
 Plug 'martinda/Jenkinsfile-vim-syntax', { 'for': 'jenkins' }
 
 
@@ -48,6 +47,9 @@ let g:jedi#completions_enabled = 0
 Plug 'zchee/deoplete-jedi', { 'do': 'pip install --upgrade jedi pynvim', 'for': ['python'] }  " Jedi: Introspection tool fyr python
 Plug 'deoplete-plugins/deoplete-go', { 'for': ['go'], 'do': 'make'}
 Plug 'davidhalter/jedi-vim', { 'for': ['python'] }  " Jedi: Introspection tool fyr python, but is deoplete-jedi for completion
+"
+"--- Linters and checkers 
+Plug 'neomake/neomake', { 'for': ['rust', 'go'] }
 
 " -- Colors, highlights and spelling
 Plug 'sheerun/vim-polyglot', { 'do': './build' } " Loads of syntax highlighting
@@ -183,7 +185,7 @@ au FileType rust nmap <leader>rx <Plug>(rust-doc)
 au FileType rust nmap <leader>rd <Plug>(rust-def)
 au FileType rust nmap <leader>rs <Plug>(rust-def-split)
 
-" - Plug 'neomake/neomake', { 'for': ['rust'] }
+" - Plug 'neomake/neomake', {....
 if exists("neomake")
   call neomake#configure#automake('w')
   let g:airline#extensions#neomake#enabled = 1
