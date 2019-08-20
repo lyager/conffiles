@@ -196,7 +196,8 @@ endif
 let g:localvimrc_whitelist=['/Volumes/workspace/rdm/']
 
 " - Ack (Grep vi AG, we use AG, it's faster than ACK)
-let g:ackprg = 'ag --vimgrep'
+let g:ackprg = 'rg --vimgrep'
+let g:ack_use_dispatch = 1  " Use vim-dispatch for searching
 nnoremap <Leader>a :Ack!<Space>
 
 " - FZF
