@@ -1,3 +1,9 @@
-find . -type f -print > GFILES
-gtags -f GFILES
+#!/bin/sh
+
+if [ -e GTAGS ]; then
+  // GTAGS exist, just do an update
+  global -u
+else
+  gtags --sqlite3
+fi
 
