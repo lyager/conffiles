@@ -131,16 +131,18 @@ ln ${LNOPT} $PWD/global/globalrc ~/.globalrc
 ln ${LNOPT} $PWD/tmux/tmux.conf ~/.tmux.conf
 
 # zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ln ${LNOPT} $PWD/zshfiles/zshrc ~/.zshrc
+[ ! -e ~/.oh-my-zsh ] && sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 # Bash
 ln ${LNOPT} $PWD/bashfiles/bashrc ~/.bashrc
 [ ! -z "${GIT_PROMPT}" ] && ln ${LNOPT} ${GIT_PROMPT} ~/.git-prompt.sh
-cd ~/
-git clone https://github.com/magicmonty/bash-git-prompt.git .bash-git-prompt --depth=1
-ln ${LNOPT} .bashrc .bash_profile
-cd - > /dev/null
+if [ ! -d "${HOME}/.bash-git-prompt" ]; then
+	cd ~/
+	git clone https://github.com/magicmonty/bash-git-prompt.git .bash-git-prompt --depth=1
+	ln ${LNOPT} .bashrc .bash_profile
+	cd - > /dev/null
+fi
 
 # Common files
 ln ${LNOPT} $PWD/commonfiles/rc ~/.rc
