@@ -85,7 +85,7 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
 endif
 
 " Might as well set default indentation here
-set ts=2
+set ts=8
 set sw=2
 set et
 
@@ -197,6 +197,7 @@ let g:localvimrc_whitelist=['/Volumes/workspace/rdm/']
 
 " - Ack (Grep vi AG, we use AG, it's faster than ACK)
 let g:ackprg = 'rg --vimgrep'
+let g:ack_use_dispatch = 1  " Use vim-dispatch for searching
 nnoremap <Leader>a :Ack!<Space>
 
 " - FZF
