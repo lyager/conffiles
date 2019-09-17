@@ -1,9 +1,9 @@
 #!/bin/sh
 
 if [ -e GTAGS ]; then
-  // GTAGS exist, just do an update
+  # GTAGS exist, just do an update
   global -u
 else
-  gtags --sqlite3
+  gtags --skip-unreadable
 fi
 
