@@ -68,7 +68,6 @@ elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
 		git \
 		pandoc \
 		vim \
-		iproute2mac \
 		neovim \
 		ripgrep \
 		global \
