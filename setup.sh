@@ -25,7 +25,8 @@ if [ "$(uname -v | awk '{print $3}')" = "Debian" ]; then # Debian
 		tmux \
 		jq \
 		zsh \
-		python-demjson
+		python-demjson \
+		ripgrep
 	GIT_PROMPT=/usr/lib/git-core/git-sh-prompt
 elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
 	if [ ! `which brew` ]; then
@@ -113,8 +114,12 @@ ${PIP} install --upgrade --user isort pylint flake8
 ${PIP} install --upgrade --user neovim
 
 # Rust
-rustup update
-rustup component add rust-src
+if [ -x rustup ]; then
+	rustup updatev
+	rustup component add rust-src
+else 
+	echo "Skipping rustup, not installed"
+fi
 
 # Vim
 ln ${LNOPT} $PWD/vimfiles/vimrc ~/.vimrc
