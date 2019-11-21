@@ -19,7 +19,7 @@ let g:deoplete#enable_at_startup = 1
 "
 " TODO Well, can't get ale to work with virtualenv - deoplete-jedi works, but
 " can't navigate - and ALE is really agressiv in Python
-Plug 'w0rp/ale', { 'for': ['c', 'cpp'] }
+" Plug 'w0rp/ale', { 'for': ['c', 'cpp'] }
 
 " -- Navigation
 Plug 'https://github.com/derekwyatt/vim-fswitch', { 'for': ['c', 'cpp'] }
@@ -30,7 +30,8 @@ Plug 'majutsushi/tagbar'
 Plug 'multilobyte/gtags-cscope' 
 
 " -- Languages and filetypes
-Plug 'lyuts/vim-rtags', { 'for': ['c', 'cpp'] } " Very good, but needs compile_commands.json (from Clang)
+" Plug 'lyuts/vim-rtags', { 'for': ['c', 'cpp'] } " Very good, but needs compile_commands.json (from Clang)
+Plug 'ycm-core/YouCompleteMe', { 'dir': '~/.local/share/nvim/plugged/YouCompleteMe', 'do': './install.py --clang-completer', 'for': ['c', 'cpp'] } " Very good, but needs compile_commands.json (from Clang)
 Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }  " Python
