@@ -1,14 +1,15 @@
 #!/bin/sh
 #
-# Global does support Python, you might need this
-# plugin https://github.com/yoshizow/global-pygments-plugin
+# Global does support Python, if `gtags` complains about:
+#   `gtags: cannot open shared object '/usr/local/lib/gtags/pygments-parser'.` 
+# you might need this plugin https://github.com/yoshizow/global-pygments-plugin
 # if pygments is not already included in Global (which I think it is for
 # the currently used version)
 #
 
 set -e
 
-VERSION=6.5.6
+VERSION=6.6.3
 
 for need in stow make tar curl; do
 	which $need > /dev/null 2>&1  || (echo "Need $need"; exit 1)
