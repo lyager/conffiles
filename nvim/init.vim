@@ -90,7 +90,10 @@ set ts=8
 set sw=2
 set et
 
-set makeprg=gmake
+" OSX comes with an inferrior Make (use gmake).
+if has('macunix')
+  set makeprg=gmake
+endif
 
 autocmd Filetype gitconfig setl sw=2 ts=2 noet
 autocmd Filetype html setl sw=2 ts=2
