@@ -12,26 +12,29 @@ else
 	Plug 'roxma/nvim-yarp'
 	Plug 'roxma/vim-hug-neovim-rpc'
 endif
+let g:deoplete#enable_profile = 1
 let g:deoplete#enable_at_startup = 1
-" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all'}
-" -- https://github.com/davidhalter/jedi-vim (Python code navigation (think
-"  ctags))
+let g:jedi#completions_enabled = 0
+Plug 'zchee/deoplete-jedi', { 'do': 'pip install --upgrade jedi pynvim', 'for': ['python'] }  " Jedi: Introspection tool fyr python
+Plug 'davidhalter/jedi-vim', { 'for': ['python'] }  " Jedi: Introspection tool fyr python, but is deoplete-jedi for completion
+
+Plug 'zchee/deoplete-clang', { 'for': ['c', 'cpp'] }
+let g:deoplete#sources#clang#libclang_path="/usr/lib/llvm-7/lib/libclang.so"
+let g:deoplete#sources#clang#clang_header="/usr/lib/llvm-7/include/clang"
+
+Plug 'deoplete-plugins/deoplete-go', { 'for': ['go'], 'do': 'make'}
 "
-" TODO Well, can't get ale to work with virtualenv - deoplete-jedi works, but
-" can't navigate - and ALE is really agressiv in Python
-" Plug 'w0rp/ale', { 'for': ['c', 'cpp'] }
 
 " -- Navigation
 Plug 'https://github.com/derekwyatt/vim-fswitch', { 'for': ['c', 'cpp'] }
 Plug 'mileszs/ack.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+" -tags
 Plug 'majutsushi/tagbar'
 Plug 'multilobyte/gtags-cscope' 
 
 " -- Languages and filetypes
-" Plug 'lyuts/vim-rtags', { 'for': ['c', 'cpp'] } " Very good, but needs compile_commands.json (from Clang)
-Plug 'ycm-core/YouCompleteMe', { 'dir': '~/.local/share/nvim/plugged/YouCompleteMe', 'do': './install.py --clang-completer', 'for': ['c', 'cpp'] } " Very good, but needs compile_commands.json (from Clang)
 Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }  " Python
@@ -43,14 +46,9 @@ Plug 'racer-rust/vim-racer', { 'do': 'cargo install racer', 'for': 'rust' }
 Plug 'martinda/Jenkinsfile-vim-syntax', { 'for': 'jenkins' }
 
 
-let g:deoplete#enable_profile = 1
-let g:jedi#completions_enabled = 0
-Plug 'zchee/deoplete-jedi', { 'do': 'pip install --upgrade jedi pynvim', 'for': ['python'] }  " Jedi: Introspection tool fyr python
-Plug 'deoplete-plugins/deoplete-go', { 'for': ['go'], 'do': 'make'}
-Plug 'davidhalter/jedi-vim', { 'for': ['python'] }  " Jedi: Introspection tool fyr python, but is deoplete-jedi for completion
-"
 "--- Linters and checkers 
 Plug 'neomake/neomake', { 'for': ['rust', 'go'] }
+Plug 'w0rp/ale', { 'for': ['c', 'cpp'] }
 
 " -- Colors, highlights and spelling
 Plug 'sheerun/vim-polyglot', { 'do': './build' } " Loads of syntax highlighting
@@ -149,19 +147,6 @@ let GtagsCscope_Quiet = 1 " Supress 'GTAGS not found' error
 :nmap <C-\>I :cs find i <C-R>=expand("%:t")<CR><CR>
 :nmap <C-@>I :scs find i <C-R>=expand("%:t")<CR><CR>
 :nmap <C-@><C-@>I :vert scs find i <C-R>=expand("%:t")<CR><CR>
-
-" " - YouCompleteMe: https://github.com/Valloric/YouCompleteMe
-" let g:ycm_server_keep_logfiles = 1
-" let g:ycm_server_log_level = 'debug'
-" let g:ycm_warning_symbol = '.'
-" let g:ycm_error_symbol = '..'
-" let g:ycm_server_use_vim_stdout = 1
-" nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
-" nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
-" nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
-" nnoremap <leader>gt :YcmCompleter GetType<CR>
-" nnoremap <leader>gD :YcmCompleter GetDoc<CR>
-" let g:ycm_filetype_blacklist = { 'markdown': 1 }
 
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsSnippetsDir = "~/.config/nvim/UltiSnips"
