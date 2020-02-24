@@ -5,7 +5,7 @@
 set -e
 
 GIT_PROMPT=""
-PIP=pip
+PIP=pip3
 if [ "$(uname -v | awk '{print $3}')" = "Debian" ]; then # Debian
 	sudo apt-get update
 	sudo apt-get install -y global \
