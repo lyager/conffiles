@@ -31,6 +31,7 @@ Plug 'mileszs/ack.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 " -tags
+Plug 'ludovicchabant/vim-gutentags', { 'for': ['c', 'cpp', 'python'] }
 Plug 'majutsushi/tagbar'
 Plug 'multilobyte/gtags-cscope' 
 
@@ -75,6 +76,7 @@ set smartcase                 " and not capitalized letters
 set listchars=tab:>.,trail:.  " Prefer to have identation pointed out too.
 set nowrap                    " As a default, we want the lines not to wrap
 set nofoldenable              " Do not fold to begin with
+set foldmethod=syntax
 if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
 	let g:solarized_use16 = 0
 	let g:solarized_termcolors=256
@@ -87,6 +89,7 @@ endif
 set ts=8
 set sw=2
 set et
+set completeopt-=preview
 
 " OSX comes with an inferrior Make (use gmake).
 if has('macunix')
@@ -105,7 +108,6 @@ autocmd Filetype markdown setl et sw=4 ts=4 tw=79
 let g:pymode_paths = ["~/.local/bin"]  " Prefer latest console tools installed with Pip
 let g:pymode_lint = 1
 let g:pymode_lint_ignore = ["E501"]
-autocmd FileType python setlocal completeopt-=preview
 autocmd FileType python setlocal nonumber sw=4 ts=4 et
 
 " - Plug 'fatih/vim-go', { 'for': 'go' }
@@ -117,9 +119,7 @@ autocmd FileType go nmap <leader>b  <Plug>(go-build)
 " Switch between Header and source https://github.com/derekwyatt/vim-fswitch
 " (works only on C and C++?)
 nmap <silent> <Leader>h :FSHere<cr>
-autocmd Filetype cpp set et sw=2 ts=2 nowrap cino+=(0  " Napatech style
-nmap <silent> <Leader>h :FSHere<cr>
-autocmd Filetype cpp set et sw=2 ts=2 nowrap cino+=(0  " Napatech style
+autocmd Filetype cpp set et sw=4 ts=4 nowrap cino+=(0  " Napatech style
 
 " Jenkinsfile
 autocmd Filetype Jenkinsfile setlocal et sw=4 ts=4 nowrap foldmethod=syntax
@@ -180,6 +180,9 @@ if exists("neomake")
   call neomake#configure#automake('w')
   let g:airline#extensions#neomake#enabled = 1
 endif
+
+" Plug 'ludovicchabant/vim-gutentags'
+let g:gutentags_modules = ['gtags_cscope']
 
 " Localvimrc
 " - whitelist
