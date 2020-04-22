@@ -22,7 +22,10 @@ Plug 'zchee/deoplete-clang', { 'for': ['c', 'cpp'] }
 let g:deoplete#sources#clang#libclang_path="/usr/lib/llvm-7/lib/libclang.so"
 let g:deoplete#sources#clang#clang_header="/usr/lib/llvm-7/include/clang"
 
-Plug 'deoplete-plugins/deoplete-go', { 'for': ['go'], 'do': 'go get -u github.com/nsf/gocode && make'}
+Plug 'deoplete-plugins/deoplete-go', { 'for': ['go'], 'do': 'make' }
+call deoplete#custom#option('omni_patterns', {
+\ 'go': '[^. *\t]\.\w*',
+\})
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 
 " -- Navigation
