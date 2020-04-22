@@ -42,7 +42,7 @@ Plug 'fisadev/vim-isort', { 'for': 'python' }
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'chase/vim-ansible-yaml', { 'for': 'ansible' }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-Plug 'racer-rust/vim-racer', { 'do': 'cargo install racer', 'for': 'rust' }
+Plug 'racer-rust/vim-racer', { 'do': 'cargo install racer --force', 'for': 'rust' }
 Plug 'martinda/Jenkinsfile-vim-syntax', { 'for': 'jenkins' }
 
 
