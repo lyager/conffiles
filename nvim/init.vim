@@ -97,6 +97,7 @@ autocmd Filetype gitconfig setl sw=2 ts=2 noet
 autocmd Filetype html setl sw=2 ts=2
 autocmd Filetype ruby setl sw=2 ts=2 et
 autocmd Filetype yaml setl sw=2 sts ts=2 et
+autocmd Filetype go setl sw=4 ts=4 noet
 autocmd Filetype markdown setl et sw=4 ts=4 tw=79
 
 " - Python - use pymode for lint's as it opens a new window (sadly not in
