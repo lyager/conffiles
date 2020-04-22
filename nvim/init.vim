@@ -183,6 +183,8 @@ endif
 
 " Plug 'ludovicchabant/vim-gutentags'
 let g:gutentags_modules = ['gtags_cscope']
+let g:gutentags_add_default_project_roots = 0
+let g:gutentags_project_root = ['package.json', '.git']
 
 " Localvimrc
 " - whitelist
