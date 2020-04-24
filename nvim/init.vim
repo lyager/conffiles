@@ -23,10 +23,6 @@ let g:deoplete#sources#clang#libclang_path="/usr/lib/llvm-7/lib/libclang.so"
 let g:deoplete#sources#clang#clang_header="/usr/lib/llvm-7/include/clang"
 
 Plug 'deoplete-plugins/deoplete-go', { 'for': ['go'], 'do': 'make' }
-call deoplete#custom#option('omni_patterns', {
-\ 'go': '[^. *\t]\.\w*',
-\})
-let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 
 " -- Navigation
 Plug 'https://github.com/derekwyatt/vim-fswitch', { 'for': ['c', 'cpp'] }
@@ -117,6 +113,11 @@ autocmd FileType python setlocal nonumber sw=4 ts=4 et
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
+" For some reason i need to tell deoplete when to fire the omnicompletion
+call deoplete#custom#option('omni_patterns', {
+\ 'go': '[^. *\t]\.\w*',
+\})
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 
 " - C++
 " Switch between Header and source https://github.com/derekwyatt/vim-fswitch
