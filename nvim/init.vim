@@ -204,9 +204,5 @@ map <leader>f :FZF<cr>
 map <leader>FH :History<cr>
 map <leader>FB :Buffers<cr>
 
-" - Syntastic
-let g:syntastic_python_flake8_args='--ignore=E501'
-let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
-
 " - Airline
 let g:airline#extensions#tagbar#enabled = 1
