@@ -12,7 +12,7 @@ else
 	Plug 'roxma/nvim-yarp'
 	Plug 'roxma/vim-hug-neovim-rpc'
 endif
-let g:deoplete#enable_profile = 1
+" let g:deoplete#enable_profile = 1
 let g:deoplete#enable_at_startup = 1
 let g:jedi#completions_enabled = 0
 Plug 'zchee/deoplete-jedi', { 'do': 'pip install --upgrade jedi pynvim', 'for': ['python'] }  " Jedi: Introspection tool fyr python
