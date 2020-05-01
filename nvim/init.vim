@@ -47,7 +47,7 @@ Plug 'martinda/Jenkinsfile-vim-syntax', { 'for': 'jenkins' }
 
 
 "--- Linters and checkers 
-Plug 'neomake/neomake', { 'for': ['rust', 'go'] }
+Plug 'neomake/neomake'
 Plug 'w0rp/ale', { 'for': ['c', 'cpp'] }
 
 " -- Colors, highlights and spelling
