@@ -37,6 +37,7 @@ Plug 'multilobyte/gtags-cscope'
 " -- Languages and filetypes
 Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+Plug 'Scuilion/markdown-drawer', { 'for': 'markdown' }
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }  " Python
 Plug 'fisadev/vim-isort', { 'for': 'python' }
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
