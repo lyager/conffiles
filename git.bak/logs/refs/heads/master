@@ -1,9 +1,0 @@
-0000000000000000000000000000000000000000 e04553c4a06fdb374395867ef079a0ec19b02f80 jln <jln@jln-ubuntu.labnet> 1398764056 +0200	clone: from https://lyager@git.bettercodes.org/conffiles
-e04553c4a06fdb374395867ef079a0ec19b02f80 1f2b7fe82aa370caa88c73638db15d16c0c70436 Jesper Lyager Nielsen <jln@jln-ubuntu.labnet> 1414404435 +0100	pull: Fast-forward
-1f2b7fe82aa370caa88c73638db15d16c0c70436 02e1878579ae4f21c456620157a5f060a3985ae8 Jesper Lyager Nielsen <jln@jln-ubuntu.labnet> 1414405812 +0100	commit: Setting correct terminal through tmux.conf.
-02e1878579ae4f21c456620157a5f060a3985ae8 6e07a79ff2e6723949cccb58a5f72d8c920bc8ba Jesper L. Nielsen <lyager@gmail.com> 1414405843 +0100	commit (amend): Setting correct terminal through tmux.conf.
-6e07a79ff2e6723949cccb58a5f72d8c920bc8ba 25ce591312429c7877159fbfcefb10484a5aef41 Jesper L. Nielsen <lyager@gmail.com> 1414405882 +0100	commit: Removed alias for Tmux, set in tmux.conf instead.
-25ce591312429c7877159fbfcefb10484a5aef41 6835060cf3782114cba6b77020f8e9d7ed9298b2 Jesper L. Nielsen <lyager@gmail.com> 1414419208 +0100	revert: Revert "Removed alias for Tmux, set in tmux.conf instead."
-6835060cf3782114cba6b77020f8e9d7ed9298b2 d16909c3d9883017bc9f3547fd0b4452545c4419 Jesper L. Nielsen <lyager@gmail.com> 1424080482 +0100	pull: Merge made by the 'recursive' strategy.
-d16909c3d9883017bc9f3547fd0b4452545c4419 d1a9b1cd9300bafb08409cf0590d094cd5789c5c Jesper L. Nielsen <lyager@gmail.com> 1424268403 +0100	commit: rc: Removed JAVA env's set way too long ago.
-d1a9b1cd9300bafb08409cf0590d094cd5789c5c 1155ef6b98863220f14db518d35ac309c2911dfa Jesper L. Nielsen <lyager@gmail.com> 1424938953 +0100	commit: Cleanup
