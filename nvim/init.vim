@@ -90,10 +90,6 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
 	colors solarized8
 endif
 
-" Might as well set default indentation here
-set ts=8
-set sw=2
-set et
 set completeopt-=preview
 
 " OSX comes with an inferrior Make (use gmake).
