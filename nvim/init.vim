@@ -54,10 +54,10 @@ Plug 'martinda/Jenkinsfile-vim-syntax', { 'for': 'jenkins' }
 
 "--- Linters and checkers 
 Plug 'neomake/neomake'
-Plug 'w0rp/ale', { 'for': ['c', 'cpp'] }
+Plug 'w0rp/ale'
 
 " -- Colors, highlights and spelling
-Plug 'sheerun/vim-polyglot', { 'do': './build' } " Loads of syntax highlighting
+" Plug 'sheerun/vim-polyglot', { 'do': './build' } " Loads of syntax highlighting
 Plug 'lifepillar/vim-solarized8'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
