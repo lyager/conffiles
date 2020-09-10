@@ -19,8 +19,13 @@ Plug 'zchee/deoplete-jedi', { 'do': 'pip install --upgrade jedi pynvim', 'for': 
 Plug 'davidhalter/jedi-vim', { 'for': ['python'] }  " Jedi: Introspection tool fyr python, but is deoplete-jedi for completion
 
 Plug 'zchee/deoplete-clang', { 'for': ['c', 'cpp'] }
-let g:deoplete#sources#clang#libclang_path="/usr/lib/llvm-7/lib/libclang.so"
-let g:deoplete#sources#clang#clang_header="/usr/lib/llvm-7/include/clang"
+if has('macunix')
+	let g:deoplete#sources#clang#libclang_path="/usr/local/Cellar/llvm/10.0.0_3/lib/libclang.dylib"
+	let g:deoplete#sources#clang#clang_header="/usr/local/Cellar/llvm/10.0.0_3/include/clang"
+else
+	let g:deoplete#sources#clang#libclang_path="/usr/lib/llvm-7/lib/libclang.so"
+	let g:deoplete#sources#clang#clang_header="/usr/lib/llvm-7/include/clang"
+endif
 
 Plug 'deoplete-plugins/deoplete-go', { 'for': ['go'], 'do': 'make' }
 
