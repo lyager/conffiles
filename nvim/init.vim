@@ -12,11 +12,10 @@ else
 	Plug 'roxma/nvim-yarp'
 	Plug 'roxma/vim-hug-neovim-rpc'
 endif
-" let g:deoplete#enable_profile = 1
-let g:deoplete#enable_at_startup = 1
-let g:jedi#completions_enabled = 0
-Plug 'zchee/deoplete-jedi', { 'do': 'pip install --upgrade jedi pynvim', 'for': ['python'] }  " Jedi: Introspection tool fyr python
-Plug 'davidhalter/jedi-vim', { 'for': ['python'] }  " Jedi: Introspection tool fyr python, but is deoplete-jedi for completion
+
+" --- Completion
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
 
 Plug 'zchee/deoplete-clang', { 'for': ['c', 'cpp'] }
 if has('macunix')
@@ -34,6 +33,7 @@ Plug 'https://github.com/derekwyatt/vim-fswitch', { 'for': ['c', 'cpp'] }
 Plug 'mileszs/ack.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+
 " -tags
 Plug 'ludovicchabant/vim-gutentags', { 'for': ['c', 'cpp', 'python'] }
 Plug 'majutsushi/tagbar'
