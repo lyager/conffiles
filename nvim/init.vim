@@ -15,7 +15,8 @@ endif
 
 " --- Completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
+Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build', 'for': ['python'] }
+Plug 'neoclide/coc-rls', { 'do': ':CocInstall coc-rls', 'for': ['rust'] }
 
 Plug 'zchee/deoplete-clang', { 'for': ['c', 'cpp'] }
 if has('macunix')
@@ -48,7 +49,6 @@ Plug 'fisadev/vim-isort', { 'for': 'python' }
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'chase/vim-ansible-yaml', { 'for': 'ansible' }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-Plug 'racer-rust/vim-racer', { 'do': 'cargo install racer --force', 'for': 'rust' }
 Plug 'martinda/Jenkinsfile-vim-syntax', { 'for': 'jenkins' }
 
 
