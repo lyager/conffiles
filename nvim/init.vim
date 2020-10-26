@@ -15,8 +15,9 @@ endif
 
 " --- Completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build', 'for': ['python'] }
+Plug 'neoclide/coc-python', { 'do': ':CocInstall coc-python', 'for': ['python'] }
 Plug 'neoclide/coc-rls', { 'do': ':CocInstall coc-rls', 'for': ['rust'] }
+Plug 'fannheyward/coc-markdownlint', { 'do': ':CocInstall coc-markdownlint', 'for': ['markdown'] }
 
 Plug 'zchee/deoplete-clang', { 'for': ['c', 'cpp'] }
 if has('macunix')
@@ -107,6 +108,8 @@ autocmd Filetype go setl sw=4 ts=4 noet
 " Markdown
 autocmd Filetype markdown setl et sw=4 ts=4 tw=79
 autocmd FileType markdown nmap <leader>md :!open -a Marked %<cr>
+" - Bullets apperantly clashes with comments https://github.com/plasticboy/vim-markdown/pull/375
+let g:vim_markdown_auto_insert_bullets=0
 
 " - Python - use pymode for lint's as it opens a new window (sadly not in
 "   cope)
