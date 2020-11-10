@@ -30,11 +30,12 @@ endif
 
 Plug 'deoplete-plugins/deoplete-go', { 'for': ['go'], 'do': 'make' }
 
-" -- Navigation
+" Navigation
 Plug 'https://github.com/derekwyatt/vim-fswitch', { 'for': ['c', 'cpp'] }
 Plug 'mileszs/ack.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+
 
 " -tags
 Plug 'ludovicchabant/vim-gutentags', { 'for': ['c', 'cpp', 'python'] }
@@ -103,6 +104,12 @@ autocmd Filetype html setl sw=2 ts=2
 autocmd Filetype ruby setl sw=2 ts=2 et
 autocmd Filetype yaml setl sw=2 sts ts=2 et
 autocmd Filetype go setl sw=4 ts=4 noet
+
+" CoC keys
+nmap <silent> <leader>gd <Plug>(coc-definition)
+nmap <silent> <leader>gy <Plug>(coc-type-definition)
+nmap <silent> <leader>gi <Plug>(coc-implementation)
+nmap <silent> <leader>gr <Plug>(coc-references)
 
 
 " Markdown
