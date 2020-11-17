@@ -14,6 +14,8 @@ else
 endif
 
 " --- Completion
+let g:node_client_debug = 1
+let $NVIM_COC_LOG_LEVEL='debug'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-python', { 'do': ':CocInstall coc-python', 'for': ['python'] }
 Plug 'neoclide/coc-rls', { 'do': ':CocInstall coc-rls', 'for': ['rust'] }
@@ -44,8 +46,6 @@ Plug 'multilobyte/gtags-cscope'
 
 " -- Languages and filetypes
 Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'Scuilion/markdown-drawer', { 'for': 'markdown' }
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }  " Python
 Plug 'fisadev/vim-isort', { 'for': 'python' }
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
@@ -56,7 +56,7 @@ Plug 'martinda/Jenkinsfile-vim-syntax', { 'for': 'jenkins' }
 
 "--- Linters and checkers 
 Plug 'neomake/neomake'
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 
 " -- Colors, highlights and spelling
 " Plug 'sheerun/vim-polyglot', { 'do': './build' } " Loads of syntax highlighting
