@@ -19,6 +19,8 @@ let $NVIM_COC_LOG_LEVEL='debug'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-python', { 'do': ':CocInstall coc-python', 'for': ['python'] }
 Plug 'neoclide/coc-rls', { 'do': ':CocInstall coc-rls', 'for': ['rust'] }
+Plug 'neoclide/coc-tsserver', { 'do': ':CocInstall coc-tsserver', 'for': ['typescriptreact', 'typescript'] }
+Plug 'neoclide/coc-jest', { 'do': ':CocInstall coc-jest', 'for': ['typescriptreact', 'typescript'] }
 Plug 'fannheyward/coc-markdownlint', { 'do': ':CocInstall coc-markdownlint', 'for': ['markdown'] }
 
 Plug 'zchee/deoplete-clang', { 'for': ['c', 'cpp'] }
@@ -52,7 +54,8 @@ Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'chase/vim-ansible-yaml', { 'for': 'ansible' }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'martinda/Jenkinsfile-vim-syntax', { 'for': 'jenkins' }
-
+Plug 'leafgarland/typescript-vim', { 'for': ['typescriptreact', 'typescript'] }
+Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescriptreact', 'typescript'] }
 
 "--- Linters and checkers 
 Plug 'neomake/neomake'
@@ -102,6 +105,8 @@ endif
 autocmd Filetype gitconfig setl sw=2 ts=2 noet
 autocmd Filetype html setl sw=2 ts=2
 autocmd Filetype ruby setl sw=2 ts=2 et
+autocmd Filetype typescript setl sw=2 ts=2 et
+autocmd Filetype typescriptreact setl sw=2 ts=2 et
 autocmd Filetype yaml setl sw=2 sts ts=2 et
 autocmd Filetype go setl sw=4 ts=4 noet
 
