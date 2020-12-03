@@ -21,6 +21,7 @@ Plug 'neoclide/coc-python', { 'do': ':CocInstall coc-python', 'for': ['python'] 
 Plug 'neoclide/coc-rls', { 'do': ':CocInstall coc-rls', 'for': ['rust'] }
 Plug 'neoclide/coc-tsserver', { 'do': ':CocInstall coc-tsserver', 'for': ['typescriptreact', 'typescript'] }
 Plug 'neoclide/coc-jest', { 'do': ':CocInstall coc-jest', 'for': ['typescriptreact', 'typescript'] }
+Plug 'neoclide/coc-yaml', { 'do': ':CocInstall coc-yaml', 'for': ['yaml'] }
 Plug 'fannheyward/coc-markdownlint', { 'do': ':CocInstall coc-markdownlint', 'for': ['markdown'] }
 
 Plug 'zchee/deoplete-clang', { 'for': ['c', 'cpp'] }
@@ -51,7 +52,6 @@ Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }  " Python
 Plug 'fisadev/vim-isort', { 'for': 'python' }
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
-Plug 'chase/vim-ansible-yaml', { 'for': 'ansible' }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'martinda/Jenkinsfile-vim-syntax', { 'for': 'jenkins' }
 Plug 'leafgarland/typescript-vim', { 'for': ['typescriptreact', 'typescript'] }
