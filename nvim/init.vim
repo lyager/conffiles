@@ -45,7 +45,6 @@ Plug 'junegunn/fzf.vim'
 " -tags
 Plug 'ludovicchabant/vim-gutentags', { 'for': ['c', 'cpp', 'python'] }
 Plug 'majutsushi/tagbar'
-Plug 'multilobyte/gtags-cscope' 
 
 " -- Languages and filetypes
 Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
@@ -153,26 +152,6 @@ autocmd Filetype Jenkinsfile setlocal foldmethod=marker foldmarker={,}
 
 " - JSON
 autocmd Filetype json set et sw=4 ts=4 nowrap foldmethod=syntax
-
-" - Plug 'multilobyte/gtags-cscope'
-" To use the default key/mouse mapping:
-let GtagsCscope_Auto_Map = 1
-" To ignore letter case when searching:
-let GtagsCscope_Ignore_Case = 1
-" To use absolute path name:
-let GtagsCscope_Absolute_Path = 1
-" To deterring interruption:
-let GtagsCscope_Keep_Alive = 1
-" If you hope auto loading:
-let GtagsCscope_Auto_Load = 1
-" To use 'vim -t ', ':tag' and '<C-]>'
-set cscopetag
-" To auto update tags when a file is saved
-let GtagsCscope_Auto_Update = 0 " This still takes too long
-let GtagsCscope_Quiet = 1 " Supress 'GTAGS not found' error
-:nmap <C-\>I :cs find i <C-R>=expand("%:t")<CR><CR>
-:nmap <C-@>I :scs find i <C-R>=expand("%:t")<CR><CR>
-:nmap <C-@><C-@>I :vert scs find i <C-R>=expand("%:t")<CR><CR>
 
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsSnippetsDir = "~/.config/nvim/UltiSnips"
