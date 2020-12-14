@@ -14,8 +14,8 @@ else
 endif
 
 " --- Completion
-let g:node_client_debug = 1
-let $NVIM_COC_LOG_LEVEL='debug'
+" let g:node_client_debug = 1
+" let $NVIM_COC_LOG_LEVEL='debug'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-python', { 'do': ':CocInstall coc-python', 'for': ['python'] }
 Plug 'neoclide/coc-rls', { 'do': ':CocInstall coc-rls', 'for': ['rust'] }
