@@ -43,12 +43,10 @@ Plug 'junegunn/fzf.vim'
 
 
 " -tags
-Plug 'ludovicchabant/vim-gutentags', { 'for': ['c', 'cpp', 'python'] }
 Plug 'majutsushi/tagbar'
 
 " -- Languages and filetypes
 Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
-Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }  " Python
 Plug 'fisadev/vim-isort', { 'for': 'python' }
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
@@ -127,7 +125,7 @@ let g:vim_markdown_auto_insert_bullets=0
 let g:pymode_paths = ["~/.local/bin"]  " Prefer latest console tools installed with Pip
 let g:pymode_lint = 1
 let g:pymode_lint_ignore = ["E501"]
-autocmd FileType python setlocal nonumber sw=4 ts=4 et
+autocmd FileType python setlocal nonumber sw=4 ts=4 et smartindent
 
 " - Plug 'fatih/vim-go', { 'for': 'go' }
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
