@@ -18,7 +18,7 @@ endif
 " let $NVIM_COC_LOG_LEVEL='debug'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-python', { 'do': ':CocInstall coc-python', 'for': ['python'] }
-Plug 'neoclide/coc-rls', { 'do': ':CocInstall coc-rls', 'for': ['rust'] }
+Plug 'neoclide/coc-rls', { 'do': 'rustup component add rls rust-analysis rust-src; :CocInstall coc-rls:CocInstall coc-rls', 'for': ['rust'] }
 Plug 'neoclide/coc-tsserver', { 'do': ':CocInstall coc-tsserver', 'for': ['typescriptreact', 'typescript'] }
 Plug 'neoclide/coc-jest', { 'do': ':CocInstall coc-jest', 'for': ['typescriptreact', 'typescript'] }
 Plug 'neoclide/coc-yaml', { 'do': ':CocInstall coc-yaml', 'for': ['yaml'] }
