@@ -107,8 +107,10 @@ autocmd Filetype typescript setl sw=2 ts=2 et
 autocmd Filetype typescriptreact setl sw=2 ts=2 et
 autocmd Filetype yaml setl sw=2 sts ts=2 et
 autocmd Filetype go setl sw=4 ts=4 noet
+autocmd Filetype dockerfile setl sw=4 ts=4 et
 
-" CoC keys
+
+" CoC keys and setting
 nmap <silent> <leader>gd <Plug>(coc-definition)
 nmap <silent> <leader>gy <Plug>(coc-type-definition)
 nmap <silent> <leader>gi <Plug>(coc-implementation)
