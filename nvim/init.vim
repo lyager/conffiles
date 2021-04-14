@@ -99,6 +99,7 @@ if has('macunix')
   set makeprg=gmake
 endif
 
+set sw=4 ts=4 et
 autocmd Filetype gitconfig setl sw=2 ts=2 noet
 autocmd Filetype html setl sw=2 ts=2
 autocmd Filetype ruby setl sw=2 ts=2 et
