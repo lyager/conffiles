@@ -152,7 +152,7 @@ autocmd Filetype Jenkinsfile setlocal foldmethod=marker foldmarker={,}
 
 
 " - JSON
-autocmd Filetype json set et sw=4 ts=4 nowrap foldmethod=syntax
+autocmd Filetype json set et sw=2 ts=2 nowrap foldmethod=syntax
 
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsSnippetsDir = "~/.config/nvim/UltiSnips"
