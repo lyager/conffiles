@@ -33,47 +33,33 @@ elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
 		echo "brew is missing";
 		exit 1;
 	fi
-	if [ ! `which pip` ]; then
+	if [ ! `which ${PIP}` ]; then
 		echo "pip is missing";
 		exit 1;
 	fi
 		
 	brew update
 	brew upgrade
-	brew cask install \
-		keybase \
+	brew install \
+		coreutils \
 		arq \
-		remember-the-milk \
-		google-chrome \
 		osxfuse \
-		1password \
-		dropbox \
 		shiftit \
 		spotify \
-		telegram \
+		telegram-desktop \
 		nvalt \
 		evernote \
-		firefox \
 		wireshark \
-		flux \
 		appcleaner \
-		tunnelblick \
-		vimr \
-		gmvault
-	brew install tmux \
+		megasync \
+		openvpn \
+	  tmux \
 		htop \
-		cmake \
-		stow \
-		jq \
 		tig \
-		git \
-		pandoc \
-		vim \
 		neovim \
 		ripgrep \
-		global \
-		llvm \
-		rustup
+		workflowy \
+		node
 elif [ -e "/etc/redhat-release" ]; then # Redhat
 	sudo yum update -y
 	sudo yum install -y vim-enhanced \
