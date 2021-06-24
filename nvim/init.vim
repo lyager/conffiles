@@ -4,7 +4,7 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 
-" -- Completion {{{
+" -- Deoplete - for async powers in Vim/NVIM
 if has('nvim')
 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -17,8 +17,9 @@ endif
 " let g:node_client_debug = 1
 " let $NVIM_COC_LOG_LEVEL='debug'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_global_extensions = ['coc-snippets']  "" Binding for Ultisnippets
 Plug 'neoclide/coc-python', { 'do': ':CocInstall coc-python', 'for': ['python'] }
-Plug 'neoclide/coc-rls', { 'do': 'rustup component add rls rust-analysis rust-src; :CocInstall coc-rls:CocInstall coc-rls', 'for': ['rust'] }
+Plug 'neoclide/coc-rls', { 'do': 'rustup component add rls rust-analysis rust-src; CocInstall coc-rls', 'for': ['rust'] }
 Plug 'neoclide/coc-tsserver', { 'do': ':CocInstall coc-tsserver', 'for': ['typescriptreact', 'typescript'] }
 Plug 'neoclide/coc-jest', { 'do': ':CocInstall coc-jest', 'for': ['typescriptreact', 'typescript'] }
 Plug 'neoclide/coc-yaml', { 'do': ':CocInstall coc-yaml', 'for': ['yaml'] }
@@ -48,6 +49,7 @@ Plug 'majutsushi/tagbar'
 " -- Languages and filetypes
 Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
 Plug 'fisadev/vim-isort', { 'for': 'python' }
+Plug 'python-mode/python-mode', { 'for': 'python' }
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'martinda/Jenkinsfile-vim-syntax', { 'for': 'jenkins' }
