@@ -119,6 +119,7 @@ nmap <silent> <leader>gi <Plug>(coc-implementation)
 nmap <silent> <leader>gr <Plug>(coc-references)
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
+inoremap <silent><expr> <c-space> coc#refresh() "" CTRL-Space show suggestions
 
 
 
