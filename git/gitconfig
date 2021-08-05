@@ -11,26 +11,15 @@
 	r  = rebase
 	fp = format-patch
 
-# <Delta>
 [color]
   diff = auto
 
-[pager]
-    diff = delta
-    log = delta
-    reflog = delta
-    show = delta
-
-[delta]
-    plus-style = "syntax #012800"
-    minus-style = "syntax #340001"
-    syntax-theme = Monokai Extended
-    navigate = true
-
-[interactive]
-    diffFilter = delta --color-only
-
-# </Delta>
+[diff]
+	tool = vimdiff
+	prompt = false
+	noprefix = true
+[difftool]
+	prompt = false
 
 [user]
 	name = Jesper L. Nielsen
