@@ -11,21 +11,19 @@ if [ "$(uname -v | awk '{print $3}')" = "Debian" ]; then # Debian
 	sudo apt-get install -y global \
 		cmake \
 		stow \
-		ctags \
 		vim-nox \
 		stow \
 		cscope \
 		tig \
 		xz-utils \
 		g++ \
-		python-dev \
-		python-pip \
+		python3-dev \
+		python3-pip \
 		ruby-dev \
 		ruby \
 		tmux \
 		jq \
 		zsh \
-		python-demjson \
 		ripgrep
 	GIT_PROMPT=/usr/lib/git-core/git-sh-prompt
 elif [ "$(uname -v | awk '{print $1}')" = "Darwin" ]; then # OSX
