@@ -7,7 +7,7 @@ alias screen='screen -U'
 alias tmux='tmux -u'
 alias logs='multitail /var/log/daemon.log /var/log/auth.log /var/log/exim4/mainlog'
 alias scfix='. ~/.screen/session-variables' # For recovering with scratch
-alias brewski='brew update && brew upgrade && brew cask --upgrade && brew cleanup; brew doctor'
+alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
 alias tigr='tig ..`git rev-parse --abbrev-ref --symbolic-full-name @{u}`'
 alias weather='curl http://v2.wttr.in/'
 # if [ ! -e "/etc/redhat-release" ]; then
@@ -23,6 +23,7 @@ export PATH="$(python3 -m site --user-base)/bin:$PATH" # Python
 export PATH=~/gems/bin:$PATH   # Ruby
 export PATH=~/node/bin:$PATH   # NodeJS
 export PATH=~/go/bin:$PATH     # Go
+export PATH=$(yarn global bin 2> /dev/null):$PATH     # Yarn
 export PATH=~/bin:/usr/local/bin:/usr/local/sbin/:/usr/sbin:/sbin:$PATH
 
 # The below encoding is important for tab completion with
