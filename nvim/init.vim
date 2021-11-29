@@ -59,6 +59,7 @@ Plug 'leafgarland/typescript-vim', { 'for': ['typescriptreact', 'typescript'] }
 Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescriptreact', 'typescript'] }
 
 "--- Linters and checkers 
+Plug 'iamcco/diagnostic-languageserver', { 'do': 'yarn install' }  " Helper for CocDiagnostics
 Plug 'neomake/neomake'
 " Plug 'w0rp/ale'
 
@@ -157,10 +158,6 @@ autocmd Filetype cpp set et sw=4 ts=4 nowrap cino+=(0  " Napatech style
 " Jenkinsfile
 autocmd Filetype Jenkinsfile setlocal et sw=4 ts=4 nowrap foldmethod=syntax
 autocmd Filetype Jenkinsfile setlocal foldmethod=marker foldmarker={,}
-
-
-" - JSON
-autocmd Filetype json set et sw=2 ts=2 nowrap foldmethod=syntax
 
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsSnippetsDir = "~/.config/nvim/UltiSnips"
