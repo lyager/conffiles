@@ -97,7 +97,9 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
 	colors solarized8
 endif
 
+" General configuration
 set completeopt-=preview
+set guicursor+=a:blinkon100
 
 " OSX comes with an inferrior Make (use gmake).
 if has('macunix')
