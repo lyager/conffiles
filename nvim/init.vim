@@ -130,7 +130,7 @@ inoremap <silent><expr> <c-space> coc#refresh() "" CTRL-Space show suggestions
 
 " Markdown
 autocmd Filetype markdown setl et sw=4 ts=4 tw=79
-autocmd FileType markdown nmap <leader>md :!open -a Marked %<cr>
+autocmd FileType markdown nmap <leader>md :!open -a Typora '%'<cr>
 " - Bullets apperantly clashes with comments https://github.com/plasticboy/vim-markdown/pull/375
 let g:vim_markdown_auto_insert_bullets=0
 
