@@ -17,15 +17,8 @@ endif
 " let g:node_client_debug = 1
 " let $NVIM_COC_LOG_LEVEL='debug'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-snippets']  "" Binding for Ultisnippets
-Plug 'neoclide/coc-python', { 'do': ':CocInstall coc-phpls', 'for': ['php'] }
-Plug 'neoclide/coc-python', { 'do': ':CocInstall coc-python', 'for': ['python'] }
-Plug 'neoclide/coc-json', { 'do': ':CocInstall coc-json', 'for': ['json'] }
-Plug 'neoclide/coc-rls', { 'do': 'rustup component add rls rust-analysis rust-src; CocInstall coc-rls', 'for': ['rust'] }
-Plug 'neoclide/coc-tsserver', { 'do': ':CocInstall coc-tsserver', 'for': ['typescriptreact', 'typescript'] }
-Plug 'neoclide/coc-jest', { 'do': ':CocInstall coc-jest', 'for': ['typescriptreact', 'typescript'] }
-Plug 'neoclide/coc-yaml', { 'do': ':CocInstall coc-yaml', 'for': ['yaml'] }
-Plug 'fannheyward/coc-markdownlint', { 'do': ':CocInstall coc-markdownlint', 'for': ['markdown'] }
+""" Install my favorite Coc extensiond
+let g:coc_global_extensions = ['coc-snippets', 'coc-phpls', 'coc-python', 'coc-json', 'coc-rls', 'coc-tsserver', 'coc-jest', 'coc-yaml', 'coc-markdownlint'] 
 
 Plug 'zchee/deoplete-clang', { 'for': ['c', 'cpp'] }
 if has('macunix')
