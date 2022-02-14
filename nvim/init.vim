@@ -54,7 +54,6 @@ Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescriptreact', 'typescript'] }
 "--- Linters and checkers 
 Plug 'iamcco/diagnostic-languageserver', { 'do': 'yarn install' }  " Helper for CocDiagnostics
 Plug 'neomake/neomake'
-" Plug 'w0rp/ale'
 
 " -- Colors, highlights and spelling
 " Plug 'sheerun/vim-polyglot', { 'do': './build' } " Loads of syntax highlighting
