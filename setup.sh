@@ -146,8 +146,8 @@ mkdir -p ~/.config/openbox
 ln ${LNOPT} $PWD/openbox/rc.xml ~/.config/openbox/rc.xml
 
 # Nvim
-curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-ln ${LNOPT} $PWD/nvim/init.vim ~/.config/nvim
+ln ${LNOPT} $PWD/nvim/init.lua ~/.config/nvim/
+ln ${LNOPT} $PWD/nvim/lua ~/.config/nvim/
 
 # Pypanel
 ln ${LNOPT} $PWD/pypanel/pypanelrc ~/.pypanelrc
