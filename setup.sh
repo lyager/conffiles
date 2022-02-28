@@ -146,6 +146,7 @@ mkdir -p ~/.config/openbox
 ln ${LNOPT} $PWD/openbox/rc.xml ~/.config/openbox/rc.xml
 
 # Nvim
+mkdir -p ~/.config/nvim/
 ln ${LNOPT} $PWD/nvim/init.lua ~/.config/nvim/
 ln ${LNOPT} $PWD/nvim/lua ~/.config/nvim/
 
