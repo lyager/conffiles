@@ -23,6 +23,7 @@
 
 [user]
 	name = Jesper L. Nielsen
+    email = lyager@users.noreply.github.com
 [push]
 	default = simple
 [core]
