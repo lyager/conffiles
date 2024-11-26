@@ -13,6 +13,8 @@
 	l = log --graph --oneline --decorate
 	ll = log --graph --oneline --decorate --branches --tags
 	lll = log --graph --oneline --decorate --all
+	lol = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    branches = branch -a --sort=-committerdate
 
 [color]
   diff = auto
