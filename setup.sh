@@ -149,6 +149,9 @@ ln ${LNOPT} $PWD/openbox/rc.xml ~/.config/openbox/rc.xml
 curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ln ${LNOPT} $PWD/nvim/init.vim ~/.config/nvim
 
+# Alacritty
+ln ${LNOPT} $PWD/alacritty ~/.config/alacritty
+
 # Pypanel
 ln ${LNOPT} $PWD/pypanel/pypanelrc ~/.pypanelrc
 

@@ -1,0 +1,17 @@
+[general]
+
+live_config_reload = true
+
+[font]
+size = 12
+normal = { family = "FiraCode Nerd Font", style = "Regular" }
+
+# [font.normal]
+# family = "FiraCode Nerd Font"
+
+[cursor]
+style = { blinking="on" }
+
+
+[window]
+decorations = "full"
