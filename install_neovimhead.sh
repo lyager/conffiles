@@ -6,11 +6,13 @@
 set -eux
 DL_FOLDER="dl/nvim"
 INSTALL_FOLDER="/usr/local/stow/nvim-HEAD"
+VERSION="master"
 if [ ! -d ${DL_FOLDER} ]; then
   git clone https://github.com/neovim/neovim.git ${DL_FOLDER}
 fi
 
 cd ${DL_FOLDER}
-rm -rf build
-make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=${INSTALL_FOLDER}" CMAKE_BUILD_TYPE=Release
+git clean -dfx
+git reset --hard ${VERSION}
+make -j CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=${INSTALL_FOLDER}" CMAKE_BUILD_TYPE=Release
 make install
