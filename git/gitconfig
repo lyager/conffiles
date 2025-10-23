@@ -31,6 +31,7 @@
     email = lyager@users.noreply.github.com
 [push]
 	default = simple
+	autoSetupRemote = true
 [core]
 	excludesfile = /Users/jln/.gitignore_global
 	ignorecase = false
