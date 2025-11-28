@@ -152,6 +152,9 @@ ln ${LNOPT} $PWD/nvim/init.vim ~/.config/nvim
 # Alacritty
 ln ${LNOPT} $PWD/alacritty ~/.config/alacritty
 
+# Zellij
+ln ${LNOPT} $PWD/zellij ~/.config/zellij
+
 # Pypanel
 ln ${LNOPT} $PWD/pypanel/pypanelrc ~/.pypanelrc
 
