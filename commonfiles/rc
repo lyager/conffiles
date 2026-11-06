@@ -8,6 +8,35 @@ alias tmux='tmux -u'
 alias logs='multitail /var/log/daemon.log /var/log/auth.log /var/log/exim4/mainlog'
 alias scfix='. ~/.screen/session-variables' # For recovering with scratch
 alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
+function jira_me {
+  local p rows="" tok versions=""
+  for p in TH KW; do
+    rows+=$(jira issue list -ajln@pascal-audio.com -p"$p" -s~Done -s~Resolved \
+      --order-by status --reverse --plain --no-headers --columns key,status,type,summary)$'\n'
+  done
+  # jira-cli has no fix-version column, so fetch KEY<TAB>versions from the REST API
+  # with the token jira-cli keeps in the keychain.
+  if tok=$(security find-generic-password -s jira-cli -a jln@pascal-audio.com -w 2>/dev/null); then
+    versions=$(curl -sS -u "jln@pascal-audio.com:$tok" -G \
+      https://pascal-audio.atlassian.net/rest/api/3/search/jql \
+      --data-urlencode 'jql=assignee=currentUser() AND project in (TH,KW) AND status not in (Done,Resolved)' \
+      --data-urlencode 'fields=fixVersions' --data-urlencode 'maxResults=500' \
+      | jq -r '.issues[] | [.key, ([.fields.fixVersions[].name] | join(","))] | @tsv')
+  fi
+  # Number each status by where Jira's own status order first puts it, then sort on that.
+  { print -r -- $'KEY\tSTATUS\tTYPE\tRELEASE\tSUMMARY'
+    print -rn -- "$rows" | sed '/^$/d' \
+      | JM_VERSIONS="$versions" awk -F'\t+' -v OFS='\t' '
+          BEGIN { n = split(ENVIRON["JM_VERSIONS"], l, "\n")
+                  for (i = 1; i <= n; i++) { split(l[i], f, "\t"); v[f[1]] = f[2] } }
+          !($2 in r) { r[$2] = ++k }
+          # Hidden sort keys: status rank, then release (issues without one last).
+          { print r[$2], (v[$1] == ""), v[$1], $1, $2, $3, (v[$1] == "" ? "-" : v[$1]), $4 }' \
+      | sort -t$'\t' -k1,1n -k2,2n -k3,3V -k4,4V | cut -f4-
+  } | column -t -s$'\t'
+}
+
+alias jira_history="jira issue list --order-by updated"
 alias tigr='tig ..`git rev-parse --abbrev-ref --symbolic-full-name @{u}`'
 alias weather='curl http://v2.wttr.in/'
 # if [ ! -e "/etc/redhat-release" ]; then
