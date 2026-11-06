@@ -1,5 +1,6 @@
 [alias]
 	ci = commit
+    wt = worktree
 	co = checkout
 	br = branch
 	ps = push
@@ -56,3 +57,7 @@
 	helper = !/opt/homebrew/bin/gh auth git-credential
 [branch]
 	sort = -committerdate
+
+[patatt]
+    signingkey = ed25519:20261030
+    selector = 20261030
