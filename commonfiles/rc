@@ -9,31 +9,29 @@ alias logs='multitail /var/log/daemon.log /var/log/auth.log /var/log/exim4/mainl
 alias scfix='. ~/.screen/session-variables' # For recovering with scratch
 alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
 function jira_me {
-  local p rows="" tok versions="" projects=(TH KW DOP)
-  # Fetch KEY<TAB>versions for all my open issues from the REST API (jira-cli has no
-  # fix-version column) with the token jira-cli keeps in the keychain. The issue keys
-  # also tell us which projects to list, so new projects show up automatically.
-  if tok=$(security find-generic-password -s jira-cli -a jln@pascal-audio.com -w 2>/dev/null); then
-    versions=$(curl -sS -u "jln@pascal-audio.com:$tok" -G \
+  local tok page next="" rows=""
+  # One REST search for all my open issues in every project, with the token jira-cli
+  # keeps in the keychain (jira-cli itself is per-project and has no fix-version column).
+  tok=$(security find-generic-password -s jira-cli -a jln@pascal-audio.com -w 2>/dev/null) \
+    || { print -u2 "jira_me: no jira-cli token in the keychain"; return 1 }
+  while :; do
+    page=$(curl -sSf -u "jln@pascal-audio.com:$tok" -G \
       https://pascal-audio.atlassian.net/rest/api/3/search/jql \
-      --data-urlencode 'jql=assignee=currentUser() AND statusCategory != Done' \
-      --data-urlencode 'fields=fixVersions' --data-urlencode 'maxResults=500' \
-      | jq -r '.issues[] | [.key, ([.fields.fixVersions[].name] | join(","))] | @tsv')
-    [[ -n $versions ]] && projects=(${(u)${(f)"$(print -r -- "$versions" | cut -f1 | sed 's/-[0-9]*$//')"}})
-  fi
-  for p in $projects; do
-    rows+=$(jira issue list -ajln@pascal-audio.com -p"$p" -s~Done -s~Resolved \
-      --order-by status --reverse --plain --no-headers --columns key,status,type,summary)$'\n'
+      --data-urlencode 'jql=assignee=currentUser() AND statusCategory != Done ORDER BY status ASC' \
+      --data-urlencode 'fields=status,issuetype,summary,fixVersions' \
+      --data-urlencode 'maxResults=100' ${next:+--data-urlencode "nextPageToken=$next"}) || return
+    rows+=$(print -r -- "$page" | jq -r '.issues[] | [.key, .fields.status.name, .fields.issuetype.name,
+      ([.fields.fixVersions[].name] | join(",")), .fields.summary] | @tsv')$'\n'
+    next=$(print -r -- "$page" | jq -r '.nextPageToken // empty')
+    [[ -n $next ]] || break
   done
   # Number each status by where Jira's own status order first puts it, then sort on that.
   { print -r -- $'KEY\tSTATUS\tTYPE\tRELEASE\tSUMMARY'
     print -rn -- "$rows" | sed '/^$/d' \
-      | JM_VERSIONS="$versions" awk -F'\t+' -v OFS='\t' '
-          BEGIN { n = split(ENVIRON["JM_VERSIONS"], l, "\n")
-                  for (i = 1; i <= n; i++) { split(l[i], f, "\t"); v[f[1]] = f[2] } }
+      | awk -F'\t' -v OFS='\t' '
           !($2 in r) { r[$2] = ++k }
           # Hidden sort keys: status rank, then release (issues without one last).
-          { print r[$2], (v[$1] == ""), v[$1], $1, $2, $3, (v[$1] == "" ? "-" : v[$1]), $4 }' \
+          { print r[$2], ($4 == ""), $4, $1, $2, $3, ($4 == "" ? "-" : $4), $5 }' \
       | sort -t$'\t' -k1,1n -k2,2n -k3,3V -k4,4V | cut -f4-
   } | column -t -s$'\t'
 }
