@@ -9,20 +9,22 @@ alias logs='multitail /var/log/daemon.log /var/log/auth.log /var/log/exim4/mainl
 alias scfix='. ~/.screen/session-variables' # For recovering with scratch
 alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
 function jira_me {
-  local p rows="" tok versions=""
-  for p in TH KW; do
-    rows+=$(jira issue list -ajln@pascal-audio.com -p"$p" -s~Done -s~Resolved \
-      --order-by status --reverse --plain --no-headers --columns key,status,type,summary)$'\n'
-  done
-  # jira-cli has no fix-version column, so fetch KEY<TAB>versions from the REST API
-  # with the token jira-cli keeps in the keychain.
+  local p rows="" tok versions="" projects=(TH KW DOP)
+  # Fetch KEY<TAB>versions for all my open issues from the REST API (jira-cli has no
+  # fix-version column) with the token jira-cli keeps in the keychain. The issue keys
+  # also tell us which projects to list, so new projects show up automatically.
   if tok=$(security find-generic-password -s jira-cli -a jln@pascal-audio.com -w 2>/dev/null); then
     versions=$(curl -sS -u "jln@pascal-audio.com:$tok" -G \
       https://pascal-audio.atlassian.net/rest/api/3/search/jql \
-      --data-urlencode 'jql=assignee=currentUser() AND project in (TH,KW) AND status not in (Done,Resolved)' \
+      --data-urlencode 'jql=assignee=currentUser() AND statusCategory != Done' \
       --data-urlencode 'fields=fixVersions' --data-urlencode 'maxResults=500' \
       | jq -r '.issues[] | [.key, ([.fields.fixVersions[].name] | join(","))] | @tsv')
+    [[ -n $versions ]] && projects=(${(u)${(f)"$(print -r -- "$versions" | cut -f1 | sed 's/-[0-9]*$//')"}})
   fi
+  for p in $projects; do
+    rows+=$(jira issue list -ajln@pascal-audio.com -p"$p" -s~Done -s~Resolved \
+      --order-by status --reverse --plain --no-headers --columns key,status,type,summary)$'\n'
+  done
   # Number each status by where Jira's own status order first puts it, then sort on that.
   { print -r -- $'KEY\tSTATUS\tTYPE\tRELEASE\tSUMMARY'
     print -rn -- "$rows" | sed '/^$/d' \
