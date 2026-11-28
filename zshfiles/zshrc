@@ -9,7 +9,8 @@ export FZF_BASE=~/.local/share/nvim/lazy/fzf
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME=""
+# Starship draws the prompt if installed, otherwise an OMZ theme does
+command -v starship >/dev/null && ZSH_THEME="" || ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -90,7 +91,7 @@ setopt HIST_BEEP
 # Add wisely, as too many plugins slow down shell startup.
 
 # --- 
-plugins=(git rust history brew azure git-prompt gwt fzf autojump)
+plugins=(git rust history brew azure gwt fzf autojump)
 #
 source $ZSH/oh-my-zsh.sh
 
