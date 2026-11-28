@@ -8,70 +8,6 @@ alias tmux='tmux -u'
 alias logs='multitail /var/log/daemon.log /var/log/auth.log /var/log/exim4/mainlog'
 alias scfix='. ~/.screen/session-variables' # For recovering with scratch
 alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
-JIRA_USER=jln@pascal-audio.com
-JIRA_API=https://pascal-audio.atlassian.net/rest/api/3
-# curl against the Jira REST API, authenticated with the token jira-cli keeps in the
-# keychain. Jira has no login session (basic auth on every request), so just read the
-# token from the keychain once per shell and keep it in an unexported variable.
-function _jira_curl {
-  [[ -n $_JIRA_TOKEN ]] || _JIRA_TOKEN=$(security find-generic-password -s jira-cli \
-    -a $JIRA_USER -w 2>/dev/null) || { print -u2 "jira: no jira-cli token in the keychain"; return 1 }
-  curl -sSf -u "$JIRA_USER:$_JIRA_TOKEN" "$@"
-}
-
-function jira_me {
-  local page next="" rows=""
-  # One REST search for all my open issues in every project
-  # (jira-cli itself is per-project and has no fix-version column).
-  while :; do
-    page=$(_jira_curl -G "$JIRA_API/search/jql" \
-      --data-urlencode 'jql=assignee=currentUser() AND statusCategory != Done ORDER BY status ASC' \
-      --data-urlencode 'fields=status,issuetype,summary,fixVersions' \
-      --data-urlencode 'maxResults=100' ${next:+--data-urlencode "nextPageToken=$next"}) || return
-    rows+=$(print -r -- "$page" | jq -r '.issues[] | [.key, .fields.status.name, .fields.issuetype.name,
-      ([.fields.fixVersions[].name] | join(",")), .fields.summary] | @tsv')$'\n'
-    next=$(print -r -- "$page" | jq -r '.nextPageToken // empty')
-    [[ -n $next ]] || break
-  done
-  # Number each status by where Jira's own status order first puts it, then sort on that.
-  { print -r -- $'KEY\tSTATUS\tTYPE\tRELEASE\tSUMMARY'
-    print -rn -- "$rows" | sed '/^$/d' \
-      | awk -F'\t' -v OFS='\t' '
-          !($2 in r) { r[$2] = ++k }
-          # Hidden sort keys: status rank, then release (issues without one last).
-          { print r[$2], ($4 == ""), $4, $1, $2, $3, ($4 == "" ? "-" : $4), $5 }' \
-      | sort -t$'\t' -k1,1n -k2,2n -k3,3V -k4,4V | cut -f4-
-  } | column -t -s$'\t'
-}
-
-function jira_history {
-  # Issues I touched in the last 30 days, in every project, newest first by MY last
-  # change, comment or creation (Jira's own "updated" moves when anyone touches it).
-  # updatedBy() won't take currentUser(), so look up (and keep) my account id first.
-  [[ -n $_JIRA_ME ]] || _JIRA_ME=$(_jira_curl "$JIRA_API/myself" | jq -r .accountId)
-  [[ -n $_JIRA_ME ]] || return 1
-  { print -r -- $'KEY\tMY LAST TOUCH\tSTATUS\tSUMMARY'
-    _jira_curl -G "$JIRA_API/search/jql" \
-      --data-urlencode "jql=issue in updatedBy(\"$_JIRA_ME\", \"-30d\") ORDER BY updated DESC" \
-      --data-urlencode 'fields=status,summary,comment,creator,created' \
-      --data-urlencode 'expand=changelog' \
-      --data-urlencode 'maxResults=50' \
-      | jq -r --arg me "$_JIRA_ME" '
-          # Timestamps carry +0100/+0200 offsets; convert to UTC epoch before comparing
-          # (jq on macOS ignores %z, so subtract the offset by hand).
-          def t: (.[:19] + "Z" | fromdate)
-                 - ((.[-5:-4] + "1" | tonumber) * ((.[-4:-2] | tonumber) * 3600 + (.[-2:] | tonumber) * 60));
-          [ .issues[]
-            | .mine = ([ (.changelog.histories[]?, .fields.comment.comments[]?)
-                         | select(.author.accountId == $me) | .created ]
-                       + (if .fields.creator.accountId == $me then [.fields.created] else [] end)
-                       | map(t) | max)
-            | select(.mine) ]
-          | sort_by(-.mine)[:30][]
-          | [.key, (.mine | strflocaltime("%Y-%m-%d %H:%M")), .fields.status.name, .fields.summary]
-          | @tsv'
-  } | column -t -s$'\t'
-}
 alias tigr='tig ..`git rev-parse --abbrev-ref --symbolic-full-name @{u}`'
 alias weather='curl http://v2.wttr.in/'
 # if [ ! -e "/etc/redhat-release" ]; then
@@ -79,7 +15,7 @@ alias weather='curl http://v2.wttr.in/'
 # 	alias tmux="TERM=screen-256color-bce tmux"
 # fi
 export DEBFULLNAME="Jesper L. Nielsen"
-export EDITOR="$(if [[ $(which nvim) ]]; then echo nvim; else echo vi; fi)"
+export EDITOR="$(if command -v nvim >/dev/null 2>&1; then echo nvim; else echo vi; fi)"
 export PYTHONPATH=/opt/lib/python/
 export GEM_PATH=~/gems/
 export GEM_HOME=~/gems/
@@ -89,6 +25,23 @@ export PATH=~/node/bin:$PATH   # NodeJS
 export PATH=~/go/bin:$PATH     # Go
 export PATH=$(yarn global bin 2> /dev/null):$PATH     # Yarn
 export PATH=~/bin:/usr/local/bin:/usr/local/sbin/:/usr/sbin:/sbin:$PATH
+[ -d /opt/homebrew/opt/node@24/bin ] && export PATH="/opt/homebrew/opt/node@24/bin:$PATH"
+#export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"            # Rust
+[ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"    # uv
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+
+# Start or reuse an ssh-agent. Linux only: on macOS launchd provides one.
+if [ "$(uname)" = Linux ]; then
+    if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+        eval "$(ssh-agent -s)"
+    else
+        export SSH_AGENT_PID=$(pgrep -u "$USER" ssh-agent | head -n 1)
+        export SSH_AUTH_SOCK=$(find /tmp -type s -user "$USER" -name 'agent.*' 2>/dev/null | head -n 1)
+    fi
+fi
 
 # The below encoding is important for tab completion with
 # oh-my-zsh. Trying to put in in the general RC file, if this 
@@ -96,10 +49,10 @@ export PATH=~/bin:/usr/local/bin:/usr/local/sbin/:/usr/sbin:/sbin:$PATH
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-# Computer specific settings.
+alias sshi='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+alias scpi='scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+
+# Computer specific settings, last so they can override anything above.
 if [ -e ~/.rc.local ] ; then
     . ~/.rc.local
 fi
-alias sshi='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
-alias scpi='scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
-alias scpi='scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'

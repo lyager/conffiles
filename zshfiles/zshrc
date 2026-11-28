@@ -89,14 +89,14 @@ setopt HIST_BEEP
 # Add wisely, as too many plugins slow down shell startup.
 
 # --- 
-plugins=(git rust history brew azure git-prompt gwt)
+plugins=(git rust history brew azure git-prompt gwt fzf autojump)
 #
 source $ZSH/oh-my-zsh.sh
 
-# --- 
+# ---
 
-eval "$(starship init zsh)"
-# --- 
+command -v starship >/dev/null && eval "$(starship init zsh)"
+# ---
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -138,9 +138,73 @@ zellij_tab_name_update() {
 zellij_tab_name_update
 chpwd_functions+=(zellij_tab_name_update)
 
+# Jira helpers (zsh only: they use print and [[ ]])
+JIRA_USER=jln@pascal-audio.com
+JIRA_API=https://pascal-audio.atlassian.net/rest/api/3
+# curl against the Jira REST API, authenticated with the token jira-cli keeps in the
+# keychain. Jira has no login session (basic auth on every request), so just read the
+# token from the keychain once per shell and keep it in an unexported variable.
+function _jira_curl {
+  [[ -n $_JIRA_TOKEN ]] || _JIRA_TOKEN=$(security find-generic-password -s jira-cli \
+    -a $JIRA_USER -w 2>/dev/null) || { print -u2 "jira: no jira-cli token in the keychain"; return 1 }
+  curl -sSf -u "$JIRA_USER:$_JIRA_TOKEN" "$@"
+}
+
+function jira_me {
+  local page next="" rows=""
+  # One REST search for all my open issues in every project
+  # (jira-cli itself is per-project and has no fix-version column).
+  while :; do
+    page=$(_jira_curl -G "$JIRA_API/search/jql" \
+      --data-urlencode 'jql=assignee=currentUser() AND statusCategory != Done ORDER BY status ASC' \
+      --data-urlencode 'fields=status,issuetype,summary,fixVersions' \
+      --data-urlencode 'maxResults=100' ${next:+--data-urlencode "nextPageToken=$next"}) || return
+    rows+=$(print -r -- "$page" | jq -r '.issues[] | [.key, .fields.status.name, .fields.issuetype.name,
+      ([.fields.fixVersions[].name] | join(",")), .fields.summary] | @tsv')$'\n'
+    next=$(print -r -- "$page" | jq -r '.nextPageToken // empty')
+    [[ -n $next ]] || break
+  done
+  # Number each status by where Jira's own status order first puts it, then sort on that.
+  { print -r -- $'KEY\tSTATUS\tTYPE\tRELEASE\tSUMMARY'
+    print -rn -- "$rows" | sed '/^$/d' \
+      | awk -F'\t' -v OFS='\t' '
+          !($2 in r) { r[$2] = ++k }
+          # Hidden sort keys: status rank, then release (issues without one last).
+          { print r[$2], ($4 == ""), $4, $1, $2, $3, ($4 == "" ? "-" : $4), $5 }' \
+      | sort -t$'\t' -k1,1n -k2,2n -k3,3V -k4,4V | cut -f4-
+  } | column -t -s$'\t'
+}
+
+function jira_history {
+  # Issues I touched in the last 30 days, in every project, newest first by MY last
+  # change, comment or creation (Jira's own "updated" moves when anyone touches it).
+  # updatedBy() won't take currentUser(), so look up (and keep) my account id first.
+  [[ -n $_JIRA_ME ]] || _JIRA_ME=$(_jira_curl "$JIRA_API/myself" | jq -r .accountId)
+  [[ -n $_JIRA_ME ]] || return 1
+  { print -r -- $'KEY\tMY LAST TOUCH\tSTATUS\tSUMMARY'
+    _jira_curl -G "$JIRA_API/search/jql" \
+      --data-urlencode "jql=issue in updatedBy(\"$_JIRA_ME\", \"-30d\") ORDER BY updated DESC" \
+      --data-urlencode 'fields=status,summary,comment,creator,created' \
+      --data-urlencode 'expand=changelog' \
+      --data-urlencode 'maxResults=50' \
+      | jq -r --arg me "$_JIRA_ME" '
+          # Timestamps carry +0100/+0200 offsets; convert to UTC epoch before comparing
+          # (jq on macOS ignores %z, so subtract the offset by hand).
+          def t: (.[:19] + "Z" | fromdate)
+                 - ((.[-5:-4] + "1" | tonumber) * ((.[-4:-2] | tonumber) * 3600 + (.[-2:] | tonumber) * 60));
+          [ .issues[]
+            | .mine = ([ (.changelog.histories[]?, .fields.comment.comments[]?)
+                         | select(.author.accountId == $me) | .created ]
+                       + (if .fields.creator.accountId == $me then [.fields.created] else [] end)
+                       | map(t) | max)
+            | select(.mine) ]
+          | sort_by(-.mine)[:30][]
+          | [.key, (.mine | strflocaltime("%Y-%m-%d %H:%M")), .fields.status.name, .fields.summary]
+          | @tsv'
+  } | column -t -s$'\t'
+}
+
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.rc ] && source ~/.rc
-export PATH="/opt/homebrew/opt/node@24/bin:$PATH"
-#export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
 #autoload -Uz compinit && compinit
